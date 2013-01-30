@@ -1,0 +1,21 @@
+<h1>Enter Purchase Information:</h1>
+
+<%= form_for Receipt.new do |f| %>
+  <%= f.select :kind, options_for_select(["Electricity"]) %>
+  <%= f.text_field :cost %>
+  <%= f.submit "Calculate Carbon Emission" %>
+<% end %>
+
+
+
+
+<!-- <form action="<%= receipts_path %>" method="post">
+  <select name="item">
+    <option value="electricity">Electricity</option>
+  </select>
+  <select name="type">
+    <option value="electricity">Electricity</option>
+  </select>
+  <input type="textfield" placeholder="Enter dollar amount here" name="amount">
+  <input type="submit" value="Calculate Carbon Emission">
+</form> -->
