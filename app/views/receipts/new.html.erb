@@ -1,8 +1,10 @@
 <h1>Enter Purchase Information:</h1>
 
-<%= form_for Receipt.new do |f| %>
-  <%= f.select :kind, options_for_select(["Electricity"]) %>
-  <%= f.text_field :cost %>
+<%= form_for @receipt do |f| %>
+  <%= f.select :kind, options_for_select(["Electricity", "Gasoline", "Computer", "Cheeseburger"]) %>
+  <%= f.text_field :cost, :placeholder => "cost in $" %>
+  <%= f.hidden_field :user_id %>
+  <%= hidden_field_tag 'selected', 'none'  %>
   <%= f.submit "Calculate Carbon Emission" %>
 <% end %>
 
