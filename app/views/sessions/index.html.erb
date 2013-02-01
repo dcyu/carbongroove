@@ -1,0 +1,14 @@
+<h1>Welcome to CarbonGroove!</h1>
+<h2>List of purchases</h2>
+
+<ul>
+  <% @receipts.each do |r| %>
+  <li>
+    <%= r.kind %>,
+    <%= r.cost %>,
+    <%= r.emission %> kg of carbon dioxide
+  </li>
+  <% end %>
+</ul>
+
+<%= link_to "Enter New Purchase", new_receipt_path %>
