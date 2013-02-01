@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def index
-     
+    @receipts = Receipt.all
   end
 
   def create
