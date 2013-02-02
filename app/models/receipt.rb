@@ -10,6 +10,7 @@ class Receipt < ActiveRecord::Base
       "gasoline" => 4.00,
       "computer" => 1300.00,
       "cheeseburger" => 7.00,
+      "banana" => 1.00,
     }
 
     unit_emission_kind = Hash.new
@@ -18,6 +19,7 @@ class Receipt < ActiveRecord::Base
       "gasoline" => 12.60,
       "computer" => 720.00,
       "cheeseburger" => 2.50,
+      "banana" => 0.08,
     }
 
     kind = self.kind.downcase
@@ -27,7 +29,9 @@ class Receipt < ActiveRecord::Base
         (cost.delete('$').to_i/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
     else  (cost.to_i/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
     end
-  end     
+  end 
+
+
 end
 
 

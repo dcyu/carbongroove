@@ -16,13 +16,22 @@
 
 body {
   font-family: sans-serif;
-  background-image: url('/green_dust_scratch.png');
+/*  background-image: url('/green_dust_scratch.png');*/
   margin-left: 50px;
   position: relative;
+  background-image: url('http://3.bp.blogspot.com/_OX_7WlzgcLI/TU7KjI7642I/AAAAAAAABe0/1JUpFTIYF4U/s400/greencat.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
-
+h1, h2, h3, p, a, li {
+  color: white;
+  display: block;
+}
 h1 {
   margin: 50px 0;
+}
+h3 {
+  margin: 10px;
 }
 #receipt_kind {
    width: 268px;
@@ -49,7 +58,9 @@ h1 {
 #purchases a {
   font-weight: bold;
 }
-
+#new_purchase {
+  margin-top: 50px;
+}
 ul  {
   list-style: none;
 }
