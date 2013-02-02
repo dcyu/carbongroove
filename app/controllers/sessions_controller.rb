@@ -2,16 +2,13 @@ class SessionsController < ApplicationController
   def new
   end
 
-  def index
-    @receipts = Receipt.all
-  end
-
   def create
-    @receipts = Receipt.all
+    # @receipts = Receipt.all
     user = User.authenticate(params[:email], params[:password])
     if user
       session[:user_id] = user.id
-      render "index", :notice => "Logged in!"
+      # render "index", :notice => "Logged in!"
+      redirect_to current_user
     else
       flash.now.alert = "Invalid email or password"
       render "new"

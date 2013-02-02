@@ -18,14 +18,11 @@ body {
   font-family: sans-serif;
   background-image: url('/green_dust_scratch.png');
   margin-left: 50px;
+  position: relative;
 }
 
 h1 {
-  margin: 100px 0;
-}
-#user_nav {
-  position: absolute;
-  bottom: 20px;
+  margin: 50px 0;
 }
 #receipt_kind {
    width: 268px;
@@ -49,3 +46,22 @@ h1 {
   border: 2px solid black;
   font-size: 16px;
 }
+#purchases a {
+  font-weight: bold;
+}
+
+ul  {
+  list-style: none;
+}
+li {
+  padding: 5px;
+}
+div {
+  display: block;
+}
+#user_nav {
+  margin: 50px 0;
+  display: block;
+  font-weight: bold;
+}
+

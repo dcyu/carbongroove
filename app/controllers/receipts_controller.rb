@@ -1,4 +1,10 @@
 class ReceiptsController < ApplicationController
+  
+  def index
+    @receipt = Receipt.create params[:receipt]
+    redirect_to @receipt
+  end
+
   def new
     @receipt = Receipt.new
     @receipt.user_id = current_user.id

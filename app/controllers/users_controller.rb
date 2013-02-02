@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -11,4 +12,9 @@ class UsersController < ApplicationController
       render "new"
     end
   end
+
+  def show
+    @receipts = current_user.receipts
+  end
+
 end

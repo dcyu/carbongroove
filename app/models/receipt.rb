@@ -1,6 +1,7 @@
 class Receipt < ActiveRecord::Base
   attr_accessible :kind, :cost, :user_id
 
+  belongs_to :user
 
   def emission
     unit_cost_kind = Hash.new
@@ -23,8 +24,8 @@ class Receipt < ActiveRecord::Base
 
 
     if cost.to_i == 0
-        cost.delete('$').to_i/(unit_cost_kind[kind]) * (unit_emission_kind[kind])
-    else  cost.to_i/(unit_cost_kind[kind]) * (unit_emission_kind[kind])
+        (cost.delete('$').to_i/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
+    else  (cost.to_i/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
     end
   end     
 end
