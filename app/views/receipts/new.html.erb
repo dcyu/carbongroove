@@ -1,7 +1,7 @@
 <h1>Enter Purchase Information:</h1>
 
 <%= form_for @receipt do |f| %>
-  <%= f.select :kind, options_for_select(["Electricity", "Gasoline", "Computer", "Cheeseburger", "Banana"]) %>
+  <%= f.select :kind, options_for_select(["Electricity", "Gasoline", "Computer", "Cheeseburger", "Banana", "Veggie Sandwich", "Meat Sandwich", "Chicken Burrito", "Beef Burrito", "Rice", "Flavored Beverage", "Bottled Water", "Potato Chips"]) %>
   <%= f.text_field :cost, :placeholder => "Cost in $" %>
   <%= f.hidden_field :user_id %>
   <%= hidden_field_tag 'selected', 'none'  %>

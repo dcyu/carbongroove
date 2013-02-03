@@ -11,21 +11,31 @@
     </li>
     <% end %>
   </ul>
-<h3>
-  <% total_cost = Array.new %>
-  <% @receipts.each do |r| %>
-  <% total_cost.push(r[:cost].to_i) %>
-  <% end %>
-  $<%= total_cost.inject { |result, element| result + element } %> spent in total
-</h3>
-<h3>
-  <% total_emission = Array.new %>
-  <% @receipts.each do |r| %>
-  <% total_emission.push(r.emission) %>
-  <% end %>
-  <%= total_emission.inject { |result, element| result + element } %> kg emitted in total
-</h3>
+  <h3>
+    <% if @receipts == [] %>
+      $<%= 0 %> 
+    <% else %>
+      <% every_cost = Array.new %>
+      <% @receipts.each do |r| %>
+        <% every_cost.push(r[:cost].to_f) %>
+      <% end %>
+      $<%= every_cost.inject { |result, element| result + element }.round(2) %>
+    <% end %> 
+    spent in total
+  </h3>
+  <h3>
+    <% if @receipts == [] %>
+      <%= 0 %> 
+    <% else %>
+      <% every_emission = Array.new %>
+      <% @receipts.each do |r| %>
+        <% every_emission.push(r.emission) %>
+      <% end %>
+      <%= every_emission.inject { |result, element| result + element }.round(2) %>
+    <% end %> 
+    kg of carbon dioxide emitted
+  </h3>
 
 
-  <%= link_to "Enter New Purchase", new_receipt_path, :id => 'new_purchase' %>
+  <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
 </div>

@@ -11,6 +11,14 @@ class Receipt < ActiveRecord::Base
       "computer" => 1300.00,
       "cheeseburger" => 7.00,
       "banana" => 1.00,
+      "veggie sandwich" => 5.00,
+      "meat sandwich" => 5.00,
+      "chicken burrito" => 7.00,
+      "beef burrito" => 7.00,
+      "rice" => 4.00,
+      "flavored beverage" => 2.00,
+      "bottled water" => 1.00,
+      "potato chips" => 1.00,
     }
 
     unit_emission_kind = Hash.new
@@ -20,17 +28,24 @@ class Receipt < ActiveRecord::Base
       "computer" => 720.00,
       "cheeseburger" => 2.50,
       "banana" => 0.08,
+      "veggie sandwich" => 0.40,
+      "meat sandwich" => 0.80,
+      "chicken burrito" => 0.68,
+      "beef burrito" => 3.81,
+      "rice" => 4.00,
+      "flavored beverage" => 0.22,
+      "bottled water" => 0.16,
+      "potato chips" => 0.075,
     }
 
     kind = self.kind.downcase
 
 
     if cost.to_i == 0
-        (cost.delete('$').to_i/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
-    else  (cost.to_i/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
+        (cost.delete('$').to_f/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
+    else  (cost.to_f/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
     end
   end 
-
 
 end
 

@@ -2,4 +2,7 @@
 
 <h2><%= @receipt.emission %> kilograms of Carbon Dioxide</h2>
 
-<%= link_to "Purchase list", @receipt.user %>
+<p class="link_back">See 
+<%= link_to "Purchase List", @receipt.user %> or 
+<%= link_to "Enter New Purchase", new_receipt_path %>
+</p>
