@@ -41,7 +41,7 @@ h3 {
    border-radius: 0;
    -webkit-appearance: none;
    }
-#receipt_cost, #email, #password {
+#receipt_cost, #email, #password, #user_email, #user_password, #user_password_confirmation {
    width: 268px;
    padding: 5px;
    font-size: 16px;
@@ -49,7 +49,7 @@ h3 {
    border: 2px solid black;
    border-radius: 0;  
 }
-#submit, #log_in {
+#submit, #log_in, #create_account {
   padding: 5px;
   border: 2px solid black;
   font-size: 16px;
@@ -82,7 +82,7 @@ label {
   display: block;
   padding-bottom: 5px;
 }
-.link_back {
+.list_link {
   font-size: 20px;
   margin-top: 50px;
 }
