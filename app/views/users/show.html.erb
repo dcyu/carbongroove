@@ -31,10 +31,12 @@
       <% @receipts.each do |r| %>
         <% every_emission.push(r.emission) %>
       <% end %>
-      <%= every_emission.inject { |result, element| result + element }.round(2) %>
+      <% e = every_emission.inject { |result, element| result + element }.round(2) %>
+      <%= e %>
     <% end %> 
     kg of carbon dioxide emitted
   </h3>
+  <h3 class="plastic_bags">Equivalent to <%= e * 100 %> plastic bags</h3>
 
 
   <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
