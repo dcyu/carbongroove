@@ -19,24 +19,25 @@
       <% @receipts.each do |r| %>
         <% every_cost.push(r[:cost].to_f) %>
       <% end %>
-      $<%= every_cost.inject { |result, element| result + element }.round(2) %>
+      $<%= number_with_delimiter(every_cost.inject { |result, element| result + element }.round(2)) %>
     <% end %> 
     spent in total
   </h3>
   <h3 class="total_emission">
     <% if @receipts == [] %>
-      <%= 0 %> 
+      <% e = 0 %>
+      <%= e %> 
     <% else %>
       <% every_emission = Array.new %>
       <% @receipts.each do |r| %>
         <% every_emission.push(r.emission) %>
       <% end %>
       <% e = every_emission.inject { |result, element| result + element }.round(2) %>
-      <%= e %>
+      <%= number_with_delimiter(e) %>
     <% end %> 
     kg of carbon dioxide emitted
   </h3>
-  <h3 class="plastic_bags">Equivalent to <%= e * 100 %> plastic bags</h3>
+  <h3 class="plastic_bags">Equivalent to <%= number_with_delimiter(e * 100) %> plastic bags</h3>
 
 
   <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
