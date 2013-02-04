@@ -108,6 +108,15 @@ label {
 .total_emission, .emission {
   color: #C62B2B;
 }
+.user_info {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  margin: 0;
+  display: block;
+  float: right;
+}
+/*
 #logged_in, #log_out {
   position: fixed;
   bottom: 20px;
@@ -117,5 +126,5 @@ label {
   float: right;
 }
 #log_out {
-  right: 300px;
-}
+  right: 500px;
+}*/
