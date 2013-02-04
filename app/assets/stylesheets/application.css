@@ -16,18 +16,29 @@
 
 body {
   font-family: sans-serif;
-  background-image: url('/green_dust_scratch.png');
-  margin-left: 50px;
+  background-image: url('black_lozenge.png');
+  background-repeat: repeat;
+  margin-left: 70px;
   position: relative;
-  background-repeat: no-repeat;
-  background-size: 100%;
 }
-h1, h2, h3, p, li, #flash_alert {
-  color: black;
+.fixed_header {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  height: 30px;
+  z-index: 5;
+  background-color: #229E22;
+  border-bottom: 5px solid white;
+}
+
+h1, h2, h3, p, li, label, #flash_alert, #flash_notice {
+  color: white;
   display: block;
 }
 h1 {
-  margin: 50px 0;
+  margin-top: 100px;
+  margin-bottom: 50px;
 }
 h3 {
   margin: 10px;
@@ -37,7 +48,7 @@ h3 {
    padding: 5px;
    font-size: 16px;
    line-height: 1;
-   border: 2px solid black;
+   border: 2px solid #229E22;
    border-radius: 0;
    -webkit-appearance: none;
    }
@@ -46,12 +57,12 @@ h3 {
    padding: 5px;
    font-size: 16px;
    line-height: 1;
-   border: 2px solid black;
+   border: 2px solid #229E22;
    border-radius: 0;  
 }
 #submit, #log_in, #create_account {
   padding: 5px;
-  border: 2px solid black;
+  border: 2px solid #229E22;
   font-size: 16px;
 }
 
@@ -60,7 +71,7 @@ a {
   margin-top: 100px;
 }
 #new_purchase {
-  margin-top: 100px;
+  margin-top: 80px;
   font-size: 20px;
 }
 ul  {
@@ -82,8 +93,29 @@ label {
   display: block;
   padding-bottom: 5px;
 }
+.purchase_list {
+  text-decoration: underline;
+  padding-top: 30px;
+}
 .list_link {
   font-size: 20px;
   margin-top: 50px;
 }
-
+.total_cost {
+  color: #229E22;
+  margin-top: 50px;
+}
+.total_emission, .emission {
+  color: #C62B2B;
+}
+#logged_in, #log_out {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  margin: 0;
+  display: block;
+  float: right;
+}
+#log_out {
+  right: 300px;
+}

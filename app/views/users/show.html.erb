@@ -1,7 +1,7 @@
 <h1>Welcome to CarbonGroove!</h1>
 
 <div id="purchases">
-  <h2>List of purchases</h2>
+  <h2 class="purchase_list">List of purchases</h2>
   <ul>
     <% @receipts.each do |r| %>
     <li>
@@ -11,7 +11,7 @@
     </li>
     <% end %>
   </ul>
-  <h3>
+  <h3 class="total_cost">
     <% if @receipts == [] %>
       $<%= 0 %> 
     <% else %>
@@ -23,7 +23,7 @@
     <% end %> 
     spent in total
   </h3>
-  <h3>
+  <h3 class="total_emission">
     <% if @receipts == [] %>
       <%= 0 %> 
     <% else %>
