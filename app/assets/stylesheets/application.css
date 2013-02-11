@@ -8,11 +8,26 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require_tree .
+ *= require_self
  */
 
 
+     
+/* ***********************
+*************************
+      =normalize
+**************************
+*********************** */
+
+@import 'normalize.css';
+
+     
+/* ***********************
+*************************
+      =general
+**************************
+*********************** */
 
 body {
   font-family: sans-serif;
@@ -21,16 +36,37 @@ body {
   margin-left: 70px;
   position: relative;
 }
+     
+/* ***********************
+*************************
+      =header
+**************************
+*********************** */
+
 .fixed_header {
   position: fixed;
   top: 0px;
   left: 0px;
   right: 0px;
-  height: 30px;
+  height: 35px;
   z-index: 5;
-  background-color: #229E22;
+
+background: #67cd19; /* Old browsers */
+background: -moz-linear-gradient(left, #67cd19 0%, #3b8208 50%, #67cd19 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, right top, color-stop(0%,#67cd19), color-stop(50%,#3b8208), color-stop(100%,#67cd19)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(left, #67cd19 0%,#3b8208 50%,#67cd19 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(left, #67cd19 0%,#3b8208 50%,#67cd19 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(left, #67cd19 0%,#3b8208 50%,#67cd19 100%); /* IE10+ */
+background: linear-gradient(to right, #67cd19 0%,#3b8208 50%,#67cd19 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#67cd19', endColorstr='#67cd19',GradientType=1 ); /* IE6-9 */
   border-bottom: 5px solid white;
 }
+     
+/* ***********************
+*************************
+      =main
+**************************
+*********************** */
 
 h1, h2, h3, p, li, label, #flash_alert, #flash_notice {
   color: white;
@@ -116,15 +152,3 @@ label {
   display: block;
   float: right;
 }
-/*
-#logged_in, #log_out {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  margin: 0;
-  display: block;
-  float: right;
-}
-#log_out {
-  right: 500px;
-}*/

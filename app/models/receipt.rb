@@ -3,8 +3,13 @@ class Receipt < ActiveRecord::Base
 
   belongs_to :user
 
+  # validates_inclusion_of :kind, in: KINDS.keys
+
+  KINDS = {
+    'electricity' => { cost: 1, emission: 2 }
+  }
+
   def emission
-    unit_cost_kind = Hash.new
     unit_cost_kind = {
       "electricity" => 0.155,
       "gasoline" => 4.00,
@@ -21,7 +26,6 @@ class Receipt < ActiveRecord::Base
       "potato chips" => 1.00,
     }
 
-    unit_emission_kind = Hash.new
     unit_emission_kind = {
       "electricity" => 0.527,
       "gasoline" => 12.60,
