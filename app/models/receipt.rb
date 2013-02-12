@@ -6,49 +6,34 @@ class Receipt < ActiveRecord::Base
   # validates_inclusion_of :kind, in: KINDS.keys
 
   KINDS = {
-    'electricity' => { cost: 1, emission: 2 }
+    "electricity" => { cost: 0.155, emission: 2 },
+    "gasoline" => { cost: 4.00, emission: 4.00},
+    "computer" => { cost: 1300.00, emission: 720.00 },
+    "cheeseburger" => { cost: 7.00 , emission: 2.50 },
+    "banana" => { cost: 1.00 , emission: 0.08 },
+    "veggie sandwich" => { cost: 5.00 , emission: 0.40 },
+    "meat sandwich" => { cost: 5.00 , emission: 0.80 },
+    "chicken burrito" => { cost: 7.00 , emission: 0.68 },
+    "beef burrito" => { cost: 7.00 , emission: 3.81 },
+    "rice" => { cost: 4.00 , emission: 4.00 },
+    "flavored beverage" => { cost: 2.00 , emission: 0.22 },
+    "bottled water" => { cost: 1.00 , emission: 0.16 },
+    "potato chips" => { cost: 1.00 , emission: 0.075 }
   }
 
   def emission
-    unit_cost_kind = {
-      "electricity" => 0.155,
-      "gasoline" => 4.00,
-      "computer" => 1300.00,
-      "cheeseburger" => 7.00,
-      "banana" => 1.00,
-      "veggie sandwich" => 5.00,
-      "meat sandwich" => 5.00,
-      "chicken burrito" => 7.00,
-      "beef burrito" => 7.00,
-      "rice" => 4.00,
-      "flavored beverage" => 2.00,
-      "bottled water" => 1.00,
-      "potato chips" => 1.00,
-    }
-
-    unit_emission_kind = {
-      "electricity" => 0.527,
-      "gasoline" => 12.60,
-      "computer" => 720.00,
-      "cheeseburger" => 2.50,
-      "banana" => 0.08,
-      "veggie sandwich" => 0.40,
-      "meat sandwich" => 0.80,
-      "chicken burrito" => 0.68,
-      "beef burrito" => 3.81,
-      "rice" => 4.00,
-      "flavored beverage" => 0.22,
-      "bottled water" => 0.16,
-      "potato chips" => 0.075,
-    }
 
     kind = self.kind.downcase
 
+    unit_cost_kind = KINDS[kind][:cost]
+    unit_emission_kind = KINDS[kind][:emission]
+
 
     if cost.to_i == 0
-        (cost.delete('$').to_f/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
-    else  (cost.to_f/(unit_cost_kind[kind]) * (unit_emission_kind[kind])).round(3)
+        (cost.delete('$').to_f/unit_cost_kind * unit_emission_kind).round(3)
+    else  (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
     end
+
   end 
 
 end
