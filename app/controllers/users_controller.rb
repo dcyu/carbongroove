@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+
+  end
+
   def new
     @user = User.new
   end
@@ -18,5 +26,7 @@ class UsersController < ApplicationController
   def show
     @receipts = current_user.receipts
   end
+
+
 
 end
