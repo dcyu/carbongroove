@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  test "receipts is blank to start" do
+  test "receipts are blank to start" do
     assert_equal [], create_user.receipts
   end
 
@@ -11,6 +11,11 @@ class UserTest < ActiveSupport::TestCase
 
     user2 = User.new email: user.email
     assert ! user2.valid?
+  end
+
+  test "user email must include @ character" do
+    user = User.new email: "asfdkfhjg@asdf.com"
+    assert user.valid?, "must include @"
   end
 
 end

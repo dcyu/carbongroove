@@ -7,7 +7,7 @@ class Receipt < ActiveRecord::Base
 
   KINDS = {
     "electricity" => { cost: 0.155, emission: 2 },
-    "gasoline" => { cost: 4.00, emission: 4.00},
+    "gasoline" => { cost: 4.00, emission: 12.6},
     "computer" => { cost: 1300.00, emission: 720.00 },
     "cheeseburger" => { cost: 7.00 , emission: 2.50 },
     "banana" => { cost: 1.00 , emission: 0.08 },

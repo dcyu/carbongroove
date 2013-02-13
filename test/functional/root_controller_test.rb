@@ -1,9 +1,10 @@
 require 'test_helper'
 
 class RootControllerTest < ActionController::TestCase
+  
 	test "root shows index if not logged in" do
 		get :index
-		assert_response :ok
+		assert_response :success
     assert_template :index
 	end
 
@@ -15,6 +16,5 @@ class RootControllerTest < ActionController::TestCase
     assert_redirected_to user
   end
 
-  def sdkjf
-  end
+
 end
