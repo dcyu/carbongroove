@@ -96,10 +96,16 @@ h3 {
    border: 2px solid #229E22;
    border-radius: 0;  
 }
-#submit, #log_in, #create_account {
+#user_email, #user_password {
+  margin-bottom: 20px;
+}
+#submit, #log_in, #create_account, #update {
   padding: 5px;
   border: 2px solid #229E22;
   font-size: 16px;
+}
+#update {
+  margin-bottom: 20px;
 }
 
 a {

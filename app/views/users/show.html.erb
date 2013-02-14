@@ -13,20 +13,20 @@
   </ul>
   <h3 class="total_cost">
     <% if @receipts == [] %>
-      $<%= 0 %> 
+      $<%= 0 %>
     <% else %>
       <% every_cost = Array.new %>
       <% @receipts.each do |r| %>
         <% every_cost.push(r[:cost].to_f) %>
       <% end %>
       $<%= number_with_delimiter(every_cost.inject { |result, element| result + element }.round(2)) %>
-    <% end %> 
+    <% end %>
     spent in total
   </h3>
   <h3 class="total_emission">
     <% if @receipts == [] %>
       <% e = 0 %>
-      <%= e %> 
+      <%= e %>
     <% else %>
       <% every_emission = Array.new %>
       <% @receipts.each do |r| %>
@@ -34,7 +34,7 @@
       <% end %>
       <% e = every_emission.inject { |result, element| result + element }.round(2) %>
       <%= number_with_delimiter(e) %>
-    <% end %> 
+    <% end %>
     kg of carbon dioxide emitted
   </h3>
   <h3 class="plastic_bags">Equivalent to <%= number_with_delimiter(e * 100) %> plastic bags</h3>
@@ -42,3 +42,4 @@
 
   <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
 </div>
+

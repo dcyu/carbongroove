@@ -4,5 +4,5 @@
 
 <p class="list_link">See 
 <%= link_to "Purchase List", @receipt.user %> or 
-<%= link_to "Enter New Purchase", new_receipt_path %>
+<%= link_to "Enter New Purchase", new_receipt_path(current_user.id) %>
 </p>

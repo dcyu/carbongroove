@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
 
   validates :email, :format => /@/
+  validates :password, :length => 5..20
   validates_presence_of :email
   validates_uniqueness_of :email
 
