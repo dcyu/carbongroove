@@ -1,0 +1,169 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+/* ***********************
+ **************************
+ *      =normalize
+ ***************************
+ ************************
+
+@import 'normalize.css'
+
+/* ***********************
+ **************************
+ *      =general
+ ***************************
+ ************************
+
+body
+  font-family: sans-serif
+  background-image: url('black_lozenge.png')
+  background-repeat: repeat
+  margin-left: 70px
+  position: relative
+
+/* ***********************
+ **************************
+ *      =header
+ ***************************
+ ************************
+
+.fixed_header
+  position: fixed
+  top: 0px
+  left: 0px
+  right: 0px
+  height: 35px
+  z-index: 5
+  background: #67cd19
+  /* Old browsers
+  background: -moz-linear-gradient(left, #67cd19 0%, #3b8208 50%, #67cd19 100%)
+  /* FF3.6+
+  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #67cd19), color-stop(50%, #3b8208), color-stop(100%, #67cd19))
+  /* Chrome,Safari4+
+  background: -webkit-linear-gradient(left, #67cd19 0%, #3b8208 50%, #67cd19 100%)
+  /* Chrome10+,Safari5.1+
+  background: -o-linear-gradient(left, #67cd19 0%, #3b8208 50%, #67cd19 100%)
+  /* Opera 11.10+
+  background: -ms-linear-gradient(left, #67cd19 0%, #3b8208 50%, #67cd19 100%)
+  /* IE10+
+  background: linear-gradient(to right, #67cd19 0%, #3b8208 50%, #67cd19 100%)
+  /* W3C
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#67cd19', endColorstr='#67cd19',GradientType=1 )
+  /* IE6-9
+  border-bottom: 5px solid white
+
+
+
+/* ***********************
+ **************************
+ *      =main
+ ***************************
+ ************************
+
+h1, h2, h3, p, li, label, #flash_alert, #flash_notice
+  color: white
+  display: block
+
+h1
+  margin-top: 100px
+  margin-bottom: 50px
+
+h3
+  margin: 10px
+
+#receipt_kind
+  width: 268px
+  padding: 5px
+  font-size: 16px
+  line-height: 1
+  border: 2px solid #229E22
+  border-radius: 0
+  -webkit-appearance: none
+
+#receipt_cost, #email, #password, #user_email, #user_password, #user_password_confirmation
+  width: 268px
+  padding: 5px
+  font-size: 16px
+  line-height: 1
+  border: 2px solid #229E22
+  border-radius: 0
+
+#user_email, #user_password
+  margin-bottom: 20px
+
+#submit, #log_in, #create_account
+  padding: 5px
+  border: 2px solid #229E22
+  font-size: 16px
+  border-radius: 4px
+
+#update
+  padding: 5px
+  border: 2px solid #229E22
+  font-size: 16px
+  border-radius: 4px
+  margin-bottom: 20px
+
+a
+  font-weight: bold
+  margin-top: 100px
+
+#new_purchase
+  margin-top: 80px
+  font-size: 20px
+  a
+    color: #fdfdfd
+
+ul
+  list-style: none
+
+li
+  padding: 5px
+
+div
+  display: block
+
+#user_nav
+  margin: 50px 0
+  display: block
+  font-weight: bold
+
+label
+  font-size: 20px
+  display: block
+  padding-bottom: 5px
+
+.purchase_list
+  text-decoration: none
+  padding-top: 30px
+
+.list_link
+  font-size: 20px
+  margin-top: 50px
+
+.total_cost
+  color: #229E22
+  margin-top: 50px
+
+.total_emission, .emission
+  color: #C62B2B
+
+.user_info
+  position: fixed
+  bottom: 20px
+  right: 20px
+  margin: 0
+  display: block
+  float: right
