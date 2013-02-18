@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130202225030) do
+ActiveRecord::Schema.define(:version => 20130218200434) do
 
   create_table "receipts", :force => true do |t|
     t.string   "kind"
@@ -27,8 +27,15 @@ ActiveRecord::Schema.define(:version => 20130202225030) do
     t.string   "email"
     t.string   "password_hash"
     t.string   "password_salt"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name"
+    t.string   "oauth_token"
+    t.datetime "oauth_expires_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
 end
