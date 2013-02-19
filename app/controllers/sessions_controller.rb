@@ -5,12 +5,13 @@ class SessionsController < ApplicationController
   end
 
   def create
+    user = User.authenticate(params[:email], params[:password])
+    if
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to root_url
+    redirect_to current_user
 
-    user = User.authenticate(params[:email], params[:password])
-    if user
+    elsif user
       session[:user_id] = user.id
       redirect_to current_user
     else
