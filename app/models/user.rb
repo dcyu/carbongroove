@@ -4,8 +4,8 @@ class User < ActiveRecord::Base
   attr_accessor :password
   before_save :encrypt_password
 
-  # validates_confirmation_of :password
-  # validates_presence_of :password, :on => :create
+  validates_confirmation_of :password
+  validates_presence_of :password, :on => :create
 
   # validates :email, :format => /@/
   # validates :password, :length => 5..20

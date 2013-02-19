@@ -13,10 +13,9 @@
 
   <div id="user_nav">
     <% if current_user %>
-      <p class="fb-login"><h1 id="welcome">Hello <%= current_user.name %>!</h1></p>
-      <%= link_to "Sign out", signout_path, id: "sign_out" %>
+      <p class="fb-login"><h1 id="welcome">Hello <span class="user-name"><%= current_user.name %></span>!</h1></p>
     <% else %>
-      <%= link_to "Sign in with Facebook", "auth/facebook" %>
+      <%= link_to "Login with Facebook", "auth/facebook" %>
     <% end %>
   </div>
 

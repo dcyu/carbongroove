@@ -7,17 +7,18 @@ class SessionsController < ApplicationController
   def create
     user = User.authenticate(params[:email], params[:password])
     if
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id
-    redirect_to current_user
-
-    elsif user
       session[:user_id] = user.id
       redirect_to current_user
     else
       flash.now.alert = "Invalid email or password"
       render "new"
     end
+  end
+
+  def create_facebook
+    user = User.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to current_user      
   end
 
   def destroy

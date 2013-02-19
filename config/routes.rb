@@ -3,9 +3,8 @@ Carbongroove::Application.routes.draw do
   resources :goals
 
 
-  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/:provider/callback', to: 'sessions#create_facebook'
   match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'sessions#destroy', as: 'signout'
 
   root :to => "users#new"
   root to: 'root#index'
