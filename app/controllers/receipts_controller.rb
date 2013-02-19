@@ -5,7 +5,7 @@ class ReceiptsController < ApplicationController
   def new
     @receipt = Receipt.new
     @receipt.user_id = current_user.id
-    logger.debug "ID: #{current_user.id}" 
+    logger.debug "ID: #{current_user.id}"
   end
 
   def create
