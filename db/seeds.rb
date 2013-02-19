@@ -12,7 +12,7 @@ users = [
     :
 
   },
-  { :email => "user_a@carbongroove.com",
+  { :email => "user_b@carbongroove.com",
 
   }
 ]
