@@ -21,20 +21,18 @@ class Receipt < ActiveRecord::Base
     "potato chips" => { cost: 1.00 , emission: 0.075 }
   }
 
-  def emission
+  def calculate_emission
 
     kind = self.kind.downcase
 
     unit_cost_kind = KINDS[kind][:cost]
     unit_emission_kind = KINDS[kind][:emission]
 
-
     if cost.to_i == 0
         (cost.delete('$').to_f/unit_cost_kind * unit_emission_kind).round(3)
     else  (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
     end
-
-  end 
+  end
 
 end
 
