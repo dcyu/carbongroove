@@ -37,11 +37,3 @@ class Receipt < ActiveRecord::Base
 end
 
 
-# make it look nicer
-
-# store user id with each Receipt
-# show user's Receipts on home page when they log in
-# require logged in user to do things with Receipts
-
-# later...
-# allow saving more than just electricity
