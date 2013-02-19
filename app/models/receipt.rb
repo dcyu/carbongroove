@@ -21,13 +21,12 @@ class Receipt < ActiveRecord::Base
     "potato chips" => { cost: 1.00 , emission: 0.075 }
   }
 
-  def emission
+  def calculate_emission
 
     kind = self.kind.downcase
 
     unit_cost_kind = KINDS[kind][:cost]
     unit_emission_kind = KINDS[kind][:emission]
-
 
     if cost.to_i == 0
         (cost.delete('$').to_f/unit_cost_kind * unit_emission_kind).round(3)
@@ -39,11 +38,3 @@ class Receipt < ActiveRecord::Base
 end
 
 
-# make it look nicer
-
-# store user id with each Receipt
-# show user's Receipts on home page when they log in
-# require logged in user to do things with Receipts
-
-# later...
-# allow saving more than just electricity
