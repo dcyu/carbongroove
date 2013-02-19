@@ -1,5 +1,8 @@
 Carbongroove::Application.routes.draw do
 
+  resources :goals
+
+
   root :to => "users#new"
   root to: 'root#index'
 

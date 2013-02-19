@@ -34,7 +34,7 @@ class Receipt < ActiveRecord::Base
     else  (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
     end
 
-  end 
+  end
 
 end
 
