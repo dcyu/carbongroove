@@ -28,6 +28,9 @@ class UsersController < ApplicationController
 
   def show
     @receipts = current_user.receipts
+    @user = User.find(params[:id])
+    @goal = Goal.new
+
   end
 
 

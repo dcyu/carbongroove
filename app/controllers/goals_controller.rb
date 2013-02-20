@@ -2,8 +2,7 @@ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
-    @goals = Goal.all
-    @users = User.all
+    @goals = Goal.where(:user_id => session[:user_id])
 
     respond_to do |format|
       format.html # index.html.erb

@@ -17,12 +17,14 @@
 
 <p>
   <b>Start time:</b>
-  <%= @goal.start_time %>
+  <%= Date.parse(@goal.start_time.to_s).strftime("%b %e, %Y") %>
+
 </p>
 
 <p>
   <b>End time:</b>
-  <%= @goal.end_time %>
+  <%= Date.parse(@goal.start_time.to_s).strftime("%b %e, %Y") %>
+
 </p>
 
 <p>
@@ -32,4 +34,6 @@
 
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
-<%= link_to 'Back', goals_path %>
+<%= link_to 'Back', goals_path %> |
+<%= link_to 'User Page', user_path(session[:user_id]) %>
+

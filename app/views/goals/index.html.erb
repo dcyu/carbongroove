@@ -17,9 +17,9 @@
   <tr>
     <td><%= goal.goal_name %></td>
     <td><%= goal.description %></td>
-    <td><%= goal.user_id %></td>
-    <td><%= goal.start_time %></td>
-    <td><%= goal.end_time %></td>
+    <td><%= goal.user.email %></td>
+    <td><%= Date.parse(goal.start_time.to_s).strftime("%b %e, %Y") %></td>
+    <td><%= Date.parse(goal.end_time.to_s).strftime("%b %e, %Y") %></td>
     <td><%= goal.status %></td>
     <td><%= link_to 'Show', goal %></td>
     <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
@@ -29,5 +29,6 @@
 </table>
 
 <br />
-<%= link_to 'New Goal', new_goal_path %>
+<%= link_to 'New Goal', new_goal_path %> |
+<%= link_to 'User Page', user_path(session[:user_id]) %>
 
