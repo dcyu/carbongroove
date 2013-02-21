@@ -76,7 +76,7 @@ class GoalsController < ApplicationController
     @goal.destroy
 
     respond_to do |format|
-      format.html { redirect_to goals_url }
+      format.html { redirect_to user_path(session[:user_id]) }
       format.json { head :no_content }
     end
   end

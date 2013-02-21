@@ -42,6 +42,37 @@
   <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
 </div>
 
-<%= link_to "My Goals", goals_url %>
+<h2>My Goals</h2>
+
+<table>
+  <tr>
+    <th>Goal name</th>
+    <th>Description</th>
+    <th>User</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user.goals.each do |goal| %>
+  <tr>
+    <td><%= goal.goal_name %></td>
+    <td><%= goal.description %></td>
+    <td><%= goal.user.email %></td>
+    <td><%= Date.parse(goal.start_time.to_s).strftime("%b %e, %Y") %></td>
+    <td><%= Date.parse(goal.end_time.to_s).strftime("%b %e, %Y") %></td>
+    <td><%= goal.status %></td>
+    <td><%= link_to 'Show', goal %></td>
+    <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+    <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New Goal', new_goal_path %>
 
 

@@ -12,7 +12,7 @@
 
 <p>
   <b>User:</b>
-  <%= @goal.user_id %>
+  <%= @goal.user.email %>
 </p>
 
 <p>
@@ -33,7 +33,6 @@
 </p>
 
 
-<%= link_to 'Edit', edit_goal_path(@goal) %> |
-<%= link_to 'Back', goals_path %> |
+<%= link_to 'Edit Goal', edit_goal_path(@goal) %> |
 <%= link_to 'User Page', user_path(session[:user_id]) %>
 

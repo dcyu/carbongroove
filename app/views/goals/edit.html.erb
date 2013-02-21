@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @goal %> |
-<%= link_to 'Back', goals_path %>
+
+<%= link_to 'User Page', user_path(session[:user_id]) %>
