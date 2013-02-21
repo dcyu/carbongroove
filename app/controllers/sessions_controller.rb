@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.authenticate(params[:email], params[:password])
+    user = RegularUser.authenticate(params[:email], params[:password])
     if
       session[:user_id] = user.id
       redirect_to current_user
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   end
 
   def create_facebook
-    user = User.from_omniauth(env["omniauth.auth"])
+    user = FacebookUser.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
     redirect_to current_user      
   end

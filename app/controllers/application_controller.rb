@@ -12,6 +12,16 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def logged_in?
+    current_user.present?
+  end
+  helper_method :logged_in?
+
+  def logged_in_as_regular_user?
+    logged_in? && current_user.regular_user?
+  end
+  helper_method :logged_in_as_regular_user?
+
   def require_current_user
     redirect_to_login_path if current_user.nil?
   end

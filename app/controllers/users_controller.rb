@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def edit
-    @user = User.find(params[:id])
+    @user = RegularUser.find(params[:id])
   end
 
   def update
@@ -15,11 +15,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = RegularUser.new(params[:user])
 
-    if @user.save
-      user = User.authenticate(@user.email, @user.password)
-      session[:user_id] = user.id
+    if @user.save!
+      session[:user_id] = @user.id
       redirect_to current_user, :notice => "Signed up!"
     else
       render "new"
