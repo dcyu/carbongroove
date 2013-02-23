@@ -4,6 +4,8 @@
   <%= f.select :kind, options_for_select(["Electricity", "Gasoline", "Computer", "Cheeseburger", "Banana", "Veggie Sandwich", "Meat Sandwich", "Chicken Burrito", "Beef Burrito", "Rice", "Flavored Beverage", "Bottled Water", "Potato Chips"]) %>
   <%= f.text_field :cost, :placeholder => "Cost in $" %>
   <%= hidden_field_tag 'selected', 'none'  %>
+  <%= f.label :purchase_date %>
+  <%= f.date_select :date, start_year: 2010, end_year: 2020 %>
   <%= f.submit "Calculate Carbon Emission", :id => "submit" %>
 
 <% end %>

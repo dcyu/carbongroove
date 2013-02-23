@@ -1,7 +1,7 @@
 <%= form_for @user do |f|  %>
   <div><%= f.label :email, "Edit Email" %></div>
   <div><%= f.text_field :email %></div>
-    <div><%= f.label :password, "Edit Password" %></div>
-  <div><%= f.text_field :password %></div>
+  <div><%= f.label :password, "Edit Password" %></div>
+  <div><%= f.password_field :password %></div>
   <div><%= f.submit "Update Settings", :id => "update" %></div>
 <% end %>

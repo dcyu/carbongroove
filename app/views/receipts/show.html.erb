@@ -1,8 +1,9 @@
 <h1>Carbon Emission:</h1>
 
-<h2 class="emission"><%= number_with_delimiter(@receipt.emission) %> kilograms of Carbon Dioxide</h2>
+<h2 class="emission"><%= Date.parse(@receipt.date.to_s).strftime("%D") %>: <%= number_with_delimiter(@receipt.emission) %> kilograms of Carbon Dioxide</h2>
 
-<p class="list_link">See 
-<%= link_to "Purchase List", @receipt.user %> or 
+
+<p class="list_link">See
+<%= link_to "Purchase List", @receipt.user %> or
 <%= link_to "Enter New Purchase", new_receipt_path(current_user.id) %>
 </p>

@@ -26,7 +26,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @receipts = current_user.receipts
+    # @receipts = current_user.receipts
+    @receipts = current_user.receipts.order('date desc').limit(50)
     @user = User.find(params[:id])
     @goal = Goal.new
 

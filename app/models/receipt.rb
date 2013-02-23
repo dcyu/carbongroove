@@ -1,5 +1,5 @@
 class Receipt < ActiveRecord::Base
-  attr_accessible :kind, :cost, :user_id
+  attr_accessible :kind, :cost, :user_id, :date
 
   belongs_to :user
 
