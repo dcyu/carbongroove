@@ -31,6 +31,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @goal = Goal.new
 
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @receipts }
+    end
   end
 
 
