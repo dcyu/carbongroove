@@ -1,5 +1,5 @@
 class Receipt < ActiveRecord::Base
-  attr_accessible :kind, :cost, :user_id, :date
+  attr_accessible :kind, :cost, :user_id, :date, :emission
 
   belongs_to :user
 
@@ -18,23 +18,25 @@ class Receipt < ActiveRecord::Base
     "rice" => { cost: 4.00 , emission: 4.00 },
     "flavored beverage" => { cost: 2.00 , emission: 0.22 },
     "bottled water" => { cost: 1.00 , emission: 0.16 },
-    "potato chips" => { cost: 1.00 , emission: 0.075 }
+    "potato chips" => { cost: 1.00 , emission: 0.075 },
+    "corn chips" => { cost: 1.00 , emission: 0.075 }
   }
 
-  def emission
+  after_create :calculate_emission
 
+  def calculate_emission
+    logger.info "self.kind = #{self.kind}"
+    logger.info "unit_cost_kind= #{KINDS[kind][:cost]}"
+    logger.info "unit_emission_kind = #{KINDS[kind][:emission]}"
     kind = self.kind.downcase
-
     unit_cost_kind = KINDS[kind][:cost]
     unit_emission_kind = KINDS[kind][:emission]
-
     if cost.to_i == 0
-        (cost.delete('$').to_f/unit_cost_kind * unit_emission_kind).round(3)
-    else  (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
+      self.emission = (cost.delete('$').to_f/unit_cost_kind * unit_emission_kind).round(3)
+    else
+      self.emission = (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
     end
-
+    self.save
   end
 
 end
-
-
