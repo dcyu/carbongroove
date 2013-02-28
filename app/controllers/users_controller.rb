@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+
   def edit
     @user = RegularUser.find(params[:id])
   end
@@ -26,8 +27,26 @@ class UsersController < ApplicationController
   end
 
   def show
-    # @receipts = current_user.receipts
     @receipts = current_user.receipts.order('date desc').limit(50)
+    @total_receipts = []
+
+    min_date = Receipt.all.map(&:date).min
+    max_date = Receipt.all.map(&:date).max
+
+    date = min_date
+
+    while date <= max_date
+      #receipts = Receipt.for_month(date.year, date.month)
+      receipts = current_user.receipts.for_month(date.year, date.month)
+
+      @total_receipts = [receipts] + @total_receipts
+      date = date.next_month
+    end
+    ####after creating user authentication, this should work.
+    #current_user.receipts
+    # @receipts_1 = Receipt.for_month(2013, 1)
+    # @receipts_2 = Receipt.for_month(2013, 2)
+
     @user = User.find(params[:id])
     @goal = Goal.new
 

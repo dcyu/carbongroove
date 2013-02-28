@@ -21,9 +21,16 @@ class Receipt < ActiveRecord::Base
     "potato chips" => { cost: 1.00 , emission: 0.075 }
   }
 
+  def self.for_month(year, month)
+    start_date = Time.new(year.to_i, month.to_i).to_datetime
+    end_date = start_date.end_of_month
+    #self.class.where("date >= #{start_date} AND date <= #{end_date}")--after user authentication is done, this should work.
+    where("date >= ? AND date <= ?", start_date, end_date).order('date desc')
+  end
+
   def emission
 
-    kind = self.kind.downcase
+    kind = self.kind.downcase || "undefined"
 
     unit_cost_kind = KINDS[kind][:cost]
     unit_emission_kind = KINDS[kind][:emission]

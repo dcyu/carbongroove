@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   helper_method :current_user
+  #before_filter :authenticate_user!
+
 
   # before_filter :require_current_user
 

@@ -1,6 +1,6 @@
 class RegularUser < User
   attr_accessible :email, :password, :password_confirmation
-  
+
   attr_accessor :password
 
   before_save :encrypt_password

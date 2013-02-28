@@ -1,8 +1,9 @@
 
 <div id="purchases">
   <h2 class="purchase_list">List of purchases</h2>
+  <%@total_receipts.each do |receipts|%>
   <ul>
-    <% @receipts.each do |r| %>
+    <% receipts.each do |r| %>
     <li>
       <%= Date.parse(r.date.to_s).strftime("%D") %>
       <em><%= r.kind %></em>,
@@ -11,6 +12,12 @@
     </li>
     <% end %>
   </ul>
+  <% end %>
+
+    <ul>
+
+
+
   <h3 class="total_cost">
     <% if @receipts == [] %>
       $<%= 0 %>
