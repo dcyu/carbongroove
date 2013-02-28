@@ -37,7 +37,7 @@
     <% else %>
       <% every_emission = Array.new %>
       <% @receipts.each do |r| %>
-        <% every_emission.push(r.emission) %>
+        <% every_emission.push(r.emission.to_i) %>
       <% end %>
       <% e = every_emission.inject { |result, element| result + element }.round(2) %>
       <%= number_with_delimiter(e) %>

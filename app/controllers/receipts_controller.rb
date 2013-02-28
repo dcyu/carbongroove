@@ -10,6 +10,7 @@ class ReceiptsController < ApplicationController
   end
 
   def create
+    logger.info "--> create receipt params = #{params[:receipt]} <--"
     @receipt = current_user.receipts.create params[:receipt]
     redirect_to @receipt
   end

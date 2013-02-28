@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     min_date = Receipt.all.map(&:date).min
     max_date = Receipt.all.map(&:date).max
 
+
     date = min_date
 
     while date <= max_date
