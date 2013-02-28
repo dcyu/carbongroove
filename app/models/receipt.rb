@@ -30,11 +30,6 @@ class Receipt < ActiveRecord::Base
     where("date >= ? AND date <= ?", start_date, end_date).order('date desc')
   end
 
-  def emission
-
-    kind = self.kind.downcase || "undefined"
-
-  end
 
   after_create :calculate_emission
 
