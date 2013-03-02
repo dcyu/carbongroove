@@ -36,6 +36,8 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem 'omniauth-facebook'
 
+gem 'omniauth-twitter'
+
 gem 'twitter'
 
 gem 'koala'

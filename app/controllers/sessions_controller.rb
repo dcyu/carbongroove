@@ -21,6 +21,12 @@ class SessionsController < ApplicationController
     redirect_to current_user      
   end
 
+  def create_twitter
+    user = TwitterUser.from_omniauth(env["omniauth.auth"])
+    session[:user_id] = user.id
+    redirect_to current_user      
+  end
+
   def destroy
     session[:user_id] = nil
     redirect_to root_url, :notice => "Logged out!"
