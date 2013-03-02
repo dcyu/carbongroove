@@ -34,7 +34,11 @@ end
 
 gem "bcrypt-ruby", :require => "bcrypt"
 
-gem 'omniauth-facebook', '1.4.0'
+gem 'omniauth-facebook'
+
+gem 'koala'
+
+# gem 'intuit_ids_aggcat'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

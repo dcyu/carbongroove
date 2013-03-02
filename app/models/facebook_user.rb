@@ -18,4 +18,5 @@ attr_accessible nil
       user.save!
     end
   end
+
 end

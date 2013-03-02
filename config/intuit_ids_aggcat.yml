@@ -1,0 +1,5 @@
+development:
+  certificate_path: config/path_to_key.key # private certificate
+  issuer_id:  'carbongroove.55127.cc.dev-intuit.ipp.prod'  # intuit issuer id
+  oauth_consumer_key: 'qyprd7ANIyBCRT0K3yagXgNIEHdnHf' # consumer key
+  oauth_consumer_secret:  'UzgCp30bc6sulDyfRCxLjiBAOZ54nPmfeGnaZDOH' # consumer secret

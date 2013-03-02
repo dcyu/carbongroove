@@ -42,6 +42,17 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(params[:goal])
 
+    if @goal.save && current_user.facebook_user?
+      current_user.facebook.put_wall_post(nil, {
+  "name" => "CarbonGroove.com",
+  "link" => "http://www.carbongroove.com/",
+  "caption" => "#{current_user.name} just set a new carbon footprint goal",
+  "description" => "#{@goal.goal_name}",
+  "picture" => "http://media.treehugger.com/assets/images/2011/10/carbon-footprint-green.jpg"
+})
+
+    end
+
     respond_to do |format|
       if @goal.save
         format.html { redirect_to @goal, notice: 'Goal was successfully created.' }
