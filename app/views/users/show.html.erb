@@ -2,14 +2,14 @@
 <div id="purchases">
   <h2 class="purchase_list">List of purchases</h2>
 
-  <% @receipts_by_month.each do |month, purchases| %>
-    <%= month.strftime("%B %Y") %>
+  <% @receipts_by_day.each do |day, purchases| %>
+    <%= day.strftime("%B %e, %Y") %>
     <% monthly_cost = [] %>
     <% monthly_emission = [] %>
 
     <ul>
-     <% purchases.each do |purchase| %>
-        <li><%= Date.parse(purchase.date.to_s).strftime("%D") %>
+     <% purchases.sort_by {|obj| obj.created_at}.reverse.each do |purchase| %>
+        <li><%= Date.parse(purchase.date.to_s) %>
           <em><%= purchase.kind %></em>,
           $<%= purchase.cost %>,
           <strong><%= purchase.emission %> kg</strong> of carbon dioxide
@@ -20,8 +20,8 @@
      <% month_total_cost = monthly_cost.inject { |sum, x| sum + x }  %>
      <% month_total_emission = monthly_emission.inject { |sum, x| sum + x }  %>
 
-     <li>The total cost for <%= month.strftime("%B") %> is <%= number_to_currency(month_total_cost) %></li>
-     <li>The total emission for <%= month.strftime("%B") %> is <%= number_with_precision(month_total_emission, :precision => 2) %> kg</li>
+     <li>The total cost of purchases on <%= day.strftime("%D") %> is <%= number_to_currency(month_total_cost) %></li>
+     <li>The total emission for <%= day.strftime("%D") %> is <%= number_with_precision(month_total_emission, :precision => 2) %> kg</li>
     </ul>
   <% end %>
 

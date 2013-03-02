@@ -26,7 +26,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @receipts_by_month = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_month }
+    @receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
+    #@receipts_by_month = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_month }
     @receipts = current_user.receipts.order('date desc').limit(50)
     @user = current_user
     @goal = Goal.new
