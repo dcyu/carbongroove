@@ -1,0 +1,91 @@
+
+<div id="purchases">
+  <h2 class="purchase_list">List of purchases</h2>
+  <%@total_receipts.each do |receipts|%>
+  <ul>
+    <% receipts.each do |r| %>
+    <li>
+      <%= Date.parse(r.date.to_s).strftime("%D") %>
+      <em><%= r.kind %></em>,
+      $<%= r.cost %>,
+      <strong><%= r.emission %> kg</strong> of carbon dioxide
+    </li>
+    <% end %>
+<!--   <% @receipts.each do |r| %>
+    <% r.map(&:cost).map(&:to_i) %>
+    <% r.inject{|sum,x| sum + x} %>
+    <%= r %>
+    <% end %> -->
+
+  </ul>
+  <% end %>
+
+    <ul>
+
+  <h3 class="total_cost">
+    <% if @receipts == [] %>
+      $<%= 0 %>
+    <% else %>
+      <% every_cost = Array.new %>
+      <% @receipts.each do |r| %>
+        <% every_cost.push(r[:cost].to_f) %>
+      <% end %>
+      $<%= number_with_delimiter(every_cost.inject { |result, element| result + element }.round(2)) %>
+    <% end %>
+    spent in total
+  </h3>
+  <h3 class="total_emission">
+    <% if @receipts == [] %>
+      <% e = 0 %>
+      <%= e %>
+    <% else %>
+      <% every_emission = Array.new %>
+      <% @receipts.each do |r| %>
+        <% every_emission.push(r.emission.to_i) %>
+      <% end %>
+      <% e = every_emission.inject { |result, element| result + element }.round(2) %>
+      <%= number_with_delimiter(e) %>
+    <% end %>
+    kg of carbon dioxide emitted
+  </h3>
+  <h3 class="plastic_bags">Equivalent to <%= number_with_delimiter(e * 100) %> plastic bags</h3>
+
+
+  <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
+</div>
+
+<h2>My Goals</h2>
+
+<table>
+  <tr>
+    <th>Goal name</th>
+    <th>Description</th>
+    <th>User</th>
+    <th>Start time</th>
+    <th>End time</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @user.goals.each do |goal| %>
+  <tr>
+    <td><%= goal.goal_name %></td>
+    <td><%= goal.description %></td>
+    <td><%= goal.user.email %></td>
+    <td><%= Date.parse(goal.start_time.to_s).strftime("%b %e, %Y") %></td>
+    <td><%= Date.parse(goal.end_time.to_s).strftime("%b %e, %Y") %></td>
+    <td><%= goal.status %></td>
+    <td><%= link_to 'Show', goal %></td>
+    <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+    <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<%= link_to 'New Goal', new_goal_path %>
+
+
+
