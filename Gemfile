@@ -36,6 +36,8 @@ gem "bcrypt-ruby", :require => "bcrypt"
 
 gem 'omniauth-facebook'
 
+gem 'twitter'
+
 gem 'koala'
 
 # gem 'intuit_ids_aggcat'
