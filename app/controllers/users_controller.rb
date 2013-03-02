@@ -4,9 +4,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    @user.update_attributes(params[:user])
-    redirect_to user_url
+    if current_user.regular_user?
+      @user = RegularUser.find(session[:user_id])
+      @user.update_attributes(params[:user])
+      redirect_to user_url
+    end
   end
 
   def new
@@ -15,7 +17,6 @@ class UsersController < ApplicationController
 
   def create
     @user = RegularUser.new(params[:user])
-
     if @user.save!
       session[:user_id] = @user.id
       redirect_to current_user, :notice => "Signed up!"
@@ -27,13 +28,7 @@ class UsersController < ApplicationController
   def show
     @receipts_by_month = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_month }
     @receipts = current_user.receipts.order('date desc').limit(50)
-
-
-
-    @emissions_by_month
-
-
-    @user = User.find(params[:id])
+    @user = current_user
     @goal = Goal.new
 
     respond_to do |format|
