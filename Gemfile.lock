@@ -1,3 +1,13 @@
+GIT
+  remote: https://github.com/rewardsummit/intuit_ids_aggcat.git
+  revision: 5514a9f262205784698b7bd6138ee11173378846
+  specs:
+    intuit_ids_aggcat (0.0.6)
+      activesupport
+      nokogiri (~> 1.5)
+      oauth (~> 0.4)
+      xml-mapping
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -67,6 +77,8 @@ GEM
     mime-types (1.21)
     multi_json (1.6.1)
     multipart-post (1.2.0)
+    nokogiri (1.5.6)
+    nokogiri (1.5.6-x86-mingw32)
     oauth (0.4.7)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -142,6 +154,7 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    xml-mapping (0.9.1)
 
 PLATFORMS
   ruby
@@ -150,6 +163,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt-ruby
   coffee-rails (~> 3.2.1)
+  intuit_ids_aggcat!
   jquery-rails
   koala
   omniauth-facebook

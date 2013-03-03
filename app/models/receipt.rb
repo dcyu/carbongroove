@@ -26,6 +26,15 @@ class Receipt < ActiveRecord::Base
     # "Utilities" => {}
     # "Groceries" => {}
     # "Coffee Shops" => {}
+    # "Fast Food" => {}
+    # "Restaurants" => {}
+    # "Alcohol & Bars" => {}
+    # "Clothing" => {}
+    # "Books" => {}
+    # "Electronics & Software" => {}
+    # "Air Travel" => {}
+    # "Hotel" => {}
+    # "Rental Car & Taxi" => {s}
     
   }
 
