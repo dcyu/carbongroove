@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130302190326) do
+ActiveRecord::Schema.define(:version => 20130302232029) do
 
   create_table "goals", :force => true do |t|
     t.string   "goal_name"
@@ -19,8 +19,9 @@ ActiveRecord::Schema.define(:version => 20130302190326) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "status"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+    t.string   "target_emission"
   end
 
   create_table "receipts", :force => true do |t|

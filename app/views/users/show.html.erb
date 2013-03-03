@@ -4,8 +4,8 @@
 
   <% @receipts_by_day.each do |day, purchases| %>
     <%= day.strftime("%B %e, %Y") %>
-    <% monthly_cost = [] %>
-    <% monthly_emission = [] %>
+    <% daily_cost = [] %>
+    <% daily_emission = [] %>
 
     <ul>
      <% purchases.sort_by {|obj| obj.created_at}.reverse.each do |purchase| %>
@@ -13,15 +13,15 @@
           <em><%= purchase.kind %></em>,
           $<%= purchase.cost %>,
           <strong><%= purchase.emission %> kg</strong> of carbon dioxide
-          <% monthly_cost << purchase.cost.to_f %>
-          <% monthly_emission << purchase.emission.to_f %>
+          <% daily_cost << purchase.cost.to_f %>
+          <% daily_emission << purchase.emission.to_f %>
        </li>
      <% end %>
-     <% month_total_cost = monthly_cost.inject { |sum, x| sum + x }  %>
-     <% month_total_emission = monthly_emission.inject { |sum, x| sum + x }  %>
+     <% daily_total_cost = daily_cost.inject { |sum, x| sum + x }  %>
+     <% daily_total_emission = daily_emission.inject { |sum, x| sum + x }  %>
 
-     <li>The total cost of purchases on <%= day.strftime("%D") %> is <%= number_to_currency(month_total_cost) %></li>
-     <li>The total emission for <%= day.strftime("%D") %> is <%= number_with_precision(month_total_emission, :precision => 2) %> kg</li>
+     <li>The total cost of purchases on <%= day.strftime("%D") %> is <%= number_to_currency(daily_total_cost) %></li>
+     <li>The total emission on <%= day.strftime("%D") %> is <%= number_with_precision(daily_total_emission, :precision => 2) %> kg</li>
     </ul>
   <% end %>
 
@@ -62,7 +62,7 @@
   <tr>
     <th>Goal name</th>
     <th>Description</th>
-    <th>User</th>
+    <th>Target Emission</th>
     <th>Start time</th>
     <th>End time</th>
     <th>Status</th>
@@ -75,7 +75,7 @@
     <tr>
       <td><%= goal.goal_name %></td>
       <td><%= goal.description %></td>
-      <td><%= goal.user.email %></td>
+      <td><%= goal.target_emission %></td>
       <td><%= Date.parse(goal.start_time.to_s).strftime("%b %e, %Y") %></td>
       <td><%= Date.parse(goal.end_time.to_s).strftime("%b %e, %Y") %></td>
       <td><%= goal.status %></td>

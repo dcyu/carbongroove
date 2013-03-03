@@ -32,9 +32,27 @@ class UsersController < ApplicationController
     @user = current_user
     @goal = Goal.new
 
+
+  # @receipts_by_day.each do |day, purchases|
+  #    daily_cost = []
+  #    daily_emission = []
+
+  #     purchases.sort_by {|obj| obj.created_at}.reverse.each do |purchase|
+  #         purchase.kind
+  #         purchase.cost
+  #         purchase.emission kg of carbon dioxide
+  #          daily_cost << purchase.cost.to_f
+  #          daily_emission << purchase.emission.to_f
+
+  #     end
+  #     @month_total_cost = monthly_cost.inject { |sum, x| sum + x }
+  #     @month_total_emission = monthly_emission.inject { |sum, x| sum + x }
+  # end
+
+
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @receipts }
+      format.json { render json: @receipts_by_day }
     end
   end
 
