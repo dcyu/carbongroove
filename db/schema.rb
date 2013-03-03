@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(:version => 20130302232029) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.string   "status"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
-    t.string   "target_emission"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.integer  "target_emission", :default => 0
   end
 
   create_table "receipts", :force => true do |t|
