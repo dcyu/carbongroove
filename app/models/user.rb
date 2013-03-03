@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   def twitter_user?
     provider == "twitter"
   end
+  # need to ask twitter user for email after authenticate
 
   def regular_user?
     provider == nil

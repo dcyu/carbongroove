@@ -16,172 +16,369 @@
 
 /* ***********************
  **************************
- *      =normalize
+       =normalize
  ***************************
  ************************ */
 
 @import 'normalize.css'
 
-/* ***********************
- **************************
- *      =general
- ***************************
- ************************ */
 
+/************ font import ***********/
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700)
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Sans:400,700)
+
+@import url(http://fonts.googleapis.com/css?family=Codystar:300,400)
+
+@import url(http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700)
+
+
+/************ Base CSS  ***********/
 body
-  font-family: sans-serif
-  background-image: url('debut_light.png')
+  font-family: 'Droid Sans' sans-serif
   background-repeat: repeat
-  margin-left: 70px
   position: relative
 
-/* ***********************
- **************************
- *      =header
- ***************************
- ************************ */
+.container
+  margin-right: auto
+  margin-left: auto
+  *zoom: 1
+  width: 100%
 
-.fixed_header
-  position: fixed
-  top: 0px
-  left: 0px
-  right: 0px
-  height: 35px
-  z-index: 5
-  background: #67cd19
-  /* Old browsers */
-  background: -moz-linear-gradient(left, #67cd19 0%, #3b8208 50%, #67cd19 100%)
-  /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #67cd19), color-stop(50%, #3b8208), color-stop(100%, #67cd19))
-  /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left, #67cd19 0%, #3b8208 50%, #67cd19 100%)
-  /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, #67cd19 0%, #3b8208 50%, #67cd19 100%)
-  /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, #67cd19 0%, #3b8208 50%, #67cd19 100%)
-  /* IE10+ */
-  background: linear-gradient(to right, #67cd19 0%, #3b8208 50%, #67cd19 100%)
-  /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#67cd19', endColorstr='#67cd19',GradientType=1 )
-  /* IE6-9 */
-  border-bottom: 5px solid black
-
-
-
-/* ***********************
- **************************
- *      =main
- ***************************
- ************************ */
-
-h1, h2, h3, p, li, label, #flash_alert, #flash_notice
-  color: black
-  display: block
-
-h1
-  margin-top: 100px
-  margin-bottom: 50px
-  font-size: 60px
-
-h3
-  margin: 10px
-  font-size: 20px
-
-th, a, li
-  font-size: 15px
-
-#receipt_kind
-  width: 268px
-  padding: 5px
-  font-size: 16px
-  line-height: 1
-  border: 2px solid #229E22
-  border-radius: 0
-  -webkit-appearance: none
-
-#receipt_cost, #email, #password, #user_email, #user_password, #user_password_confirmation, #user_name
-  width: 268px
-  padding: 5px
-  font-size: 16px
-  line-height: 1
-  border: 2px solid #229E22
-  border-radius: 0
-
-#user_email, #user_password, #user_name
-  margin-bottom: 20px
-
-#submit, #log_in, #create_account
-  padding: 5px
-  border: 2px solid #229E22
-  font-size: 16px
-  border-radius: 4px
-
-#update
-  padding: 5px
-  border: 2px solid #229E22
-  font-size: 16px
-  border-radius: 4px
-  margin-bottom: 20px
+.group
+  *zoom: 1
+  &:before
+    display: table
+    line-height: 0
+    content: ""
+  &:after
+    display: table
+    line-height: 0
+    content: ""
+    clear: both
 
 a
-  font-weight: bold
-  margin-top: 100px
-  font-size: 20px
+  color: #555
 
-#new_purchase
-  margin-top: 80px
-  font-size: 20px
-
-ul
-  list-style: none
-
-li
-  padding: 5px
-
-div
-  display: block
-
-#user_nav
-  margin: 50px 0
-  display: block
-  font-weight: bold
-
-.carbongroove
-  color: #229E22
-
-label
-  font-size: 20px
-  display: block
-  padding-bottom: 5px
-
-.purchase_list
+a:hover
   text-decoration: none
-  padding-top: 30px
+  color: #099921
 
-.list_link
-  font-size: 20px
-  margin-top: 50px
+.left
+  float: left
 
-.total_cost
-  color: #229E22
-  margin-top: 50px
-
-.total_emission, .emission
-  color: #C62B2B
-
-.user-name
-  color: #229E22
-
-.user_info
-  position: fixed
-  bottom: 20px
-  right: 20px
-  margin: 0
-  display: block
+.right
   float: right
 
-table
-  color: black
 
-th
-  padding: 0 20px
+
+
+/************* Home CSS  *****************/
+
+/******* nav  ******/
+.navbar
+  color: #099921
+  position: absolute
+  top: 700px
+  background-image: -moz-linear-gradient(top, #f9f9f9, #f2f2f2)
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f9f9f9), to(#f2f2f2))
+  background-image: -webkit-linear-gradient(top, #f9f9f9, #f2f2f2)
+  background-image: -o-linear-gradient(top, #f9f9f9, #f2f2f2)
+  background-image: linear-gradient(to bottom, #f9f9f9, #f2f2f2)
+  display: block
+   
+  box-shadow: 2px 3px 5px #bebebe
+
+li
+  list-style: none
+  a
+    color: #099921
+
+nav li
+  float: left
+  margin: 7px 15px
+
+.nav-inner
+  font-family: 'Cabin Sketch' sans-serif
+  font-size: 15px
+  padding: 15px 30px
+  text-decoration: none
+
+.logo
+  font-size: 20px
+  color: #099921
+  img
+    margin-right: 10px
+
+.log,.button
+  float: left
+
+.button
+  margin-left: 30px
+
+.log img
+  width: 30px
+  border-radius: 2px
+  margin-right: 10px 
+
+/******* brand unit  ******/
+.brand
+  width: auto
+  z-index: 100
+  height: 800px
+  position: relative
+  background-color: #f9f9f9
+  color: #099921
+  box-shadow: 3px 2px 3px #bebebe
+  background-image: -moz-linear-gradient(top, #f9f9f9, #f2f2f2)
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f9f9f9), to(#f2f2f2))
+  background-image: -webkit-linear-gradient(top, #f9f9f9, #f2f2f2)
+  background-image: -o-linear-gradient(top, #f9f9f9, #f2f2f2)
+  background-image: linear-gradient(to bottom, #f9f9f9, #f2f2f2)
+
+.brand-img
+  margin-top: 0
+  background-image: url('img/tree.jpg')
+
+
+.brand-title,.header,.feature-img
+  font-family: 'Cabin Sketch' sans-serif
+
+.brand-title
+  float: left
+  font-size: 40px
+
+.brand-message, .btn
+  font-family: 'Droid Sans' sans-serif
+
+.brand-message
+  font-size: 15px
+  line-height: 25px
+  margin-bottom: 35px
+  color: #555
+  
+.btn
+  float: left
+
+.login:hover
+  background-color: transparent
+
+
+/******* feature and detail unit  ******/
+.feature
+  position: relative
+
+.detail-title
+  font-size: 25px
+
+
+.feature-unit, .detail-img
+  border-radius: 9px
+  border: 1px solid #e3e3e3
+  background-color: #f9f9f9
+
+.header, .feature-img
+  margin-bottom: 20px
+
+.section
+  font-size: 15px
+  color: #555
+  line-height: 22px
+
+
+.feature, .detail
+  margin: 20px 50px
+
+// .header
+//   font-size: 18px
+
+.feature-unit
+  position: relative
+  float: left
+  padding: 15px 15px
+
+.detail-unit .header
+  font-size: 18px
+
+.feature-img img
+  width: 110px
+  margin-left: 27.5%
+
+.feature-content
+  width: 100%
+  .header
+    // text-align: center
+    color: #099921
+    font-size: 18px
+  .section
+    margin-left: 15px
+
+
+.detail-title
+  padding-left: 383px
+  margin: 27px 55px
+
+.detail-unit
+  margin: 27px 55px
+  width: 100%
+  float: left
+  position: relative
+
+.detail-content
+  width: 550px
+  float: left
+  margin-top: 64px
+
+.detail-img
+  float: left
+  width: 220px
+  height: 220px
+  border-radius: 50%
+
+
+.content-right
+  margin-right: 110px
+
+.content-left
+  margin-left: 89px
+
+
+.dashboard
+  width: 1100px
+  height: 250px
+  background-color: #404040
+  padding: 15px 15px
+
+.timeline
+  color: white
+  margin: 20px 70px
+  padding: 15px 15px
+
+.timebar
+  border: 1px solid #fdfdfd
+  border-radius: 6px
+  height: 30px
+  li
+    float: left
+    margin-right: 53px
+    padding-top: 13px
+    border-right: 1px solid #fdfdfd
+    padding-right: 5px
+    &:hover
+      background-color: #099921
+  ul
+    margin-left: 65px
+
+
+
+/************* Media Query  *****************/
+@media all and (max-width:500px)
+  .brand
+    height: 473px
+
+  .brand-title
+    margin: 150px 0 0 19.25%
+    
+  .feature-unit
+    width: 237px
+    height: 200px
+    margin: 19px 13px
+
+  .feature-title
+    margin: 20px 0 0 20%
+    font-size: 29px
+
+  .feature-content 
+    .header
+      margin-left: 20px
+
+
+@media (min-width:501px)  and (max-width:850px)
+  .brand
+    height: 500px
+  
+
+  .brand-title
+    margin: 150px 0 0 33%
+
+  .feature-unit
+    width: 80%
+    height: 200px
+    margin: 19px 7.6666667%
+
+  .feature-title
+    margin: 20px 0 0 37%
+    font-size: 29px
+  .feature-content 
+    .header
+      margin-left: 20px
+
+@media (min-width:851px) and (max-width:1003px)
+  .brand-img
+    width: 100%
+
+  .brand-title
+    margin: 500px 0 0 73px
+
+  .feature
+    width: 900px
+
+  .feature-unit
+    width: 225px
+    height: 250px
+    margin: 19px 20px
+
+  .feature-title
+    margin: 20px 0 0 25px
+    font-size: 29px
+
+  .feature-content
+    .header
+      margin-left: 15px
+
+@media (min-width:1004px) and (max-width:1600px)
+  .brand-img
+    width: 100%
+
+  .brand-title
+    margin: 500px 0 0 73px
+
+  .feature,.detail
+    margin: 20px 29px
+
+  .feature-unit
+    width: 25%
+    height: 250px
+    margin: 19px 2.5%
+
+  .feature-title
+    margin: 20px 0 0 40px
+    font-size: 29px
+
+  .feature-content
+    .header
+      margin-left: 15px
+
+  
+
+/************* Dashboard CSS  *****************/
+.profile-board
+  z-index: 10
+
+.profile img
+  border-radius: 50%
+  width: 150px
+  margin-top: 80px
+  box-shadow: 2px 3px 5px #777
+  z-index: 5
+
+
+footer
+  color: #777
+  margin-top: 40px
+  padding-top: 40px
+  background-color: #ebebeb
+  height: 100px
+  position: relative
+  width: 100%
+  text-align: center

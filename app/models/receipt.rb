@@ -19,7 +19,14 @@ class Receipt < ActiveRecord::Base
     "flavored beverage" => { cost: 2.00 , emission: 0.22 },
     "bottled water" => { cost: 1.00 , emission: 0.16 },
     "potato chips" => { cost: 1.00 , emission: 0.075 },
-    "corn chips" => { cost: 1.00 , emission: 0.075 }
+    "corn chips" => { cost: 1.00 , emission: 0.075 },
+    #Categories provided by Intuit:
+    # "Gas & Fuel" => {}
+    # "Public Transportation" => {}
+    # "Utilities" => {}
+    # "Groceries" => {}
+    # "Coffee Shops" => {}
+    
   }
 
   # def self.for_month(year, month)

@@ -1,3 +1,93 @@
-<h1>CarbonGroove</h1>
+<div class="container">
+    <!--brand begin -->
+    <div class="brand">
+      
+      <div class="brand-img"></div>
+      <div class="brand-title">
+            <div class="header">CarbonGroove</div>
+            <div class="brand-message">Get Yo' Groove On</div>
+
+            <div class="facebook log"><%= link_to image_tag('facebook.png'), "auth/facebook", :class => "login" %></div>
+            <div class="twitter log"><%= link_to image_tag('twitter.png'), "auth/twitter", :class => "login" %></div>
+            <div class="twitter log"><%= link_to image_tag('twitter-bw.png'), "auth/twitter", :class => "login" %></div>
+            <div class="button"><%= link_to 'Sign up', '#myModal', :class => "btn btn-success", :role => "button", "data-toggle" => "modal" %></div>
+      </div>
+      
+    </div>
+    <!--feature begin-->
+    <div class="feature group">
+      <div class="feature-title">
+        <div class="header">How it works</div>
+      </div>
+      <div class="feature-unit">
+        <div class="feature-img"></div>
+        <div class="feature-content">
+          <div class="header">Securely Import your Data</div>
+          <div class="section">We are highly concerned about the security of your financial data. It is only for visualizing your environmental impacts for yourself. We never share with other third party</div>
+        </div>
+      </div>
+
+      <div class="feature-unit">
+        <div class="feature-img"></div>
+        <div class="feature-content">
+          <div class="header">See Environmental Impact</div>
+          <div class="section">We visualize your daily behavior based on your credit card <br>data pattern. It will show you how much we make positive or negative impacts on our environment in everyday</div>
+        </div>
+      </div>
+      
+      <div class="feature-unit">
+        <div class="feature-img"></div>
+        <div class="feature-content">
+          <div class="header">Make Action !!!</div>
+          <div class="section">Now it is time to make action and change world to make better environment for our future and our children</div>
+        </div>
+      </div>
+    </div>
+
+ 
+  <!-- Modal -->
+  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h4 id="myModalLabel">Welcome to Carbongroove</h4>
+    </div>
+    <div class="modal-body">
+      <div class="span6">
+        <form class="horizontal">                  
+          <%= form_tag sessions_path do %>
+            <div class="control-group">
+              <%= label_tag :email, :class => "control-label" %>
+              <div class="controls">
+                <%= text_field_tag :email, params[:email], :id => "inputEmail", :placeholder => "User ID" %>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <%= label_tag :password, :class => "control-label" %>
+              <div class="controls">
+                <%= text_field_tag :password, params[:email], :id => "inputPassword", :placeholder => "Password" %>
+              </div>
+              <%= submit_tag "Log in", :class => 'btn btn-success' %>
+            </div>
+          <% end %>
+        </form>
+      </div>
+    </div>
+        
+    <div class="modal-footer">
+      <a href="#"></a>
+    </div>
+                          
+  </div>
+  
+  <footer> Copyright@ 2013 CarbonGroove</footer>
+    <!-- container end-->
+</div>
+ 
+
+
+
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+ <script src="js/bootstrap.min.js"></script>
 
 

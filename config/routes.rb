@@ -7,7 +7,6 @@ Carbongroove::Application.routes.draw do
   match 'auth/twitter/callback', to: 'sessions#create_twitter'
   match 'auth/failure', to: redirect('/')
 
-  root :to => "users#new"
   root to: 'root#index'
 
   resources :users
