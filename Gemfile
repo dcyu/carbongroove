@@ -42,7 +42,7 @@ gem 'twitter'
 
 gem 'koala'
 
-gem 'intuit_ids_aggcat', :git => 'https://github.com/rewardsummit/intuit_ids_aggcat.git'
+# gem 'intuit_ids_aggcat', :git => 'https://github.com/rewardsummit/intuit_ids_aggcat.git'
 
 
 # To use ActiveModel has_secure_password
