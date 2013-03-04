@@ -1,0 +1,4 @@
+class IntervalsController < ApplicationController
+
+
+end

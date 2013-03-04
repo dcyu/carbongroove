@@ -1,7 +1,8 @@
 Carbongroove::Application.routes.draw do
 
-  resources :goals
+  #post "/users/:id" => "Intervals#create"
 
+  resources :goals
 
   match 'auth/facebook/callback', to: 'sessions#create_facebook'
   match 'auth/twitter/callback', to: 'sessions#create_twitter'

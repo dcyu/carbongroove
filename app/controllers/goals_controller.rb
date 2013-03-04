@@ -1,4 +1,4 @@
-class GoalsController < ApplicationController
+ class GoalsController < ApplicationController
   # GET /goals
   # GET /goals.json
   def index
@@ -43,7 +43,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(params[:goal])
 
     if @goal.save && current_user.facebook_user?
-      current_user.facebook.put_wall_post(nil, 
+      current_user.facebook.put_wall_post(nil,
         { "name" => "CarbonGroove.com",
           "link" => "http://www.carbongroove.com/",
           "caption" => "#{current_user.name} just set a new carbon footprint goal!",
