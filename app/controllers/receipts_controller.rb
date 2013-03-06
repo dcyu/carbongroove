@@ -12,6 +12,10 @@ class ReceiptsController < ApplicationController
   def create
     logger.info "--> create receipt params = #{params[:receipt]} <--"
     @receipt = current_user.receipts.create params[:receipt]
+
+    # @interval = Interval.new
+    # @interval.input_interval_data(current_user)
+
     redirect_to @receipt
   end
 

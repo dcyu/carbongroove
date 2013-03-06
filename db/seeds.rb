@@ -1,7 +1,7 @@
 User.destroy_all
 RegularUser.create([{name: "Dave", email: "workalicious@gmail.com", password: "carbon"},
                     {name: "Kaplan", email: "kaplan@workalicious.com", password: "carbon"}
-                    # {name: "Celine", email: "celine.ui@gmail.com", password: "carbon"}
+                    {name: "Celine", email: "celine.ui@gmail.com", password: "carbon"}
                     ])
 
 
