@@ -5,7 +5,7 @@ class Interval < ActiveRecord::Base
   has_many :goals
   has_many :users
 
-  def Interval.input_interval_data(current_user, receipt)
+  def Interval.create_interval_if_needed(current_user, receipt)
     current_day = DateTime.now.beginning_of_day
     new_receipt_date = receipt.date
 
