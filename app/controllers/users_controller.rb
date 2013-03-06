@@ -27,27 +27,12 @@ class UsersController < ApplicationController
 
   def show
     @receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
-    #@receipts_by_month = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_month }
     @receipts = current_user.receipts.order('date desc').limit(50)
     @user = current_user
-    @goal = Goal.new
 
-
-  # @receipts_by_day.each do |day, purchases|
-  #    daily_cost = []
-  #    daily_emission = []
-
-  #     purchases.sort_by {|obj| obj.created_at}.reverse.each do |purchase|
-  #         purchase.kind
-  #         purchase.cost
-  #         purchase.emission kg of carbon dioxide
-  #          daily_cost << purchase.cost.to_f
-  #          daily_emission << purchase.emission.to_f
-
-  #     end
-  #     @month_total_cost = monthly_cost.inject { |sum, x| sum + x }
-  #     @month_total_emission = monthly_emission.inject { |sum, x| sum + x }
-  # end
+    @interval = Interval.new
+    @interval.input_interval_data(current_user)
+    @intervals = Interval.all
 
 
     respond_to do |format|

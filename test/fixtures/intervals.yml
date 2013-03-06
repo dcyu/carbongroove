@@ -1,11 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  goal_id: 1
-  receipt_id: MyString
-  integer: MyString
+  total_emission: MyString
+  start_range: 2013-03-03 12:00:12
 
 two:
-  goal_id: 1
-  receipt_id: MyString
-  integer: MyString
+  total_emission: MyString
+  start_range: 2013-03-03 12:00:12

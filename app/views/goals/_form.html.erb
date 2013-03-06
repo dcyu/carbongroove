@@ -1,4 +1,4 @@
-<%= form_for(@goal) do |f| %>
+  <%= form_for(@goal) do |f| %>
   <% if @goal.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
@@ -20,21 +20,22 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :target_emission %><br />
-    <%= f.text_field :target_emission %>
+    <%= f.label :Reduce_Emissions_By %><br />
+    <%= f.select :target_emission, options_for_select(Goal::TARGET_GOAL) %>
+
   </div>
   <div class="field">
-    <%= f.hidden_field :user_id, value: session[:user_id] %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
   </div>
 
 
   <div class="field">
     <%= f.label :start_time %><br />
-    <%= f.datetime_select :start_time %>
+    <%= f.date_select :start_time %>
   </div>
   <div class="field">
     <%= f.label :end_time %><br />
-    <%= f.datetime_select :end_time %>
+    <%= f.date_select :end_time %>
   </div>
   <div class="field">
     <%= f.label :status %><br />

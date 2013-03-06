@@ -1,7 +1,8 @@
-class Receipt < ActiveRecord::Base
+ class Receipt < ActiveRecord::Base
   attr_accessible :kind, :cost, :user_id, :date, :emission
 
   belongs_to :user
+  belongs_to :interval
 
   # validates_inclusion_of :kind, in: KINDS.keys
 
@@ -35,16 +36,8 @@ class Receipt < ActiveRecord::Base
     # "Air Travel" => {}
     # "Hotel" => {}
     # "Rental Car & Taxi" => {s}
-    
+
   }
-
-  # def self.for_month(year, month)
-  #   start_date = Time.new(year.to_i, month.to_i).to_datetime
-  #   end_date = start_date.end_of_month
-  #   #self.class.where("date >= #{start_date} AND date <= #{end_date}")--after user authentication is done, this should work.
-  #   where("date >= ? AND date <= ?", start_date, end_date).order('date desc')
-  # end
-
 
 
   after_create :calculate_emission
