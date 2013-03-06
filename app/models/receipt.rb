@@ -39,10 +39,10 @@ class Receipt < ActiveRecord::Base
 
   }
 
-  after_create :create_interval_if_needed
+  after_create :check_interval_status
   after_create :calculate_emission
 
-  def create_interval_if_needed
+  def check_interval_status
 
     # @interval = Interval.new
     logger.info "****** CREATE INTERVAL IF NEEDED *******"
@@ -53,7 +53,7 @@ class Receipt < ActiveRecord::Base
     logger.info "****** RECEIPT: #{self} *******"
     # @interval.input_interval_data(user)
 
-    Interval.input_interval_data(user, self)
+    Interval.create_interval_if_needed(user, self)
 
     yo = Interval.do_something
     logger.info "****** END INTERVAL #{yo} *******"

@@ -14,20 +14,23 @@ class Interval < ActiveRecord::Base
     # logger.info "CURRENT RECEIPT DATETIME IS ---> #{receipt.date}"
     logger.info "CURRENT RECEIPT DATETIME IS ---> #{new_receipt_date}"
 
-    # search for the inteval for today's receipt date
-    # search_interval_result = Interval.where(:start_range => new_receipt_date)
+    # Find the interval if there is one
     search_interval_result = Interval.where(:start_range => new_receipt_date)
-
-      # @flights = Flight.where("departure_airport LIKE ? OR arrival_airport LIKE ? AND seats > 0", "%#{keyword_search}%", "%#{keyword_search}%").limit(500)
-
 
     logger.info "SEARCH INTERVAL FOR RECEIPT ---> #{search_interval_result.inspect}"
     logger.info "INTERVAL ---> #{search_interval_result.inspect}"
 
     if search_interval_result.empty?
       logger.info "NO INTERVAL FOR THIS DATE!"
+      # Here's where we will make a new interval, use the receipt and user_id to fill it and save it.
+
     else
+
       logger.info "YES, WE HAVE AN INTERVAL FOR THIS DATE!"
+      # Here's where we will update the interval that was returned in the where
+      # and add this receipt emission to the interval's total emission.
+
+
     end
 
     # @receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
