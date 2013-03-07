@@ -1,4 +1,4 @@
- class Receipt < ActiveRecord::Base
+class Receipt < ActiveRecord::Base
   attr_accessible :kind, :cost, :user_id, :date, :emission
 
   belongs_to :user
@@ -39,24 +39,52 @@
 
   }
 
-
+  after_create :check_interval_status
   after_create :calculate_emission
 
+  def check_interval_status
+
+    # @interval = Interval.new
+    logger.info "****** CREATE INTERVAL IF NEEDED *******"
+    logger.info "****** user.id: #{user.id.class} *******"
+    logger.info "****** (receipt)self.user_id: #{self.user_id.class} *******"
+    # logger.info "****** Session :user_id: #{session[:user_id]} *******"
+    logger.info "****** USER: #{self.user} *******"
+    logger.info "****** RECEIPT: #{self} *******"
+    # @interval.input_interval_data(user)
+
+    Interval.create_interval_if_needed(user, self)
+
+    yo = Interval.do_something
+    logger.info "****** END INTERVAL #{yo} *******"
+
+  end
 
   def calculate_emission
+    logger.info "****** CALCULATE EMISSION *******"
     logger.info "self.kind = #{self.kind}"
     logger.info "unit_cost_kind= #{KINDS[kind][:cost]}"
     logger.info "unit_emission_kind = #{KINDS[kind][:emission]}"
     kind = self.kind.downcase
-     unit_cost_kind = KINDS[kind][:cost]
-     unit_emission_kind = KINDS[kind][:emission]
-     if cost.to_i == 0
-     self.emission = (cost.delete('$').to_f/unit_cost_kind * unit_emission_kind).round(3)
-     else
-     self.emission = (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
-     end
+    unit_cost_kind = KINDS[kind][:cost]
+    unit_emission_kind = KINDS[kind][:emission]
+  if cost.to_i == 0
+    self.emission = (cost.delete('$').to_f/unit_cost_kind * unit_emission_kind).round(3)
+  else
+    self.emission = (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
+  end
+    logger.info "After Receipt interval inspection::::#{@interval.inspect}"
+    self.interval_id =
     self.save
-   end
+  end
 
- end
+
+
+
+
+
+
+
+
+end
 

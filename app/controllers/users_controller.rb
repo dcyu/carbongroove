@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     @user = current_user
 
     @interval = Interval.new
-    @interval.input_interval_data(current_user)
+    # @interval.input_interval_data(current_user)
     @intervals = Interval.all
 
 
