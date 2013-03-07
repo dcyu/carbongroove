@@ -39,11 +39,28 @@ class Receipt < ActiveRecord::Base
 
   }
 
-  after_create :check_interval_status
-  after_create :calculate_emission
+  after_create :upsert_interval_status
+
+  def calculate_emission
+    logger.info "****** CALCULATE EMISSION *******"
+    logger.info "self.kind = #{self.kind}"
+    logger.info "unit_cost_kind= #{KINDS[kind][:cost]}"
+    logger.info "unit_emission_kind = #{KINDS[kind][:emission]}"
+    kind = self.kind.downcase
+    unit_cost_kind = KINDS[kind][:cost]
+    unit_emission_kind = KINDS[kind][:emission]
+  if cost.to_i == 0
+    self.emission = (cost.delete('$').to_d/unit_cost_kind * unit_emission_kind).round(3)
+  else
+    self.emission = (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
+  end
+    logger.info "After Receipt interval inspection::::#{@interval.inspect}"
+    self.interval_id =
+    self.save
+  end
+
 
   def check_interval_status
-
     # @interval = Interval.new
     logger.info "****** CREATE INTERVAL IF NEEDED *******"
     logger.info "****** user.id: #{user.id.class} *******"
@@ -60,24 +77,13 @@ class Receipt < ActiveRecord::Base
 
   end
 
-  def calculate_emission
-    logger.info "****** CALCULATE EMISSION *******"
-    logger.info "self.kind = #{self.kind}"
-    logger.info "unit_cost_kind= #{KINDS[kind][:cost]}"
-    logger.info "unit_emission_kind = #{KINDS[kind][:emission]}"
-    kind = self.kind.downcase
-    unit_cost_kind = KINDS[kind][:cost]
-    unit_emission_kind = KINDS[kind][:emission]
-  if cost.to_i == 0
-    self.emission = (cost.delete('$').to_f/unit_cost_kind * unit_emission_kind).round(3)
-  else
-    self.emission = (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
-  end
-    logger.info "After Receipt interval inspection::::#{@interval.inspect}"
-    self.interval_id =
-    self.save
-  end
 
+
+  private
+  def upsert_interval_status
+    calculate_emission
+    check_interval_status
+  end
 
 
 

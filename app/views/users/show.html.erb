@@ -21,8 +21,8 @@
           <em><%= purchase.kind %></em>,
           $<%= purchase.cost %>,
           <strong><%= purchase.emission %> kg</strong> of carbon dioxide
-          <% daily_cost << purchase.cost.to_f %>
-          <% daily_emission << purchase.emission.to_f %>
+          <% daily_cost << purchase.cost.to_d %>
+          <% daily_emission << purchase.emission.to_d %>
        </li>
      <% end %>
      <% daily_total_cost = daily_cost.inject { |sum, x| sum + x }  %>
@@ -38,7 +38,7 @@
     <% else %>
       <% every_cost = Array.new %>
       <% @receipts.each do |r| %>
-        <% every_cost.push(r[:cost].to_f) %>
+        <% every_cost.push(r[:cost].to_d) %>
       <% end %>
       <%= number_to_currency(every_cost.inject { |result, element| result + element }.round(2)) %>
     <% end %>
@@ -51,7 +51,7 @@
     <% else %>
       <% every_emission = Array.new %>
       <% @receipts.each do |r| %>
-        <% every_emission.push(r.emission.to_i) %>
+        <% every_emission.push(r.emission.to_d) %>
       <% end %>
       <% e = every_emission.inject { |result, element| result + element }.round(2) %>
       <%= number_with_delimiter(e) %>

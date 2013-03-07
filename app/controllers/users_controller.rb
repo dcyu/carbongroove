@@ -30,9 +30,9 @@ class UsersController < ApplicationController
     @receipts = current_user.receipts.order('date desc').limit(50)
     @user = current_user
 
-    @interval = Interval.new
+    #@interval = Interval.new
     # @interval.input_interval_data(current_user)
-    @intervals = Interval.all
+    @intervals = Interval.where('user_id = ?', current_user.id)
 
 
     respond_to do |format|
