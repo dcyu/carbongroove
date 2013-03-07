@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
     @interval = Interval.new
     # @interval.input_interval_data(current_user)
-    @intervals = Interval.all
+    @intervals = Interval.where(user_id: current_user)
 
 
     respond_to do |format|

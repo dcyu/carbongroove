@@ -6,15 +6,11 @@ RegularUser.create([{name: "Dave", email: "workalicious@gmail.com", password: "c
                     {name: "Namkyu", email: "namkyuryoo@carbongroove.com", password: "carbon"}
                     ])
 
-# kind_names = []
-# kinds.each do |key, value|
-#   kind_array << key.to_s
-# end
-
-receipts = [
+seed_receipts = [
   # DAVE USER
   { :kind => "electricity",
     :date => Date.parse("01/03/2013"),
+    # :date => Date.parse("01/03/2013").strftime("%Y-%m-%d"),
     :user_id => User.find_by_email("workalicious@gmail.com").id,
     :cost => "173.54"
   },
@@ -84,21 +80,54 @@ receipts = [
   },
 ]
 
+receipts_created = Array.new
 Receipt.destroy_all
-receipts.each do |receipt|
+seed_receipts.each do |receipt|
   r = Receipt.new
   r.kind = receipt[:kind]
   r.date = receipt[:date]
   r.user_id = receipt[:user_id]
   r.cost = receipt[:cost]
   r.save
+  receipts_created << r
 end
 
 Interval.destroy_all
+intervals_created = Array.new
+receipts_created.each do |receipt|
+  # puts "do date for receipt:: #{receipt.date}"
+  # puts "do u_id for receipt:: #{receipt.user_id}"
+  # puts "INTERVAL COUNT IS:::: #{Interval.count}"
+  search_interval_result = Interval.where("start_range = ? AND user_id = ?", receipt.date, receipt.user_id )
+
+  # puts "class #{search_interval_result.class}"
+  # puts "empty? #{search_interval_result.empty?}"
+  # puts "blank? #{search_interval_result.blank?}"
+  # puts "!!!!!! #{search_interval_result.inspect}"
+
+  if search_interval_result.blank?
+    # puts "==============================================="
+    # puts "NO INTERVAL FOR THIS DATE, MAKE ONE!"
+    i = Interval.new
+    i.start_range = receipt.date
+    i.total_emission = receipt.emission
+    i.user_id = receipt.user_id
+    i.save
+    # puts i.start_range
+    # puts i.user_id
+    # puts i
+    # puts "now blank? #{i.blank?}"
+    # puts "==============================================="
+    intervals_created << i
+  else
+    # puts "YES, WE HAVE AN INTERVAL FOR THIS DATE!"
+  end
+end
+# puts intervals_created.count
 
 
-
-puts "a couple of users and receipts have been made."
+puts "These users and passwords have been created:
+name: Dave with workalicious@gmail.com  \nname: Kaplan with kaplan@workalicious.com \nname: Celine with celine.ui@gmail.com \nname: Daniel with dcyu93@carbongroove.com \nname: Namkyu with namkyuryoo@carbongroove.com \nthey all have \'carbon\' as the password."
 
 
 

@@ -1,5 +1,5 @@
 class Interval < ActiveRecord::Base
-  attr_accessible :start_range, :total_emission
+  attr_accessible :start_range, :total_emission, :user_id
 
   has_many :receipts
   has_many :goals
@@ -23,6 +23,8 @@ class Interval < ActiveRecord::Base
     if search_interval_result.empty?
       logger.info "NO INTERVAL FOR THIS DATE!"
       # Here's where we will make a new interval, use the receipt and user_id to fill it and save it.
+
+      # puts "yo!"
 
     else
 
