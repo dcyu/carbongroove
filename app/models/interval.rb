@@ -1,5 +1,5 @@
 class Interval < ActiveRecord::Base
-  attr_accessible :start_range, :total_emission
+  attr_accessible :start_range, :total_emission, :user_id
 
   has_many :receipts
   has_many :goals
@@ -31,6 +31,7 @@ class Interval < ActiveRecord::Base
       interval.start_range = receipt.date
       interval.total_emission = receipt.emission
       interval.save
+
     else
 
       logger.info "YES, WE HAVE AN INTERVAL FOR THIS DATE!"
@@ -51,7 +52,7 @@ class Interval < ActiveRecord::Base
          interval.total_emission = daily_emission.map{ |i| i.to_d }.inject{|sum,x| sum + x }
           interval.save
           logger.info "After Save interval inspection::::!!!!!!!#{interval.inspect}"
-          receipts = Receipt.where(date: interval.start_range)
+          receipts = Receipt.where('date = ?', interval.start_range)
             receipts.each do |receipt|
             receipt.interval_id = interval.id
             receipt.save
