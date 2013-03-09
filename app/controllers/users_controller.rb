@@ -27,9 +27,9 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    # @receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
-    # @receipts = current_user.receipts.order('date desc').limit(50)
-    # @intervals = Interval.where('user_id = ?', current_user.id)
+    @receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
+    @receipts = current_user.receipts.order('date desc').limit(50)
+    @intervals = Interval.where('user_id = ?', current_user.id)
 
     respond_to do |format|
       format.html # show.html.erb

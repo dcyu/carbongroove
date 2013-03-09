@@ -1,8 +1,2 @@
 <!-- ACCOUNT USER SHOW -->
 <% @user.get_transactions %>
-<ul>
-  <% Receipt.all.each do |r| %>
-    <li><%= r.kind %><br><%= r.cost %><br><%= r.date %><br><br></li>
-  <% end %>
-</ul>
-

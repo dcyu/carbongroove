@@ -22,48 +22,66 @@ class Receipt < ActiveRecord::Base
     "potato chips" => { cost: 1.00 , emission: 0.075 },
     "corn chips" => { cost: 1.00 , emission: 0.075 },
     #Categories provided by Intuit:
-    "Gas & Fuel" => { cost: 1.00 , emission: 1.0 }
-    "Public Transportation" => { cost: 1.00 , emission: 1.0 }
-    "Utilities" => { cost: 1.00 , emission: 1.0 }
-    "Groceries" => { cost: 1.00 , emission: 1.0 }
-    "Coffee Shops" => { cost: 1.00 , emission: 1.0 }
-    "Fast Food" => { cost: 1.00 , emission: 1.0 }
-    "Restaurants" => { cost: 1.00 , emission: 1.0 }
-    "Alcohol & Bars" => { cost: 1.00 , emission: 1.0 }
-    "Clothing" => { cost: 1.00 , emission: 1.0 }
-    "Books" => { cost: 1.00 , emission: 1.0 }
-    "Electronics & Software" => { cost: 1.00 , emission: 1.0 }
-    "Air Travel" => { cost: 1.00 , emission: 1.0 }
-    "Hotel" => { cost: 1.00 , emission: 1.0 }
-    "Rental Car & Taxi" => { cost: 1.00 , emission: 1.0 }
+    "gas & fuel" => { cost: 1.00 , emission: 1.0 },
+    "public transportation" => { cost: 1.00 , emission: 1.0 },
+    "utilities" => { cost: 1.00 , emission: 1.0 },
+    "groceries" => { cost: 1.00 , emission: 1.0 },
+    "coffee shops" => { cost: 1.00 , emission: 1.0 },
+    "fast food" => { cost: 1.00 , emission: 1.0 },
+    "restaurants" => { cost: 1.00 , emission: 1.0 },
+    "alcohol & bars" => { cost: 1.00 , emission: 1.0 },
+    "clothing" => { cost: 1.00 , emission: 1.0 },
+    "books" => { cost: 1.00 , emission: 1.0 },
+    "electronics & software" => { cost: 1.00 , emission: 1.0 },
+    "air travel" => { cost: 1.00 , emission: 1.0 },
+    "hotel" => { cost: 1.00 , emission: 1.0 },
+    "rental car & taxi" => { cost: 1.00 , emission: 1.0 },
+    "shopping" => { cost: 1.00 , emission: 1.0 },
+    "doctor" => { cost: 1.00 , emission: 1.0 },
+    # "credit card payment" => { cost: 1.00 , emission: 1.0 },
+    "home" => { cost: 1.00 , emission: 1.0 },
+    "furnishings" => { cost: 1.00 , emission: 1.0 },
+    "pharmacy" => { cost: 1.00 , emission: 1.0 }
   }
 
   after_create :upsert_interval_status
 
   def calculate_emission
     logger.info "****** CALCULATE EMISSION *******"
-    logger.info "self.kind = #{self.kind}"
-    logger.info "unit_cost_kind= #{KINDS[kind][:cost]}"
-    logger.info "unit_emission_kind = #{KINDS[kind][:emission]}"
-    kind = self.kind.downcase
+    # # if there was a kind in the Constant then set the cost and emission otherwise make them 0
 
-    # if there was a kind in the Constant then set the cost and emission otherwise make them 0
-    unit_cost_kind = KINDS[kind][:cost]
-    unit_emission_kind = KINDS[kind][:emission]
-    # else
-    # unit_cost_kind = 0
-    # unit_emission_kind = 0
-    # end
+      # logger.info "self.kind = #{self.kind}"
+      # logger.info "unit_cost_kind= #{KINDS[kind][:cost]}"
+      # logger.info "unit_emission_kind = #{KINDS[kind][:emission]}"
+    # if self.kind != nil
+      kind = self.kind.downcase
+      logger.info "---> kind = #{kind}"
+      logger.info ""
+    if KINDS[kind] != nil
+      logger.info "---> Kind exists"
+      unit_cost_kind = KINDS[kind][:cost]
+      unit_emission_kind = KINDS[kind][:emission]
+      logger.info "unit_emission_kind = #{kind}"
+    else
+      logger.info "---> Kind does not exist"
+      unit_cost_kind = 1
+      unit_emission_kind = 1
+    end
 
-  if cost.to_i == 0
-    self.emission = (cost.delete('$').to_d/unit_cost_kind * unit_emission_kind).round(3)
-  else
-    self.emission = (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
-  end
-    logger.info "After Receipt interval inspection::::#{@interval.inspect}"
-    # self.interval_id =
-    self.save
-  end
+    if cost.to_i == 0
+      logger.info "---> COST IS 0"
+      self.emission = (cost.delete('$').to_d / unit_cost_kind * unit_emission_kind).round(3)
+    else
+      logger.info "---> COST IS NOT 0 ---> #{self.cost}"
+      # self.emission = (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
+      self.emission = 0.to_s
+    end
+      logger.info ""
+      logger.info ""
+      logger.info ""
+      # logger.info "After Receipt interval inspection::::#{@interval.inspect}"
+      self.save
+    end
 
 
   def check_interval_status
@@ -83,19 +101,11 @@ class Receipt < ActiveRecord::Base
 
   end
 
-
-
   private
   def upsert_interval_status
     calculate_emission
     check_interval_status
   end
-
-
-
-
-
-
 
 
 end
