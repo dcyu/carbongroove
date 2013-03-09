@@ -13,3 +13,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/config/initializers/intuit.rb
+/config/intuit_ids_aggcat.yml

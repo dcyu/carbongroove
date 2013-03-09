@@ -49,7 +49,7 @@ class Interval < ActiveRecord::Base
           interval = Interval.where('start_range = ? AND user_id = ?', purchase.date, current_user.id).first
           interval.start_range = day
           interval.user_id = current_user.id
-         interval.total_emission = daily_emission.map{ |i| i.to_d }.inject{|sum,x| sum + x }
+          interval.total_emission = daily_emission.map{ |i| i.to_d }.inject{|sum,x| sum + x }
           interval.save
           logger.info "After Save interval inspection::::!!!!!!!#{interval.inspect}"
           receipts = Receipt.where('date = ?', interval.start_range)
