@@ -21,7 +21,7 @@ class Receipt < ActiveRecord::Base
     "bottled water" => { cost: 1.00 , emission: 0.16 },
     "potato chips" => { cost: 1.00 , emission: 0.075 },
     "corn chips" => { cost: 1.00 , emission: 0.075 },
-    #Categories provided by Intuit:
+    #Categories we care about from by Intuit:
     "gas & fuel" => { cost: 1.00 , emission: 1.0 },
     "public transportation" => { cost: 1.00 , emission: 1.0 },
     "utilities" => { cost: 1.00 , emission: 1.0 },
@@ -37,11 +37,6 @@ class Receipt < ActiveRecord::Base
     "hotel" => { cost: 1.00 , emission: 1.0 },
     "rental car & taxi" => { cost: 1.00 , emission: 1.0 },
     "shopping" => { cost: 1.00 , emission: 1.0 },
-    "doctor" => { cost: 1.00 , emission: 1.0 },
-    # "credit card payment" => { cost: 1.00 , emission: 1.0 },
-    "home" => { cost: 1.00 , emission: 1.0 },
-    "furnishings" => { cost: 1.00 , emission: 1.0 },
-    "pharmacy" => { cost: 1.00 , emission: 1.0 }
   }
 
   after_create :upsert_interval_status

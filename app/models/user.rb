@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :goals
   has_many :receipts
+  has_many :intervals
 
   def facebook_user?
     provider == "facebook"
