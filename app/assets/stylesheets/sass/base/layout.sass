@@ -1,0 +1,75 @@
+.group
+  *zoom: 1
+  &:before
+    display: table
+    line-height: 0
+    content: ""
+  &:after
+    display: table
+    line-height: 0
+    content: ""
+    clear: both
+
+.left
+  +float-left
+
+.right
+  +float-right
+
+
+.box-offset
+  background: #fff
+  border: 1px solid #d4d4d4
+  +border-radius(5px)
+
+
+.container
+  margin: 20px auto
+  max-width: 940px
+
+
+.col-1-2,
+.col-1-3,
+.col-2-3
+  +float(left)
+
+.col-1-2
+  width: 50%
+
+
+.col-1-3
+  width: 33.33%
+
+
+.col-2-3
+  width: 66.66%
+.col-3-3
+  width: 100%
+
+.col-gutters
+  padding-left: 20px
+  padding-right: 20px
+
+
+.col-baselines
+  padding-bottom: 20px
+  padding-top: 20px
+
+
+.margin-bottom
+  margin-bottom: 20px
+
+
+.margin-top
+  margin-top: 20px
+
+
+.pad-bottom
+  padding-bottom: 20px
+
+
+.pad-top
+  padding-top: 20px
+
+
+
