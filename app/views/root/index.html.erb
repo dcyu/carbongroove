@@ -1,19 +1,27 @@
   <!--brand begin -->
-  <div class="brand">
-    
-    <div class="brand-img"><%= image_tag('tree.png') %></div>
-    <div class="brand-title">
-          <div class="header">CarbonGroove</div>
-          <div class="brand-message">Get Yo' Groove On</div>
+    <div class="brand">
+      <div class="ribbon-wrapper-green">
+        <div class="ribbon-green"><a href="#login" data-toggle="modal">Sign up</a></div>
+      </div>
+  
+      <div class="col-3-3 brand-title">
+            <div class="header">CarbonGroove</div>
+            <div class="brand-message">Get Yo' Groove On</div>
+            <div class="facebook log"><%= link_to image_tag('facebook.png'), "auth/facebook", :class => "login" %></div>
+            <div class="twitter log"><%= link_to image_tag('twitter.png'), "auth/twitter", :class => "login" %></div>
+            <div class="button"><%= link_to 'Login', '#loginModal', :class => "btn btn-success", :data => {:toggle => "modal"} %></div>
+            <div class="button"><%= link_to 'Sign Up!', '#signupModal', :class => "btn btn-success", :data => {:toggle => "modal"} %></div>
+            <div class="foot-nav">
+              <ul>
+                <li>About</li>
+                <li>Blog</li>
+                <li>Contact</li>
+            </div>
+      </div>
 
-          <div class="facebook log"><%= link_to image_tag('facebook.png'), "auth/facebook", :class => "login" %></div>
-          <div class="twitter log"><%= link_to image_tag('twitter.png'), "auth/twitter", :class => "login" %></div>
-          <div class="twitter log"><%= link_to image_tag('twitter-bw.png'), "auth/twitter", :class => "login" %></div>
-          <div class="button"><%= link_to 'Login', '#loginModal', :class => "btn btn-success", :data => {:toggle => "modal"} %></div>
-          <div class="button"><%= link_to 'Sign Up!', '#signupModal', :class => "btn btn-success", :data => {:toggle => "modal"} %></div>
-    </div>
+       <div class="brand-img"></div>
     
-  </div>
+    </div>
   <!--feature begin-->
   <div class="feature group">
     <div class="feature-title">
@@ -132,6 +140,4 @@
 
     </div>                 
   </div>
-
-
 

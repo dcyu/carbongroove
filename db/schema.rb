@@ -60,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20130308090346) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "oauth_secret"
+    t.string   "username"
   end
 
 end
