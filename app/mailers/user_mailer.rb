@@ -3,6 +3,6 @@ class UserMailer < ActionMailer::Base
 
   def login_confirmation(user)
     @user = user
-    mail to: user.email, subject: 'Hey Hey Hey'
+    mail to: "carbongroove1871@gmail.com", subject: 'Hey Hey Hey'
   end
 end

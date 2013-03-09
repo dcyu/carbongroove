@@ -22,19 +22,19 @@ class Receipt < ActiveRecord::Base
     "potato chips" => { cost: 1.00 , emission: 0.075 },
     "corn chips" => { cost: 1.00 , emission: 0.075 },
     #Categories provided by Intuit:
-    "Gas & Fuel" => { cost: 1.00 , emission: 1.0 }
-    "Public Transportation" => { cost: 1.00 , emission: 1.0 }
-    "Utilities" => { cost: 1.00 , emission: 1.0 }
-    "Groceries" => { cost: 1.00 , emission: 1.0 }
-    "Coffee Shops" => { cost: 1.00 , emission: 1.0 }
-    "Fast Food" => { cost: 1.00 , emission: 1.0 }
-    "Restaurants" => { cost: 1.00 , emission: 1.0 }
-    "Alcohol & Bars" => { cost: 1.00 , emission: 1.0 }
-    "Clothing" => { cost: 1.00 , emission: 1.0 }
-    "Books" => { cost: 1.00 , emission: 1.0 }
-    "Electronics & Software" => { cost: 1.00 , emission: 1.0 }
-    "Air Travel" => { cost: 1.00 , emission: 1.0 }
-    "Hotel" => { cost: 1.00 , emission: 1.0 }
+    "Gas & Fuel" => { cost: 1.00 , emission: 1.0 },
+    "Public Transportation" => { cost: 1.00 , emission: 1.0 },
+    "Utilities" => { cost: 1.00 , emission: 1.0 },
+    "Groceries" => { cost: 1.00 , emission: 1.0 },
+    "Coffee Shops" => { cost: 1.00 , emission: 1.0 },
+    "Fast Food" => { cost: 1.00 , emission: 1.0 },
+    "Restaurants" => { cost: 1.00 , emission: 1.0 },
+    "Alcohol & Bars" => { cost: 1.00 , emission: 1.0 },
+    "Clothing" => { cost: 1.00 , emission: 1.0 },
+    "Books" => { cost: 1.00 , emission: 1.0 },
+    "Electronics & Software" => { cost: 1.00 , emission: 1.0 },
+    "Air Travel" => { cost: 1.00 , emission: 1.0 },
+    "Hotel" => { cost: 1.00 , emission: 1.0 },
     "Rental Car & Taxi" => { cost: 1.00 , emission: 1.0 }
   }
 
