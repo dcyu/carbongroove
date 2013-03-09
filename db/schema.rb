@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,11 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(:version => 20130306040009) do
-=======
 ActiveRecord::Schema.define(:version => 20130306210135) do
->>>>>>> 82ed1dc2ac7bbc5656f5a032951807815e3c7a2e
 
   create_table "goals", :force => true do |t|
     t.string   "goal_name"
@@ -63,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20130306210135) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "oauth_secret"
-    t.string   "username"
   end
 
 end

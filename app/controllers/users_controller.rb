@@ -26,18 +26,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    @receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
-    @receipts = current_user.receipts.order('date desc').limit(50)
     @user = current_user
-
-    @interval = Interval.new
-    # @interval.input_interval_data(current_user)
-    @intervals = Interval.all
-
+    # @receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
+    # @receipts = current_user.receipts.order('date desc').limit(50)
+    # @intervals = Interval.where('user_id = ?', current_user.id)
 
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @receipts_by_day }
+
+      # looking at JSON rendering
+      # format.json  { render :json => @receipts_by_day.to_json(:include => { :date => { :only => [:id, :url] } }) }
+      # format.json  { render json: @receipts_by_day.to_json() }
+      # format.json  { render json: @receipts.to_json(:only => [:emission]) }
     end
   end
 
