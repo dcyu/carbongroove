@@ -12,4 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require raphael/raphael
 //= require_tree .

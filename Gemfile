@@ -21,10 +21,14 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'raphaeljs-rails'
 
 group :development do
-	gem 'sqlite3'
+  gem 'sqlite3'
   gem "quiet_assets"
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 
