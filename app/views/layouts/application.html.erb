@@ -24,7 +24,7 @@
     
   </div>
 <footer> Copyright@ 2013 CarbonGroove</footer>
-<!-- 
+
   <div id="user_nav">
     <% if logged_in_as_regular_user? %>
       <%= link_to "Edit User Settings", edit_user_url(current_user.id) %>
@@ -41,7 +41,7 @@
       <%= link_to "Sign up", sign_up_path %> or
       <%= link_to "log in", log_in_path %>
     <% end %>
-  </div> -->
+  </div>
 
   <% flash.each do |name, msg| %>
     <%= content_tag :div, msg, :id => "flash_#{name}" %>

@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_many :goals
   has_many :receipts
+  has_many :intervals
 
   def facebook_user?
     provider == "facebook"
@@ -30,25 +31,28 @@ class User < ActiveRecord::Base
   #add the following to user.rb
 
   def get_transactions
-    logger.info "GET transactions"
-    b = ACCOUNT.banking_transactions
-    logger.info "GET transactions #{b}"
+    transactions = ACCOUNT.banking_transactions
+    logger.info "get_transactions called!!!"
+    logger.info "count transactions is #{transactions.count}"
+    logger.info "count class is #{transactions.class}"
 
-    b.each do |transaction|
+    transactions.each do |transaction|
       if transaction.categorization.context != nil && Receipt.find_by_transaction_id(transaction.id).blank?
-        logger.info "do transactions"
+        logger.info "transaction amt  >> #{transaction.amount}"
+        # logger.info "transaction cat  >> #{transaction.categorization.context.category_name}"
+        logger.info "do transaction for >> #{transaction.inspect} \n"
         r = Receipt.new
         r.user_id = self.id
         r.transaction_id = transaction.id
         r.kind = transaction.categorization.context.category_name
         r.date = transaction.posted_date
-        r.cost = transaction.amount
+        r.cost = (transaction.amount * -1.0).to_s
         r.emission = nil
         r.interval_id = nil
-        r.save!
+        r.save
       end
     end
-      return b
+    # return transactions
   end
 
 

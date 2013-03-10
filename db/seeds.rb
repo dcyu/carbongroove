@@ -143,7 +143,7 @@ receipts_created.each do |receipt|
     puts "YES!!!!!! #{search_interval_result.class}"
     existing_interval = search_interval_result.first
     puts "YES!!!!!! #{existing_interval.class}"
-    existing_interval.total_emission = (existing_interval.total_emission.to_d + receipt.emission.to_d).round(3).to_s
+    existing_interval.total_emission = (existing_interval.total_emission.to_d + receipt.emission.to_d).round(2).to_s
     puts "TOTAL EMISSION YES!!!!!! #{existing_interval.total_emission}"
     existing_interval.save
     # save the interval id back to the receipt
