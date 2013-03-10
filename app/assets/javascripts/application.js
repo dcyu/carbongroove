@@ -12,5 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require sessions
 //= require raphael/raphael
-//= require_tree .
+//= require popup
+//= require bootstrap
+//= require bootstrap-alert
+//= require facebook
+//= require goals
+//= require jquery.validate
+//= require analytics
+//= require users

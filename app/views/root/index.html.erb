@@ -1,7 +1,7 @@
   <!--brand begin -->
     <div class="brand">
       <div class="ribbon-wrapper-green">
-        <div class="ribbon-green"><a href="#login" data-toggle="modal">Sign up</a></div>
+        <div class="ribbon-green"><%= link_to 'Sign Up!', '#signupModal', :data => {:toggle => "modal"} %></div>
       </div>
   
       <div class="col-3-3 brand-title">
@@ -10,7 +10,7 @@
             <div class="facebook log"><%= link_to image_tag('facebook.png'), "auth/facebook", :class => "login" %></div>
             <div class="twitter log"><%= link_to image_tag('twitter.png'), "auth/twitter", :class => "login" %></div>
             <div class="button"><%= link_to 'Login', '#loginModal', :class => "btn btn-success", :data => {:toggle => "modal"} %></div>
-            <div class="button"><%= link_to 'Sign Up!', '#signupModal', :class => "btn btn-success", :data => {:toggle => "modal"} %></div>
+            <!-- <div class="button"><%= link_to 'Sign Up!', '#signupModal', :class => "btn btn-success", :data => {:toggle => "modal"} %></div> -->
             <div class="foot-nav">
               <ul>
                 <li>About</li>
@@ -30,15 +30,15 @@
     <div class="feature-unit">
       <div class="feature-img"></div>
       <div class="feature-content">
-        <div class="header">Securely Import your Data</div>
-        <div class="section">We are highly concerned about the security of your financial data. We only access this data to calculate and visualize your carbon footprint. In order to do this, we utilize the services of Intuit, which provides financial data to hundreds of companies including Mint.com and Quickbooks.</div>
+        <div class="header">Securely Import Data</div>
+        <div class="section">We are highly concerned about the security of your financial data. <!-- We only access this data to calculate and visualize your carbon footprint. --> In order to do this, we utilize the services of Intuit, which provides financial data to hundreds of companies including Mint.com and Quickbooks.</div>
       </div>
     </div>
 
     <div class="feature-unit">
       <div class="feature-img"></div>
       <div class="feature-content">
-        <div class="header">See Environmental Impact</div>
+        <div class="header">Environmental Impact</div>
         <div class="section">We automatically calculate your carbon footprint based on your spending information. We further break down this information by category to show you how different types of consumption contribute to your carbon footprint.</div>
       </div>
     </div>
