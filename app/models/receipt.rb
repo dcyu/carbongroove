@@ -37,6 +37,7 @@ class Receipt < ActiveRecord::Base
     "hotel" => { cost: 1.00 , emission: 1.0 },
     "rental car & taxi" => { cost: 1.00 , emission: 1.0 },
     "shopping" => { cost: 1.00 , emission: 1.0 },
+    "transfer" => { cost: 1.00 , emission: 0.0 }
   }
 
   after_create :upsert_interval_status
@@ -44,11 +45,10 @@ class Receipt < ActiveRecord::Base
   def calculate_emission
     logger.info "****** CALCULATE EMISSION *******"
     # # if there was a kind in the Constant then set the cost and emission otherwise make them 0
-
       # logger.info "self.kind = #{self.kind}"
       # logger.info "unit_cost_kind= #{KINDS[kind][:cost]}"
       # logger.info "unit_emission_kind = #{KINDS[kind][:emission]}"
-    # if self.kind != nil
+      # if self.kind != nil
       kind = self.kind.downcase
       logger.info "---> kind = #{kind}"
       logger.info ""
@@ -57,19 +57,13 @@ class Receipt < ActiveRecord::Base
       unit_cost_kind = KINDS[kind][:cost]
       unit_emission_kind = KINDS[kind][:emission]
       logger.info "unit_emission_kind = #{kind}"
+      logger.info "---> COST IS NOT 0 ---> #{self.cost}"
+      self.emission = (cost.to_f / unit_cost_kind * unit_emission_kind).round(3)
     else
       logger.info "---> Kind does not exist"
       unit_cost_kind = 1
       unit_emission_kind = 1
-    end
-
-    if cost.to_i == 0
-      logger.info "---> COST IS 0"
-      self.emission = (cost.delete('$').to_d / unit_cost_kind * unit_emission_kind).round(3)
-    else
-      logger.info "---> COST IS NOT 0 ---> #{self.cost}"
-      # self.emission = (cost.to_f/unit_cost_kind * unit_emission_kind).round(3)
-      self.emission = 0.to_s
+      self.emission = 0.0
     end
       logger.info ""
       logger.info ""

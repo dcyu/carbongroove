@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
     logger.info "count class is #{transactions.class}"
 
     transactions.each do |transaction|
-      if transaction.categorization.context != nil && Receipt.find_by_transaction_id(transaction.id).blank?
+      if transaction.categorization.context != nil && Receipt.find_by_transaction_id(transaction.id).blank? && transaction.amount < 0
         logger.info "transaction amt  >> #{transaction.amount}"
         # logger.info "transaction cat  >> #{transaction.categorization.context.category_name}"
         logger.info "do transaction for >> #{transaction.inspect} \n"
