@@ -30,4 +30,14 @@ class Goal < ActiveRecord::Base
     "100%" => 0.0
 }
 
+  before_save :check_interval_status
+
+  def check_interval_status
+    logger.info "New inteval check for GOOOAAAAL!!!!!"
+    logger.info "-------> #{self.start_time}"
+
+    Interval.check_interval_for_goal(user, self)
+
+  end
+
 end
