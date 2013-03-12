@@ -52,12 +52,45 @@ class Interval < ActiveRecord::Base
       logger.info "+++++++++++++++++++++++++++++++++++++++++++++++"
 
     end
-
   end
 
   def Interval.do_something
     @something = "yo!!"
     return @something
+  end
+
+  def Interval.check_interval_for_goal(current_user, goal)
+    new_goal_date = goal.start_time
+    logger.info "CURRENT RECEIPT DATETIME IS ---> #{new_goal_date}"
+
+    # Find the interval if there is one
+    search_interval_result = Interval.where('start_range = ? AND user_id = ?', new_goal_date, current_user.id).limit(1)
+
+    logger.info "SEARCH INTERVAL CLASS ---> #{search_interval_result.class}"
+    logger.info "INTERVAL ---> #{search_interval_result.inspect}"
+
+    if search_interval_result.blank?
+      logger.info "NO INTERVAL FOR THIS DATE!"
+      new_interval = Interval.new
+      new_interval.user_id = current_user.id
+      new_interval.start_range = new_goal_date
+      new_interval.save
+      goal.interval_id = new_interval.id
+      logger.info "==============================================="
+      logger.info "goal interval id ----------> #{goal.interval_id}"
+      logger.info "==============================================="
+
+    else
+      logger.info "YES, WE HAVE AN INTERVAL FOR THIS DATE!"
+      logger.info  "YES!!!!!! #{search_interval_result.class}"
+      existing_interval = search_interval_result.first
+      logger.info  "YES!!!!!! #{existing_interval.class}"
+
+      goal.interval_id = existing_interval.id
+      logger.info "+++++++++++++++++++++++++++++++++++++++++++++++"
+      logger.info "goal interval id ----------> #{goal.interval_id}"
+      logger.info "+++++++++++++++++++++++++++++++++++++++++++++++"
+    end
   end
 
 
