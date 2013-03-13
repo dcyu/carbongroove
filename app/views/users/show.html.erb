@@ -12,7 +12,7 @@
                   <li><a href="#">Log out</a></li>
                 </ul>
             </li> -->
-            <li class="name">Hello, Shay</li>
+            <li class="name">Hello, <%= current_user.name %></li>
           </ul>
         </div>
     </div>
@@ -27,7 +27,7 @@
 
            <%= image_tag("shay.jpg") %>
 
-           <div class="name margin-top group">Shay Rowe</div>
+           <div class="name margin-top group"><%= current_user.name %></div>
            <div class="profile content-text"><p>Hello Everyone, I am shay. I am intereted in different kind of environmental issues. That is why i registered in carbon groove ! I would like to see how my every day behavior make impact to world and environment around us. Let's hang out! and talk about what we can do for environment! Thank you for visit.</p></div>
           <!--   <div id="facebook"></div>
            <div id="twitter"></div>  -->
@@ -44,21 +44,21 @@
         <div class="col-3-3 box-offset">
           <div class="month group-header">
             <div class="month-title">March</div>
-            <div class="arrow-right"></div>
-            <div class="arrow-left"></div>
+            <div class="arrow-right"><%#=link_to "next month", %></div>
+            <div class="arrow-left"><%#=link_to "previous month",  %></div>
 
           </div>
             <table id="data">
                     <tfoot>
                       <tr>
-                      <% @user.intervals.sort_by {|obj| obj.start_range}.each do |i| %>
+                      <% @intervals.sort_by {|obj| obj.start_range}.each do |i| %>
                         <th><%= i.start_range.strftime("%e") %></th>
                       <% end %>
                       </tr>
                     </tfoot>
                     <tbody>
                       <tr>
-                      <% @user.intervals.sort_by {|obj| obj.start_range}.each do |i| %>
+                      <% @intervals.sort_by {|obj| obj.start_range}.each do |i| %>
                         <td><%= i.total_emission %></td>
                       <% end %>
                       </tr>
@@ -67,7 +67,7 @@
             <div id="holder"></div>
         </div> <!---chart end -->
 
-        <div class="col-3-3 purchase group-sub">Mar 3, 2013 Purchase List</div>
+        <div class="col-3-3 purchase group-sub">Mar 3 Purchase List</div>
         <div class="col-3-3 category box-offset">
 
           <div id="purchases">

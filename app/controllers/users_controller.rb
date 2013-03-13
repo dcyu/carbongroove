@@ -29,7 +29,8 @@ class UsersController < ApplicationController
     @user = current_user
     @receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
     @receipts = current_user.receipts.order('date desc').limit(50)
-    @intervals = Interval.order('start_range desc').where('user_id = ?', current_user.id)
+    #@intervals = Interval.order('start_range desc').where('user_id = ?', current_user.id)
+    @intervals = Interval.sort_by_month(current_user)
 
     respond_to do |format|
       format.html # show.html.erb
