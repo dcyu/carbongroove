@@ -32,13 +32,14 @@ window.onload = function () {
 
 
     Raphael.fn.Arc = function (x, y, r, value) {
+
         var set = this.set();
         var pi = Math.PI;
         var cos = Math.cos;
         var sin = Math.sin;
         var maxValue = 10;
         var t = (pi/2) * 3; 
-        var rad = (pi*2 * (maxValue-value)) / maxValue + t;
+        var rad = (pi*2 * (value)) / maxValue + t;
         var colors = ["#877e6d","#eb8017", "#766e5f"];
         set.push(this.circle(x, y, r).attr({ fill : colors[+!value], stroke : 0 }));
 
@@ -55,8 +56,9 @@ window.onload = function () {
         return set;
         };
 
-        var canvas = Raphael("arc", 600, 150);
-        var arc = canvas.Arc(100,80, 70, 4.2);
+        var value = 2.0 // this is place what goal value should be linked
+        var canvas = Raphael("arc", 200, 150);
+        var arc = canvas.Arc(100,80, 70, value);
 
 
 
