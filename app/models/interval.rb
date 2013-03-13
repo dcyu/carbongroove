@@ -5,6 +5,16 @@ class Interval < ActiveRecord::Base
   has_many :goals
   belongs_to :user
 
+  def Interval.sort_by_month(current_user)
+    date = Date.today
+    # date = 1.months.ago
+    # date = 2.months.ago
+    start_date = date.beginning_of_month
+    end_date = date.end_of_month
+    monthly_interval = Interval.order('start_range desc').where('user_id = ? AND start_range > ? AND start_range < ?', current_user.id, start_date, end_date)
+  end
+
+
   def Interval.create_interval_if_needed(current_user, receipt)
     current_day = DateTime.now.beginning_of_day
     new_receipt_date = receipt.date
@@ -74,6 +84,7 @@ class Interval < ActiveRecord::Base
       new_interval = Interval.new
       new_interval.user_id = current_user.id
       new_interval.start_range = new_goal_date
+      new_interval.total_emission = 0
       new_interval.save
       goal.interval_id = new_interval.id
       logger.info "==============================================="

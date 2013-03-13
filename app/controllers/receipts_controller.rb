@@ -16,7 +16,7 @@ class ReceiptsController < ApplicationController
     # @interval = Interval.new
     # @interval.input_interval_data(current_user)
 
-    redirect_to @receipt
+    redirect_to current_user
   end
 
   def show
