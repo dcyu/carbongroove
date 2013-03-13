@@ -74,6 +74,7 @@ class Interval < ActiveRecord::Base
       new_interval = Interval.new
       new_interval.user_id = current_user.id
       new_interval.start_range = new_goal_date
+      new_interval.total_emission = 0
       new_interval.save
       goal.interval_id = new_interval.id
       logger.info "==============================================="
