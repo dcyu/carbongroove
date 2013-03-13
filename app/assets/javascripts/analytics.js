@@ -21,13 +21,13 @@ $(function () {
 });
 
 window.onload = function () {
-    // var paper = new Raphael(document.getElementById('facebook'), 200, 35);  
+    // var paper = new Raphael(document.getElementById('facebook'), 200, 35);
     // var facebook = paper.path("M25.566,2.433H6.433c-2.2,0-4,1.8-4,4v19.135c0,2.199,1.8,4,4,4h19.135c2.199,0,4-1.801,4-4V6.433C29.566,4.232,27.768,2.433,25.566,2.433zM25.309,16.916h-3.218v11.65h-4.819v-11.65h-2.409V12.9h2.409v-2.411c0-3.275,1.359-5.224,5.229-5.224h3.218v4.016h-2.011c-1.504,0-1.604,0.562-1.604,1.608L22.091,12.9h3.644L25.309,16.916z")
-    // .attr({fill: "#333", stroke: "none"});  
+    // .attr({fill: "#333", stroke: "none"});
 
-    // var paper2 = new Raphael(document.getElementById('twitter'), 200, 35);  
+    // var paper2 = new Raphael(document.getElementById('twitter'), 200, 35);
     // var twitter = paper2.path("M26.492,9.493c-0.771,0.343-1.602,0.574-2.473,0.678c0.89-0.533,1.562-1.376,1.893-2.382c-0.832,0.493-1.753,0.852-2.734,1.044c-0.785-0.837-1.902-1.359-3.142-1.359c-2.377,0-4.306,1.928-4.306,4.306c0,0.337,0.039,0.666,0.112,0.979c-3.578-0.18-6.75-1.894-8.874-4.499c-0.371,0.636-0.583,1.375-0.583,2.165c0,1.494,0.76,2.812,1.915,3.583c-0.706-0.022-1.37-0.216-1.95-0.538c0,0.018,0,0.036,0,0.053c0,2.086,1.484,3.829,3.454,4.222c-0.361,0.099-0.741,0.147-1.134,0.147c-0.278,0-0.547-0.023-0.81-0.076c0.548,1.711,2.138,2.955,4.022,2.99c-1.474,1.146-3.33,1.842-5.347,1.842c-0.348,0-0.69-0.021-1.027-0.062c1.905,1.225,4.168,1.938,6.6,1.938c7.919,0,12.248-6.562,12.248-12.25c0-0.187-0.002-0.372-0.01-0.557C25.186,11.115,25.915,10.356,26.492,9.493")
-    // .attr({fill: "#333", stroke: "none"});  
+    // .attr({fill: "#333", stroke: "none"});
 
 
 
@@ -38,7 +38,7 @@ window.onload = function () {
         var cos = Math.cos;
         var sin = Math.sin;
         var maxValue = 10;
-        var t = (pi/2) * 3; 
+        var t = (pi/2) * 3;
         var rad = (pi*2 * (value)) / maxValue + t;
         var colors = ["#877e6d","#eb8017", "#766e5f"];
         set.push(this.circle(x, y, r).attr({ fill : colors[+!value], stroke : 0 }));
@@ -46,7 +46,7 @@ window.onload = function () {
       var p = [
         "M", x, y,
         "l", r * cos(t), r * sin(t),
-        "A", r, r, 0, +(rad > pi + t), 1, x + r * cos(rad), y + r * sin(rad), 
+        "A", r, r, 0, +(rad > pi + t), 1, x + r * cos(rad), y + r * sin(rad),
         "z"
       ];
 
@@ -92,11 +92,11 @@ window.onload = function () {
     $("#data tbody td").each(function () {
         data.push($(this).html());
     });
-    
+
     // Draw
     var width = 700,
         height = 250,
-        leftgutter = 20,
+        leftgutter = 0,
         bottomgutter = 20,
         topgutter = 20,
         colorhue = .6 || Math.random(),
@@ -159,7 +159,7 @@ window.onload = function () {
                 lx = label[0].transform()[0][1] + ppp.dx;
                 ly = label[0].transform()[0][2] + ppp.dy;
                 frame.show().stop().animate(anim);
-                label[0].attr({text: data + " hit" + (data == 1 ? "" : "s")}).show().stop().animateWith(frame, anim, {transform: ["t", lx, ly]}, 200 * is_label_visible);
+                label[0].attr({text: data + " kg" + (data == 1 ? "" : "")}).show().stop().animateWith(frame, anim, {transform: ["t", lx, ly]}, 200 * is_label_visible);
                 label[1].attr({text: lbl + " September 2008"}).show().stop().animateWith(frame, anim, {transform: ["t", lx, ly]}, 200 * is_label_visible);
                 dot.attr("r", 6);
                 is_label_visible = true;
