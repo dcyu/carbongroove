@@ -2,18 +2,139 @@
 
 <!--nav begin -->
 <nav class="navbar group">
-    <div class="nav-inner">
-        <div class="col-2-3 logo">Carbon Groove</div>
-        <!-- <div class="col-1-3 profile"><%= image_tag("shay.jpg") %></div> -->
-        <!-- <div class="col-1-3 login">log in</div> -->
+   <div class="nav-inner">
+        <div class="col-2-3 logo">Carbon Groove</a></div>
+        <div class="col-1-3 login right">
+          <ul id="nav">
+            <!-- <li>
+                <ul>
+                  <li><a href="#">User Setting</a></li>
+                  <li><a href="#">Log out</a></li>
+                </ul>
+            </li> -->
+            <li class="name">Hello, Shay</li>
+          </ul>
+        </div>
     </div>
 </nav>
 
   <div class="container">
    <div class="dashboard box-offset">
 
-    <table id="data" style="position: absolute; left: -9999em; top: -9999em;">
-      <tfoot>
+  <div class="wrapper">
+      <div class="col-1-4">
+        <div class="main box-offset">
+
+           <%= image_tag("shay.jpg") %>
+
+           <div class="name margin-top group">Shay Rowe</div>
+           <div class="profile content-text"><p>Hello Everyone, I am shay. I am intereted in different kind of environmental issues. That is why i registered in carbon groove ! I would like to see how my every day behavior make impact to world and environment around us. Let's hang out! and talk about what we can do for environment! Thank you for visit.</p></div>
+          <!--   <div id="facebook"></div>
+           <div id="twitter"></div>  -->
+           <div class="goal group-sub border">Your Goal</div>
+           <div id="arc"></div>
+           <div class="group">
+              <div class="facebook log"><%= image_tag("facebook-bw.png") %></div>
+              <div class="twiiter log"><%= image_tag("twitter-bw.png") %></div>
+            </div>
+        </div>
+
+      </div>
+      <div class="col-3-4 dashboard">
+        <div class="col-3-3 box-offset">
+          <div class="month group-header">
+            <div class="month-title">March</div>
+            <div class="arrow-right"></div>
+            <div class="arrow-left"></div>
+
+          </div>
+            <table id="data">
+                    <tfoot>
+                      <tr>
+                      <% @user.intervals.sort_by {|obj| obj.start_range}.each do |i| %>
+                        <th><%= i.start_range.strftime("%e") %></th>
+                      <% end %>
+                      </tr>
+                    </tfoot>
+                    <tbody>
+                      <tr>
+                      <% @user.intervals.sort_by {|obj| obj.start_range}.each do |i| %>
+                        <td><%= i.total_emission %></td>
+                      <% end %>
+                      </tr>
+                    </tbody>
+                </table>
+            <div id="holder"></div>
+        </div> <!---chart end -->
+
+        <div class="col-3-3 purchase group-sub">Mar 3, 2013 Purchase List</div>
+        <div class="col-3-3 category box-offset">
+
+          <div id="purchases">
+            <h2 class="purchase_list">Recent Purchases (Receipts)</h2>
+            <% @receipts_by_day.each do |day, purchases| %>
+              <%= day.strftime("%B %e, %Y") %>
+              <% daily_cost = [] %>
+              <% daily_emission = [] %>
+              <ul>
+               <% purchases.sort_by {|obj| obj.created_at}.reverse.each do |purchase| %>
+                  <li><%= Date.parse(purchase.date.to_s) %>
+                    <em><%= purchase.kind %></em>,
+                    $<%= purchase.cost %>,
+                    <strong><%= purchase.emission %> kg</strong> of carbon dioxide
+                    <% daily_cost << purchase.cost.to_d %>
+                    <% daily_emission << purchase.emission.to_d %>
+                 </li>
+               <% end %>
+               <% daily_total_cost = daily_cost.inject { |sum, x| sum + x }  %>
+               <% daily_total_emission = daily_emission.inject { |sum, x| sum + x }  %>
+               <li>The total cost of purchases on <%= day.strftime("%D") %> is <%= number_to_currency(daily_total_cost) %></li>
+               <li>The total emission on <%= day.strftime("%D") %> is <%= number_with_precision(daily_total_emission, :precision => 2) %> kg</li>
+              </ul>
+            <% end %>
+          </div>
+        </div><!--category box end-->
+      </div>
+    </div>
+
+    <h3 class="total_cost">
+      <% if @receipts == [] %>
+        $<%= 0 %>
+      <% else %>
+        <% every_cost = Array.new %>
+        <% @receipts.each do |r| %>
+          <% every_cost.push(r[:cost].to_d) %>
+        <% end %>
+        <%= number_to_currency(every_cost.inject { |result, element| result + element }.round(2)) %>
+      <% end %>
+      spent in total
+    </h3>
+    <h3 class="total_emission">
+      <% if @receipts == [] %>
+        <% e = 0 %>
+        <%= e %>
+      <% else %>
+        <% every_emission = Array.new %>
+        <% @receipts.each do |r| %>
+          <% every_emission.push(r.emission.to_d) %>
+        <% end %>
+        <% e = every_emission.inject { |result, element| result + element }.round(2) %>
+        <%= number_with_delimiter(e) %>
+      <% end %>
+      kg of carbon dioxide emitted
+    </h3>
+    <h3 class="plastic_bags">Equivalent to <%= number_with_delimiter(e * 100) %> plastic bags</h3>
+    <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
+
+
+
+
+</div> <!--conainter end-->
+
+
+     <!--  Ruby logic code
+
+     <tfoot>
         <tr>
         <% @user.intervals.sort_by {|obj| obj.start_range}.each do |i| %>
           <th><%= i.start_range %></th>
@@ -51,6 +172,7 @@
   </ul>
 </div>
 
+<!--
 <div id="purchases">
   <h2 class="purchase_list">Recent Purchases (Receipts)</h2>
   <% @receipts_by_day.each do |day, purchases| %>

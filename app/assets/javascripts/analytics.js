@@ -21,6 +21,47 @@ $(function () {
 });
 
 window.onload = function () {
+    // var paper = new Raphael(document.getElementById('facebook'), 200, 35);  
+    // var facebook = paper.path("M25.566,2.433H6.433c-2.2,0-4,1.8-4,4v19.135c0,2.199,1.8,4,4,4h19.135c2.199,0,4-1.801,4-4V6.433C29.566,4.232,27.768,2.433,25.566,2.433zM25.309,16.916h-3.218v11.65h-4.819v-11.65h-2.409V12.9h2.409v-2.411c0-3.275,1.359-5.224,5.229-5.224h3.218v4.016h-2.011c-1.504,0-1.604,0.562-1.604,1.608L22.091,12.9h3.644L25.309,16.916z")
+    // .attr({fill: "#333", stroke: "none"});  
+
+    // var paper2 = new Raphael(document.getElementById('twitter'), 200, 35);  
+    // var twitter = paper2.path("M26.492,9.493c-0.771,0.343-1.602,0.574-2.473,0.678c0.89-0.533,1.562-1.376,1.893-2.382c-0.832,0.493-1.753,0.852-2.734,1.044c-0.785-0.837-1.902-1.359-3.142-1.359c-2.377,0-4.306,1.928-4.306,4.306c0,0.337,0.039,0.666,0.112,0.979c-3.578-0.18-6.75-1.894-8.874-4.499c-0.371,0.636-0.583,1.375-0.583,2.165c0,1.494,0.76,2.812,1.915,3.583c-0.706-0.022-1.37-0.216-1.95-0.538c0,0.018,0,0.036,0,0.053c0,2.086,1.484,3.829,3.454,4.222c-0.361,0.099-0.741,0.147-1.134,0.147c-0.278,0-0.547-0.023-0.81-0.076c0.548,1.711,2.138,2.955,4.022,2.99c-1.474,1.146-3.33,1.842-5.347,1.842c-0.348,0-0.69-0.021-1.027-0.062c1.905,1.225,4.168,1.938,6.6,1.938c7.919,0,12.248-6.562,12.248-12.25c0-0.187-0.002-0.372-0.01-0.557C25.186,11.115,25.915,10.356,26.492,9.493")
+    // .attr({fill: "#333", stroke: "none"});  
+
+
+
+    Raphael.fn.Arc = function (x, y, r, value) {
+        var set = this.set();
+        var pi = Math.PI;
+        var cos = Math.cos;
+        var sin = Math.sin;
+        var maxValue = 10;
+        var t = (pi/2) * 3; 
+        var rad = (pi*2 * (maxValue-value)) / maxValue + t;
+        var colors = ["#877e6d","#eb8017", "#766e5f"];
+        set.push(this.circle(x, y, r).attr({ fill : colors[+!value], stroke : 0 }));
+
+      var p = [
+        "M", x, y,
+        "l", r * cos(t), r * sin(t),
+        "A", r, r, 0, +(rad > pi + t), 1, x + r * cos(rad), y + r * sin(rad), 
+        "z"
+      ];
+
+        set.push(this.path(p).attr({ fill : colors[1], stroke : 0 }));
+        set.push(this.circle(x, y, r*0.7).attr({ fill : colors[2], stroke : 0 }));
+
+        return set;
+        };
+
+        var canvas = Raphael("arc", 600, 150);
+        var arc = canvas.Arc(100,80, 70, 4.2);
+
+
+
+
+
     function getAnchors(p1x, p1y, p2x, p2y, p3x, p3y) {
         var l1 = (p2x - p1x) / 2,
             l2 = (p3x - p2x) / 2,
@@ -51,14 +92,14 @@ window.onload = function () {
     });
     
     // Draw
-    var width = 800,
+    var width = 700,
         height = 250,
-        leftgutter = 30,
+        leftgutter = 20,
         bottomgutter = 20,
         topgutter = 20,
         colorhue = .6 || Math.random(),
-        color = "#75bd13",
-        //  color = "hsl(" + [colorhue, .9, .9] + ")",
+        color = "#dcbd50",
+        //  #dcbd50color = "hsl(" + [colorhue, .9, .9] + ")",
         r = Raphael("holder", width, height),
         txt = {font: '12px Helvetica, Arial', fill: "#fff"},
         txt1 = {font: '10px Helvetica, Arial', fill: "#333"},
@@ -66,9 +107,9 @@ window.onload = function () {
         X = (width - leftgutter) / labels.length,
         max = Math.max.apply(Math, data),
         Y = (height - bottomgutter - topgutter) / max;
-    r.drawGrid(leftgutter + X * .5 + .5, topgutter + .5, width - leftgutter - X, height - topgutter - bottomgutter, 4, 4, "#e0e1df");
+    r.drawGrid(leftgutter + X * .5 + .5, topgutter + .5, width - leftgutter - X, height - topgutter - bottomgutter, 1, 4, "#a8916c");
     var path = r.path().attr({stroke: color, "stroke-width": 2, "stroke-linejoin": "round"}),
-        bgp = r.path().attr({stroke: "none", opacity: .2, fill: color}),
+        bgp = r.path().attr({stroke: "none", opacity: .6, fill: color}),
         label = r.set(),
         lx = 0, ly = 0,
         is_label_visible = false,
@@ -77,7 +118,7 @@ window.onload = function () {
     label.push(r.text(60, 12, "24 hits").attr(txt));
     label.push(r.text(60, 27, "22 September 2008").attr(txt1).attr({fill: color}));
     label.hide();
-    var frame = r.popup(100, 100, label, "right").attr({fill: "#000", stroke: "#666", "stroke-width": 1, "fill-opacity": 1}).hide();
+    var frame = r.popup(100, 100, label, "right").attr({fill: "#000", stroke: "#333", "stroke-width": 1, "fill-opacity": 1}).hide();
 
     var p, bgpp;
     for (var i = 0, ii = labels.length; i < ii; i++) {
@@ -97,7 +138,7 @@ window.onload = function () {
             p = p.concat([a.x1, a.y1, x, y, a.x2, a.y2]);
             bgpp = bgpp.concat([a.x1, a.y1, x, y, a.x2, a.y2]);
         }
-        var dot = r.circle(x, y, 4).attr({fill: "#333", stroke: color, "stroke-width": 1});
+        var dot = r.circle(x, y, 4).attr({fill: "#433822", stroke: color, "stroke-width": 1});
         blanket.push(r.rect(leftgutter + X * i, 0, X, height - bottomgutter).attr({stroke: "none", fill: "#fff", opacity: 0}));
         var rect = blanket[blanket.length - 1];
         (function (x, y, data, lbl, dot) {
@@ -140,3 +181,6 @@ window.onload = function () {
     label[1].toFront();
     blanket.toFront();
 };
+
+
+

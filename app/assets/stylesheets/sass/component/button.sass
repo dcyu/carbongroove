@@ -1,15 +1,26 @@
+.main img
+  border-radius: 50%
+  width: 80px
 
 .logo
+  color: #95cf43
   float: left
-  text-shadow: 1px 2px 2px #333
+  //text-shadow: 1px 2px 2px #333
 
-.logo a, .logo:hover
+.logo a,.logo:hover
   color: white
+  
 img
   margin-right: 10px
 
 .log,.button
   float: left
+
+.log img
+  width: 30px
+  border-radius: 2px
+  margin-right: 10px 
+
 .btn
   float: left
 
@@ -23,11 +34,6 @@ img
   background-image: -moz-linear-gradient(top, #7bb22d, #76aa2b)
   background-image: -ms-linear-gradient(top, #7bb22d, #76aa2b)
   background-image: -o-linear-gradient(top, #7bb22d, #76aa2b)
-  // background-image: -moz-linear-gradient(top, #62c462, #51a351);
-  // background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351));
-  // background-image: -webkit-linear-gradient(top, #62c462, #51a351);
-  // background-image: -o-linear-gradient(top, #62c462, #51a351);
-  // background-image: linear-gradient(to bottom, #62c462, #51a351);
   background-repeat: repeat-x
   border-color: #51a351 #51a351 #387038
   border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25)
@@ -52,19 +58,39 @@ img
 
 
 
-.log img
-  width: 30px
-  border-radius: 2px
-  margin-right: 10px 
+.border
+  border-top: 1px solid #a8916c
+  padding-top: 15px
+  margin-top: 25px
+
+.border-btm  
+  border-bottom: 1px solid #a8916c
+  padding-bottom: 10px
 
 
-.profile img
-  background: image-url("shay.jpg")
-  border-radius: 50%
-  width: 40px
-  -moz-box-shadow: inset 0 0 10px #633B0C
-  -webkit-box-shadow: inset 0 0 10px #633B0C
-  box-shadow: inset 0 0 10px #633B0C
+/******* arrow *********/
+
+.month-title, .arrow-left
+  float: left
+
+
+.arrow-right, .arrow-left
+  width: 0 
+  height: 0 
+  border-top: 10px solid transparent
+  border-bottom: 8px solid transparent 
+
+.arrow-right 
+  float: right
+  margin-left: 20px
+  border-left: 13px solid #333
+
+.arrow-left 
+  float: right
+  //margin-right: 244px
+  border-right: 13px solid #333
+
+
 
 
 /***** corner ribbon ******/

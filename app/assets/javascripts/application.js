@@ -19,6 +19,7 @@
 //= require bootstrap-alert
 //= require facebook
 //= require goals
-//= require jquery.validate
 //= require analytics
 //= require users
+
+
