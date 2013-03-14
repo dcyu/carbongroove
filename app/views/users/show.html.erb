@@ -1,7 +1,7 @@
 <!--nav begin -->
 <nav class="navbar group">
    <div class="nav-inner">
-        <div class="col-2-3 logo">Carbon Groove</a></div>
+        <div class="col-2-3 logo">Carbon Groove</div>
         <div class="col-1-3 login right">
           <ul id="nav">
             <li class="name">Hello, <%= current_user.name %></li>
@@ -31,8 +31,8 @@
       <div class="col-3-3 box-offset">
         <div class="month group-header">
           <div class="month-title">March (THIS NEEDS TO BE DYNAMIC)</div>
-          <div class="arrow-right"><%#=ink_to "  ", root_url %></div>
-          <div class="arrow-left"><%#=link_to "  ", root_url  %></div>
+          <div class="arrow-right"><%=link_to "  ", root_url %></div>
+          <div class="arrow-left"></a></div>
         </div>
         <table id="data">
           <tfoot>
@@ -69,14 +69,14 @@
                   <th>Carbon Emission(kg)</th>
                   <th>Cost</th>
                 </tr>
-                <tr>
                   <% @intervals.each do |interval| %>
                     <% interval.receipts.each do |receipt| %>
+                  <tr>
                     <td><%= receipt.date.strftime("%B %e, %Y") %></td>
                     <td><%= receipt.kind %></td>
                     <td><%= receipt.emission %></td>
                     <td>$<%= receipt.cost %></td>
-                </tr>
+                  </tr>
                     <% end %>
                   <% end %>
               </tbody>
@@ -120,3 +120,14 @@
 
 <br />
 <%= link_to 'New Goal', new_goal_path %>
+
+<script>
+  $('.arrow-right').click(function() {
+    alert("RT CLICK");
+  });
+
+  $('.arrow-left').click(function() {
+    alert("LFT CLICK");
+  });
+
+</script>
