@@ -12,8 +12,7 @@
 
 
   <div class="wrapper">
-    <div class="col-1-4">
-      <div class="main box-offset">
+    <div class="col-1-4 main box-offset">
         <%= image_tag("shay.jpg") %>
         <div class="name margin-top group"><%= current_user.name %></div>
         <div class="profile content-text"><p>Hello Everyone, I am shay. I am intereted in different kind of environmental issues. That is why i registered in carbon groove ! I would like to see how my every day behavior make impact to world and environment around us. Let's hang out! and talk about what we can do for environment! Thank you for visit.</p></div>
@@ -24,17 +23,18 @@
         <div class="group">
           <div class="facebook log"><%= image_tag("facebook-bw.png") %></div>
           <div class="twiiter log"><%= image_tag("twitter-bw.png") %></div>
+          <div class="twiiter log"><%= image_tag("twitter-bw.png") %></div>
+          <%= link_to 'New Goal', new_goal_path %>
         </div>
-      </div>
     </div> <!--col-1-4 end-->
-    <div class="col-3-4 dashboard">
-      <div class="col-3-3 box-offset">
-        <div class="month group-header">
+    <div class="col-3-4 dashboard box-offset">
+      <!-- <div class="col-3-3 box-offset"> -->
+        <div class="col-2-3 month group-header">
           <div class="month-title"><%= @view_date.strftime("%B %Y") %></div>
-          <div class="arrow-right"><a href="<%= Date.today + 1.month %>">next</a></div>
-          <div class="arrow-left"><a href="<%= Date.today - 1.month %>">previous</a></div>
+          <div class="arrow-left"><%= image_tag("arrow-left.png") %></div>
+          <div class="arrow-right"><%= image_tag("arrow-right.png") %></div>
         </div>
-        <table id="data">
+            <table id="data">
           <tfoot>
             <tr>
             <% @intervals.sort_by {|obj| obj.start_range}.each do |i| %>
@@ -49,18 +49,16 @@
             <% end %>
             </tr>
           </tbody>
-      </table>
+          </table>
         <div id="holder"></div>
-      </div> <!---chart end col-3-3 -->
 
-      <div class="col-3-3 purchase group-sub">Purchase List</div>
+      <div class="col-1-3 purchase group-sub">
+        <div class="left">Purchase List</div>
+        <div class="twiiter log right"><%= image_tag("pencil.png") %></div>
+      </div>
+       <%= link_to "pencil is for entering purchase list mannually", new_receipt_path %>
+
       <div class="col-3-3 category box-offset">
-            <!-- <div class="col-1-3 border-btm">
-                <div class="section-wh">Item</div></div>
-            <div class="col-2-3 border-btm">
-                <div class="section-wh">Carbon Emission</div></div>
-            <div class="col-1-3 item">a</div> -->
-
             <table class="table table-hover">
               <tbody>
                 <tr>
@@ -81,13 +79,41 @@
                   <% end %>
               </tbody>
             </table>
-        </div><!--category box end-->
-    </div><!--dashboard end-->
+      </div><!--category box end-->
+
+
+      </div> <!---dashboard end col-3-3 -->
   </div><!--wrapper end-->
-
-<h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
-
 </div> <!--container end-->
+
+
+
+
+
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/bootstrap-popover.js"></script>
+  <script>$(function(){ $("#pop").popover();});</script>
+
+<script>
+  $('.arrow-right img').click(function() {
+    alert("RT CLICK");
+  });
+
+  $('.arrow-left img').click(function() {
+    alert("LFT CLICK");
+  });
+
+</script>
+
+
+
+
+<!--below is should be implemented as popover -->
+
+
+<!-- <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4> -->
+
+<!--
 
 <h2>My Goals</h2>
 <table>
@@ -118,16 +144,4 @@
   <% end %>
 </table>
 
-<br />
-<%= link_to 'New Goal', new_goal_path %>
 
-<script>
-  $('.arrow-right').click(function() {
-    console.log("RT CLICK");
-  });
-
-  $('.arrow-left').click(function() {
-    console.log("LFT CLICK");
-  });
-
-</script>
