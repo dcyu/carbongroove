@@ -1,17 +1,9 @@
-<% #@user.get_transactions %>
-
 <!--nav begin -->
 <nav class="navbar group">
    <div class="nav-inner">
         <div class="col-2-3 logo">Carbon Groove</a></div>
         <div class="col-1-3 login right">
           <ul id="nav">
-            <!-- <li>
-                <ul>
-                  <li><a href="#">User Setting</a></li>
-                  <li><a href="#">Log out</a></li>
-                </ul>
-            </li> -->
             <li class="name">Hello, <%= current_user.name %></li>
           </ul>
         </div>
@@ -38,38 +30,37 @@
     <div class="col-3-4 dashboard">
       <div class="col-3-3 box-offset">
         <div class="month group-header">
-          <div class="month-title">March</div>
-          <div class="arrow-right"><%#=link_to "next month", %></div>
-          <div class="arrow-left"><%#=link_to "previous month",  %></div>
+          <div class="month-title">March (THIS NEEDS TO BE DYNAMIC)</div>
+          <div class="arrow-right"><%#=ink_to "  ", root_url %></div>
+          <div class="arrow-left"><%#=link_to "  ", root_url  %></div>
         </div>
         <table id="data">
-                    <tfoot>
-                      <tr>
-                      <% @intervals.sort_by {|obj| obj.start_range}.each do |i| %>
-                        <th><%= i.start_range.strftime("%e") %></th>
-                      <% end %>
-                      </tr>
-                    </tfoot>
-                    <tbody>
-                      <tr>
-                      <% @intervals.sort_by {|obj| obj.start_range}.each do |i| %>
-                        <td><%= i.total_emission %></td>
-                      <% end %>
-                      </tr>
-                    </tbody>
-                </table>
+          <tfoot>
+            <tr>
+            <% @intervals.sort_by {|obj| obj.start_range}.each do |i| %>
+              <th><%= i.start_range.strftime("%e") %></th>
+            <% end %>
+            </tr>
+          </tfoot>
+          <tbody>
+            <tr>
+            <% @intervals.sort_by {|obj| obj.start_range}.each do |i| %>
+              <td><%= i.total_emission %></td>
+            <% end %>
+            </tr>
+          </tbody>
+      </table>
         <div id="holder"></div>
       </div> <!---chart end col-3-3 -->
 
-      <div class="col-3-3 purchase group-sub">Mar 3 Purchase List</div>
+      <div class="col-3-3 purchase group-sub">Purchase List</div>
       <div class="col-3-3 category box-offset">
             <!-- <div class="col-1-3 border-btm">
                 <div class="section-wh">Item</div></div>
             <div class="col-2-3 border-btm">
                 <div class="section-wh">Carbon Emission</div></div>
             <div class="col-1-3 item">a</div> -->
-        <table class="table table-hover">
-          <tbody>
+
             <table class="table table-hover">
               <tbody>
                 <tr>
@@ -79,89 +70,24 @@
                   <th>Cost</th>
                 </tr>
                 <tr>
-                    <% @receipts_by_day.each do |day, purchases| %>
-                      <% #day.strftime("%B %e, %Y") %>
-                      <% daily_cost = [] %>
-                      <% daily_emission = [] %>
-                      <% purchases.sort_by {|obj| obj.created_at}.reverse.each do |purchase| %>
-                    <td><%= Date.parse(purchase.date.to_s).strftime("%B %e, %Y") %></td>
-                    <td><%= purchase.kind %></td>
-                    <td><%= purchase.emission %></td>
-                    <td>$<%= purchase.cost %></td>
+                  <% @intervals.each do |interval| %>
+                    <% interval.receipts.each do |receipt| %>
+                    <td><%= receipt.date.strftime("%B %e, %Y") %></td>
+                    <td><%= receipt.kind %></td>
+                    <td><%= receipt.emission %></td>
+                    <td>$<%= receipt.cost %></td>
                 </tr>
-
-                    <% daily_cost << purchase.cost.to_d %>
-                    <% daily_emission << purchase.emission.to_d %>
-                 </li>
-               <% end %>
-
-
-               <!-- <% daily_total_cost = daily_cost.inject { |sum, x| sum + x }  %> -->
-               <!-- <% daily_total_emission = daily_emission.inject { |sum, x| sum + x }  %> -->
-               <!-- <li>The total cost of purchases on <%= day.strftime("%D") %> is <%= number_to_currency(daily_total_cost) %></li> -->
-               <!-- <li>The total emission on <%= day.strftime("%D") %> is <%= number_with_precision(daily_total_emission, :precision => 2) %> kg</li> -->
-              </ul>
-            <% end %>
-
-
-
-
-
-
+                    <% end %>
+                  <% end %>
               </tbody>
             </table>
         </div><!--category box end-->
     </div><!--dashboard end-->
   </div><!--wrapper end-->
 
-   <!--  <h3 class="total_cost">
-      <% if @receipts == [] %>
-        $<%= 0 %>
-      <% else %>
-        <% every_cost = Array.new %>
-        <% @receipts.each do |r| %>
-          <% every_cost.push(r[:cost].to_d) %>
-        <% end %>
-        <%= number_to_currency(every_cost.inject { |result, element| result + element }.round(2)) %>
-      <% end %>
-      spent in total
-    </h3>
-    <h3 class="total_emission">
-      <% if @receipts == [] %>
-        <% e = 0 %>
-        <%= e %>
-      <% else %>
-        <% every_emission = Array.new %>
-        <% @receipts.each do |r| %>
-          <% every_emission.push(r.emission.to_d) %>
-        <% end %>
-        <% e = every_emission.inject { |result, element| result + element }.round(2) %>
-        <%= number_with_delimiter(e) %>
-      <% end %>
-      kg of carbon dioxide emitted
-    </h3>
-    <h3 class="plastic_bags">Equivalent to <%= number_with_delimiter(e * 100) %> plastic bags</h3>
-    <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
+<h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4>
 
-
-
-
-</div> <!--conainter end-->
-
-<!--
-
-<div id="intervals">
-  <h2 class="interval_list">Recent Emissions (Intervals)</h2>
-  <ul>
-    <% @intervals.each do |interval| %>
-    <li>
-      <%= interval.start_range.strftime("%D") %>: <%= interval.total_emission %> kg
-      <% end %>
-    </li>
-  </ul>
-</div>
-
-
+</div> <!--container end-->
 
 <h2>My Goals</h2>
 <table>
@@ -193,4 +119,4 @@
 </table>
 
 <br />
-<%= link_to 'New Goal', new_goal_path %> -->
+<%= link_to 'New Goal', new_goal_path %>

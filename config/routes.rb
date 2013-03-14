@@ -1,6 +1,7 @@
 Carbongroove::Application.routes.draw do
 
   #post "/users/:id" => "Intervals#create"
+  get "users/:id/:month_id" => "Users#show"
 
   resources :goals
 
