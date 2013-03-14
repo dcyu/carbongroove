@@ -30,9 +30,9 @@
     <div class="col-3-4 dashboard">
       <div class="col-3-3 box-offset">
         <div class="month group-header">
-          <div class="month-title">March (THIS NEEDS TO BE DYNAMIC)</div>
-          <div class="arrow-right"><%=link_to "  ", root_url %></div>
-          <div class="arrow-left"></a></div>
+          <div class="month-title"><%= @view_date.strftime("%B %Y") %></div>
+          <div class="arrow-right"><a href="<%= Date.today + 1.month %>">next</a></div>
+          <div class="arrow-left"><a href="<%= Date.today - 1.month %>">previous</a></div>
         </div>
         <table id="data">
           <tfoot>
@@ -123,11 +123,11 @@
 
 <script>
   $('.arrow-right').click(function() {
-    alert("RT CLICK");
+    console.log("RT CLICK");
   });
 
   $('.arrow-left').click(function() {
-    alert("LFT CLICK");
+    console.log("LFT CLICK");
   });
 
 </script>

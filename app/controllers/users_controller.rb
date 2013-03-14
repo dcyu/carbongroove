@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
+    @view_date = Date.parse(params[:full_date])
     #@receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
     #@receipts = current_user.receipts.order('date desc').limit(50)
     # @intervals = Interval.order('start_range desc').where('user_id = ?', current_user.id)
