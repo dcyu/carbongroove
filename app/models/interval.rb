@@ -5,10 +5,8 @@ class Interval < ActiveRecord::Base
   has_many :goals
   belongs_to :user
 
-  def Interval.sort_by_month(current_user, month)
-    date = Date.today
-    # date = 1.month.ago
-    # date = 2.months.ago
+  def Interval.sort_by_month(current_user, full_date)
+    date = Date.parse(full_date)
     start_date = date.beginning_of_month
     end_date = date.end_of_month
     monthly_interval = Interval.order('start_range desc').where('user_id = ? AND start_range >= ? AND start_range <= ?', current_user.id, start_date, end_date)
