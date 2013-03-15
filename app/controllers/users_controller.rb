@@ -26,6 +26,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    # Interval.create_intervals_for_month
+
     @user = current_user
     if params[:full_date].nil?
       @view_date = Date.today
@@ -34,13 +36,15 @@ class UsersController < ApplicationController
     end
     @intervals = Interval.sort_by_month(current_user, params[:full_date])
 
+
+
     #@receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
     #@receipts = current_user.receipts.order('date desc').limit(50)
     # @intervals = Interval.order('start_range desc').where('user_id = ?', current_user.id)
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @receipts_by_day }
+      # format.json { render json: @receipts_by_day }
 
       # looking at JSON rendering
       # format.json  { render :json => @receipts_by_day.to_json(:include => { :date => { :only => [:id, :url] } }) }
