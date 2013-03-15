@@ -17,6 +17,7 @@
 //= require popup
 //= require bootstrap
 //= require bootstrap-alert
+//= require bootstrap-popover
 //= require facebook
 //= require goals
 //= require analytics
