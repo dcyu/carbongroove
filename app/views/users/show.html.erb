@@ -30,8 +30,8 @@
       <!-- <div class="col-3-3 box-offset"> -->
         <div class="col-2-3 month group-header">
           <div class="month-title"><%= @view_date.strftime("%B %Y") %></div>
-          <div class="arrow-left"><%= link_to(image_tag("arrow-left.png"), current_user) %></div>
-          <div class="arrow-right"><%= image_tag("arrow-right.png") %></div>
+          <div class="arrow-left"><%= link_to(image_tag("arrow-left.png"), "/users/#{current_user.id}/#{@view_date - 1.month}") %></div>
+          <div class="arrow-right"><%= link_to(image_tag("arrow-right.png"), "/users/#{current_user.id}/#{@view_date + 1.month}") %></div>
         </div>
             <table id="data">
           <tfoot>

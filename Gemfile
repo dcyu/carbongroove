@@ -23,6 +23,7 @@ end
 gem 'compass-rails'
 gem 'jquery-rails'
 gem 'raphaeljs-rails'
+gem 'pry'
 
 group :development do
   gem 'sqlite3'
