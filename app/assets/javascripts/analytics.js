@@ -46,7 +46,7 @@ window.onload = function () {
         return set;
         };
 
-        var value = 2.0 // this is place what goal value should be linked
+        var value = 15.0 // this is place what goal value should be linked
         var canvas = Raphael("arc", 200, 150);
         var arc = canvas.Arc(100,80, 70, value);
 

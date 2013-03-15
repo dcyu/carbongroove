@@ -14,49 +14,141 @@
   <div class="wrapper">
     <div class="col-1-4 main box-offset">
         <%= image_tag current_user.pic_url if current_user.pic_url.present? %>
+        <%= image_tag("shay.jpg") %>
         <div class="name margin-top group"><%= current_user.name %></div>
-        <div class="profile content-text"><p><!-- Hello Everyone, I am shay. I am intereted in different kind of environmental issues. That is why i registered in carbon groove ! I would like to see how my every day behavior make impact to world and environment around us. Let's hang out! and talk about what we can do for environment! Thank you for visit. --></p></div>
-          <!--   <div id="facebook"></div>
-           <div id="twitter"></div>  -->
-        <div class="goal group-sub border">Your Goal</div>
+        <div class="profile content-text"><p>Hello Everyone, I am shay. I am intereted in different kind of environmental issues. That is why i registered in carbon groove ! I would like to see how my every day behavior make impact to world and environment around us. Let's hang out! and talk about what we can do for environment! Thank you for visit.</p></div>
+        <div class="goal group-sub border">Your goal progress</div>
+        <!-- <span class="btn-small right"><%= link_to image_tag("twitter-bw.png"), new_goal_path %></span> -->
+        <a id="pop" class="btn btn-success small pull-right" rel="popover" data-placement="bottom" data-content="#popover-form" data-original-title="">Set goal</a>
+        
+
+
+        <div id="popover-form" style="display: none">
+          <%= form_for(@goal) do |f| %>
+  <% if @goal.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+
+      <ul>
+      <% @goal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :goal_name %><br />
+    <%= f.text_field :goal_name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :Reduce_Emissions_By %><br />
+    <%= f.select :target_emission, options_for_select(Goal::TARGET_GOAL) %>
+
+  </div>
+  <div class="field">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :start_time %><br />
+    <%= f.date_select :start_time %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br />
+    <%= f.date_select :end_time %>
+  </div>
+  <div class="field">
+    <%= f.label :status %><br />
+    <%= f.select :status, options_for_select(["Not Started","In Progress", "Completed", "Screw It"]) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+        </div>
+
         <div id="arc"></div>
-        <h2>My Goals</h2>
-        <table>
+        
+        <div class="goal group-sub">Goal List </div>
+        <div class" goal group">
+          <div class="accordion" id="accordion2">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                           <% @user.goals.each do |goal| %>
+                           <%= goal.goal_name %>
+                           <% end %>
+                    </a>
+                </div>
+                <div id="collapseOne" class="accordion-body collapse in">
+                  <div class="accordion-inner">start Date : Mar 15 2013</div>
+                </div>
+            </div>
+          </div>
+
+        </div>
+
+
+  
+
+
+        <table class ="goal table table-hover">
           <tr>
-            <th>Goal name</th>
-            <th>Description</th>
-            <th>Target Emission (reduce by)</th>
-            <th>Start time</th>
-            <th>End time</th>
-            <th>Status</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <!-- <th>Goal name</th> -->
+            <!-- <th>Description</th> -->
+            <!-- <th>Target Emission (reduce by)</th> -->
+            <!-- <th>Start time</th> -->
+            <!-- <th>End time</th> -->
+            <!-- <th>Status</th> -->
           </tr>
 
           <% @user.goals.each do |goal| %>
-            <tr>
+           <!--  <tr>
               <td><%= goal.goal_name %></td>
-              <td><%= goal.description %></td>
-              <td><%= goal.target_emission %>%</td>
-              <td><%= Date.parse(goal.start_time.to_s).strftime("%b %e, %Y") %></td>
-              <td><%= Date.parse(goal.end_time.to_s).strftime("%b %e, %Y") %></td>
-              <td><%= goal.status %></td>
-              <td><%= link_to 'Show', goal %></td>
-              <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-              <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             </tr>
+            <tr>
+               <td><%= goal.description %></td>
+            </tr>
+            
+            <tr>
+              <td><%= goal.target_emission %>%</td>
+            </tr>
+            <tr>
+              <td><%= Date.parse(goal.start_time.to_s).strftime("%b %e, %Y") %></td>
+            </tr>
+            <tr>
+              <td><%= Date.parse(goal.end_time.to_s).strftime("%b %e, %Y") %></td>
+            </tr>
+            <tr>
+              <td><%= goal.status %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'Show', goal %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr> -->
           <% end %>
         </table>
         <div class="group">
           <div class="facebook log"><%= image_tag("facebook-bw.png") %></div>
           <div class="twiiter log"><%= image_tag("twitter-bw.png") %></div>
-          <div class="twiiter log"><%= link_to image_tag("twitter-bw.png"), new_goal_path %></div>
         </div>
     </div> <!--col-1-4 end-->
     <div class="col-3-4 dashboard box-offset">
       <!-- <div class="col-3-3 box-offset"> -->
-        <div class="col-2-3 month group-header">
+        <div class="col-3-3 month group-header">
           <div class="month-title"><%= @view_date.strftime("%B %Y") %></div>
           <div class="arrow-left"><%= link_to(image_tag("arrow-left.png"), "/users/#{current_user.id}/#{@view_date - 1.month}") %></div>
           <div class="arrow-right"><%= link_to(image_tag("arrow-right.png"), "/users/#{current_user.id}/#{@view_date + 1.month}") %></div>
@@ -119,27 +211,16 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/bootstrap-popover.js"></script>
   <script>$(function(){ $("#pop").popover();});</script>
+  <script>
+  $(document).ready(function(){
+  $('#pop').popover({ 
+    html : true,
+    content: function() {
+      return $('#popover-form').html();
+    }
+  });
+});</script>
 
-<script>
-  // $('.arrow-right img').click(function() {
-  //   alert("RT CLICK");
-  // });
-
-  // $('.arrow-left img').click(function() {
-  //   alert("LFT CLICK");
-  // });
-
-</script>
-
-
-
-
-<!--below is should be implemented as popover -->
-
-
-<!-- <h4 id="new_purchase"><%= link_to "Enter New Purchase", new_receipt_path %></h4> -->
-
-<!--
 
 
 
