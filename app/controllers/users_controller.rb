@@ -36,7 +36,7 @@ class UsersController < ApplicationController
     end
     @intervals = Interval.sort_by_month(current_user, params[:full_date])
 
-    @goal = Goal.find(params[:id])
+    @goal = Goal.new
 
     #@receipts_by_day = current_user.receipts.order('date desc').group_by { |receipt| receipt.date.beginning_of_day }
     #@receipts = current_user.receipts.order('date desc').limit(50)

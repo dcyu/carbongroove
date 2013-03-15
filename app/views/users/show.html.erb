@@ -20,7 +20,7 @@
         <div class="goal group-sub border">Your goal progress</div>
         <!-- <span class="btn-small right"><%= link_to image_tag("twitter-bw.png"), new_goal_path %></span> -->
         <a id="pop" class="btn btn-success small pull-right" rel="popover" data-placement="bottom" data-content="#popover-form" data-original-title="">Set goal</a>
-        
+
 
 
         <div id="popover-form" style="display: none">
@@ -76,7 +76,7 @@
         </div>
 
         <div id="arc"></div>
-        
+
         <div class="goal group-sub">Goal List </div>
         <div class" goal group">
           <div class="accordion" id="accordion2">
@@ -97,7 +97,7 @@
         </div>
 
 
-  
+
 
 
         <table class ="goal table table-hover">
@@ -117,7 +117,7 @@
             <tr>
                <td><%= goal.description %></td>
             </tr>
-            
+
             <tr>
               <td><%= goal.target_emission %>%</td>
             </tr>
@@ -206,15 +206,13 @@
 
 
 
-<<<<<<< HEAD
 
 
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/bootstrap-popover.js"></script>
+
   <script>$(function(){ $("#pop").popover();});</script>
   <script>
   $(document).ready(function(){
-  $('#pop').popover({ 
+  $('#pop').popover({
     html : true,
     content: function() {
       return $('#popover-form').html();
@@ -226,5 +224,3 @@
 
 
 
-=======
->>>>>>> d3de2eae86870deaa0c0edea0f829ee765ead12b
