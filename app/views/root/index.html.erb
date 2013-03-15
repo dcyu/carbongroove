@@ -107,33 +107,25 @@
             </ul>
           </div>
         <% end %>
-        <div class="control-group">
-          <%= f.label :email, nil, :class => "control-label" %>
           <div class="controls">
             <%= f.text_field :email, :id => "inputEmail", :placeholder => "Email" %>
           </div>
-        </div>
 
-        <div class="control-group">
-          <%= f.label :name, nil, :class => "control-label" %>
           <div class="controls">
             <%= f.text_field :name, :id => "inputEmail", :placeholder => "Name" %>
           </div>
-        </div>
 
-        <div class="control-group">
-          <%= f.label :password, nil, :class => "control-label" %>
           <div class="controls">
             <%= f.password_field :password, :id => "inputPassword", :placeholder => "Password" %>
           </div>
-        </div>
 
-        <div class="control-group">
-          <%= f.label :password_confirmation, nil, :class => "control-label" %>
           <div class="controls">
-            <%= f.password_field :password_confirmation, :id => "inputPassword", :placeholder => "Password" %>
+            <%= f.password_field :password_confirmation, :id => "inputPassword", :placeholder => "Password Confirmation" %>
           </div>
-        </div>
+
+          <div class="controls">
+            <%= f.text_field :pic_url, :id => "inputPic_URL", :placeholder => "Pic_URL" %>
+          </div>
 
           <%= f.submit "Create Account", :class => 'btn btn-success' %>
         <% end %>

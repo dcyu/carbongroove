@@ -11,5 +11,8 @@
   <div><%= f.label :password_confirmation, "Re-enter Password" %></div>
   <div><%= f.password_field :password_confirmation %></div>
 
+  <div><%= f.label :pic_url %></div>
+  <div><%= f.text_field :pic_url %></div>
+
   <div><%= f.submit "Update Settings", :id => "update" %></div>
 <% end %>

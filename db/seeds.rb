@@ -1,5 +1,5 @@
 User.destroy_all
-RegularUser.create([{name: "Shay", email: "shay@starterleague.com", password: "carbon"}])
+RegularUser.create([{name: "Shay", email: "shay@starterleague.com", password: "carbon", pic_url: "http://www.starterleague.com/assets/shay-howe.jpg" }])
 
 seed_receipts = [
 # 02-01
