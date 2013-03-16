@@ -1,3 +1,4 @@
+# Trying to ignore this file in git.
 User.destroy_all
 RegularUser.create([{name: "Shay", email: "shay@starterleague.com", password: "carbon"}])
 
