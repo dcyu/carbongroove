@@ -68,15 +68,18 @@
   def update
     @goal = Goal.find(params[:id])
 
-    respond_to do |format|
       if @goal.update_attributes(params[:goal]) && current_user.facebook_user?
         current_user.facebook.put_wall_post(nil,
           { "name" => "CarbonGroove.com",
             "link" => "http://www.carbongroove.com/",
-            "caption" => "#{current_user.name} just udpated a carbon footprint goal!",
+            "caption" => "#{current_user.name} just completed a carbon footprint goal!",
             "description" => "#{@goal.goal_name}",
             "picture" => "http://media.treehugger.com/assets/images/2011/10/carbon-footprint-green.jpg"
           })
+      end
+
+      respond_to do |format|
+        if @goal.update_attributes(params[:goal])
         format.html { redirect_to @goal, notice: 'Goal was successfully updated.' }
         format.json { head :no_content }
       else
