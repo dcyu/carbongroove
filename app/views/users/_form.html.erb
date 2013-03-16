@@ -1,18 +1,9 @@
 <%= form_for @user do |f|  %>
-  <div><%= f.label :email, "Edit Email" %></div>
-  <div><%= f.text_field :email %></div>
-
-  <div><%= f.label :name, "Edit Name" %></div>
-  <div><%= f.text_field :name %></div>
-
-  <div><%= f.label :password, "Edit Password" %></div>
-  <div><%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation, "Re-enter Password" %></div>
-  <div><%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.label :pic_url %></div>
-  <div><%= f.text_field :pic_url %></div>
-
+  <div><%= f.text_field :email, placeholder: "Edit Email" %></div>
+  <div><%= f.text_field :name, placeholder: "Edit Name" %></div>
+  <div><%= f.password_field :password, placeholder: "Edit Password" %></div>
+  <div><%= f.password_field :password_confirmation, placeholder: "Re-enter Password" %></div>
+  <div><%= f.text_field :pic_url, placeholder: "Edit Pic_URL" %></div>
+  <div><%= f.text_field :bio, placeholder: "Edit About Me" %></div>
   <div><%= f.submit "Update Settings", :id => "update" %></div>
 <% end %>

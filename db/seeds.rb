@@ -1,6 +1,6 @@
 # Trying to ignore this file in git.
 User.destroy_all
-RegularUser.create([{name: "Shay", email: "shay@starterleague.com", password: "carbon"}])
+RegularUser.create([{name: "Shay", email: "shay@starterleague.com", password: "carbon", pic_url: "http://www.starterleague.com/assets/shay-howe.jpg", bio: "Hello Everyone - I'm interested in environmental issues, which is why I signed up for CarbonGroove. I would like to see how my daily behavior impacts the world. Let's hang out and talk about what we can do for the environment!"}])
 
 seed_receipts = [
 # 02-01

@@ -14,9 +14,8 @@
   <div class="wrapper">
     <div class="col-1-4 main box-offset">
         <%= image_tag current_user.pic_url if current_user.pic_url.present? %>
-        <%= image_tag("shay.jpg") %>
         <div class="name margin-top group"><%= current_user.name %></div>
-        <div class="profile content-text"><p>Hello Everyone, I am shay. I am intereted in different kind of environmental issues. That is why i registered in carbon groove ! I would like to see how my every day behavior make impact to world and environment around us. Let's hang out! and talk about what we can do for environment! Thank you for visit.</p></div>
+        <div class="profile content-text"><p><%= current_user.bio %></p></div>
         <div class="goal group-sub border">Your goal progress</div>
         <!-- <span class="btn-small right"><%= link_to image_tag("twitter-bw.png"), new_goal_path %></span> -->
         <a id="pop" class="btn btn-success small pull-right" rel="popover" data-placement="bottom" data-content="#popover-form" data-original-title="">Set goal</a>
