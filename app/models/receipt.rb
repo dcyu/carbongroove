@@ -23,22 +23,23 @@ class Receipt < ActiveRecord::Base
     "potato chips" => { cost: 1.00 , emission: 0.075 },
     "corn chips" => { cost: 1.00 , emission: 0.075 },
     #Categories we care about from by Intuit:
-    "gas & fuel" => { cost: 1.00 , emission: 1.0 },
-    "public transportation" => { cost: 1.00 , emission: 1.0 },
-    "utilities" => { cost: 1.00 , emission: 1.0 },
-    "groceries" => { cost: 1.00 , emission: 1.0 },
-    "coffee shops" => { cost: 1.00 , emission: 1.0 },
+    "gas & fuel" => { cost: 4.00 , emission: 12.6 },
+    "public transportation" => { cost: 2.50 , emission: 1.5 },
+    "utilities" => { cost: 0.16 , emission: 2.0 },
+    "groceries" => { cost: 1.00 , emission: 0.62 },
+    "coffee shops" => { cost: 1.00 , emission: 0.1 },
+    #meat
     "fast food" => { cost: 1.00 , emission: 1.0 },
+    #meat
     "restaurants" => { cost: 1.00 , emission: 1.0 },
-    "alcohol & bars" => { cost: 1.00 , emission: 1.0 },
-    "clothing" => { cost: 1.00 , emission: 1.0 },
-    "books" => { cost: 1.00 , emission: 1.0 },
-    "electronics & software" => { cost: 1.00 , emission: 1.0 },
-    "air travel" => { cost: 1.00 , emission: 1.0 },
-    "hotel" => { cost: 1.00 , emission: 1.0 },
-    "rental car & taxi" => { cost: 1.00 , emission: 1.0 },
-    "shopping" => { cost: 1.00 , emission: 1.0 },
-    "transfer" => { cost: 1.00 , emission: 0.0 }
+    "alcohol & bars" => { cost: 3.00 , emission: 0.5 },
+    "clothing" => { cost: 1.00 , emission: 0.225 },
+    "books" => { cost: 15.00 , emission: 1.0 },
+    "electronics & software" => { cost: 1.00 , emission: 0.5 },
+    "air travel" => { cost: 1.00 , emission: 5.0 },
+    "hotel" => { cost: 1.00 , emission: 0.27 },
+    "rental car & taxi" => { cost: 2.00 , emission: 0.85 },
+    "shopping" => { cost: 1.00 , emission: 0.2 },
   }
 
   after_create :upsert_interval_status
