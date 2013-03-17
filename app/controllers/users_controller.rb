@@ -1,3 +1,7 @@
+#professor archer
+#liz moyer
+
+
 class UsersController < ApplicationController
   def edit
     @user = RegularUser.find(params[:id])
@@ -23,6 +27,17 @@ class UsersController < ApplicationController
     else
       render "new"
     end
+  end
+
+  def add_account
+    @account_id = current_user.id
+    @bank_username = params[:bank_username]
+    @bank_password = params[:bank_password]
+    IntuitIdsAggcat::Client::Services.delete_customer "#{@account_id}"
+    IntuitIdsAggcat::Client::Services.discover_and_add_accounts_with_credentials 4, "#{@account_id}", { "usr_name" => "#{@bank_username}", "usr_password" => "#{@bank_password}" }
+    current_user.get_transactions
+
+    redirect_to current_user, :notice => "#{@account_id}"
   end
 
   def show

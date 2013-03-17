@@ -31,7 +31,10 @@ class User < ActiveRecord::Base
   #add the following to user.rb
 
   def get_transactions
-    transactions = ACCOUNT.banking_transactions
+    x = IntuitIdsAggcat::Client::Services.get_customer_accounts "12"
+    start = Time.now - (90 * 24 * 60 * 60)
+    account = IntuitIdsAggcat::Client::Services.get_account_transactions("12", x.banking_accounts[1].account_id, start)
+    transactions = account.banking_transactions
     logger.info "get_transactions called!!!"
     logger.info "count transactions is #{transactions.count}"
     logger.info "count class is #{transactions.class}"
