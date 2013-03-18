@@ -3,3 +3,9 @@ development:
   issuer_id:  carbongroove.55127.cc.dev-intuit.ipp.prod  
   oauth_consumer_key: qyprd7ANIyBCRT0K3yagXgNIEHdnHf 
   oauth_consumer_secret:  UzgCp30bc6sulDyfRCxLjiBAOZ54nPmfeGnaZDOH 
+
+production:
+  certificate_path: config/path_to_key.key 
+  issuer_id:  carbongroove.55127.cc.dev-intuit.ipp.prod  
+  oauth_consumer_key: qyprd7ANIyBCRT0K3yagXgNIEHdnHf 
+  oauth_consumer_secret:  UzgCp30bc6sulDyfRCxLjiBAOZ54nPmfeGnaZDOH 
