@@ -189,7 +189,13 @@
                   <tr>
                     <td><%= receipt.date.strftime("%B %e, %Y") %></td>
                     <td><%= receipt.kind %></td>
-                    <td><%= receipt.emission %></td>
+                    <td>
+                      <% if receipt.emission == "0.0" %>
+                      <%= "N/A" %>
+                      <% else %>
+                      <%= receipt.emission %>
+                      <% end %>
+                    </td>
                     <td>$<%= receipt.cost %></td>
                   </tr>
                     <% end %>
@@ -213,9 +219,9 @@
     </div>
     <div class="modal-body">
       <div class="span6">
-          <%= form_tag users_add_account_path, :method => 'post', :class => "horizontal" do %>
+          <%= form_tag :controller => "Users", :action => "add_account", :method => 'post', :class => "horizontal" do %>
               <div class="controls">
-                <%= text_field_tag :bank_name, params[:bank_name], :id => "inputEmail", :placeholder => "Bank Name" %>
+                <%= text_field_tag :bank_name, params[:bank_name], :id => "inputEmail", :placeholder => "Bank ID (4 for Chase or 14007 for BoA)" %>
               </div>
               <div class="controls">
                 <%= text_field_tag :bank_username, params[:bank_username], :id => "inputEmail", :placeholder => "Bank Username" %>
@@ -224,7 +230,7 @@
                 <%= text_field_tag :bank_password, params[:bank_password], :id => "inputPassword", :placeholder => "Bank Password", type: "password" %>
               </div>
               <div class="controls">
-                <%= text_field_tag :bank_account_number, params[:bank_account_number], :id => "inputEmail", :placeholder => "Bank Account Number" %>
+                <%= text_field_tag :bank_account_order, params[:bank_account_order], :id => "inputEmail", :placeholder => "Desired Bank Account Order in Array (0, 1 , 2, etc...) " %>
               </div>
               <%= submit_tag "Add Account!", :class => 'btn btn-success' %>
           <% end %>

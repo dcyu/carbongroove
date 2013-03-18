@@ -86,7 +86,13 @@
                       <% purchases.sort_by {|obj| obj.created_at}.reverse.each do |purchase| %>
                     <td><%= Date.parse(purchase.date.to_s).strftime("%B %e, %Y") %></td>
                     <td><%= purchase.kind %></td>
-                    <td><%= purchase.emission %></td>
+                    <td>
+                      <% if purchase.emission == 0.0 %>
+                      <%= "N/A" %>
+                      <% else %>
+                      <%= purchase.emission %>
+                      <% end %>
+                    </td>
                     <td>$<%= purchase.cost %></td>
                 </tr>
 

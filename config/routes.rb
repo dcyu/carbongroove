@@ -4,7 +4,7 @@ Carbongroove::Application.routes.draw do
   resources :users
 
   get "users/:id/:full_date" => "Users#show"
-  post '/users/:id', :controller => "Users", :action => "add_account"
+  post '/users/:id' => "Users#add_account"
 
   resources :goals
 

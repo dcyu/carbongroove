@@ -30,14 +30,16 @@ class UsersController < ApplicationController
   end
 
   def add_account
-    @account_id = current_user.id
-    @bank_username = params[:bank_username]
-    @bank_password = params[:bank_password]
-    IntuitIdsAggcat::Client::Services.delete_customer "#{@account_id}"
-    IntuitIdsAggcat::Client::Services.discover_and_add_accounts_with_credentials 4, "#{@account_id}", { "usr_name" => "#{@bank_username}", "usr_password" => "#{@bank_password}" }
-    current_user.get_transactions
+    account_id = current_user.id
+    bank_username = params[:bank_username]
+    bank_password = params[:bank_password]
+    bank_id = params[:bank_name]
+    bank_account_order = params[:bank_account_order]
+    IntuitIdsAggcat::Client::Services.delete_customer "#{account_id}"
+    IntuitIdsAggcat::Client::Services.discover_and_add_accounts_with_credentials bank_id, "#{account_id}", { "usr_name" => "#{bank_username}", "usr_password" => "#{bank_password}" }
+    current_user.get_transactions(account_id, bank_account_order)
 
-    redirect_to current_user, :notice => "#{@account_id}"
+    redirect_to current_user, :notice => "#{account_id}"
   end
 
   def show
