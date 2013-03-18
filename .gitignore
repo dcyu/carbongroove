@@ -20,4 +20,5 @@
 /config/path_to_key.key
 /config/twitter.yml
 /config/facebook.yml
+/config/config.yml
 /db/seeds.rb

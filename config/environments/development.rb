@@ -25,7 +25,7 @@ Carbongroove::Application.configure do
     authentication: "plain",
     enable_starttls_auto: true,
     user_name: 'carbongroove1871',
-    password: 'cg5261993'
+    password: 'getgroovy'
   }
 
   # Specify what domain to use for mailer URLs
