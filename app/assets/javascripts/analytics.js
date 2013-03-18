@@ -19,7 +19,8 @@ $(function () {
         top: "-9999em"
     });
 });
-window.onload = function () {
+console.log('testing')
+$(function () {
 
     Raphael.fn.Arc = function (x, y, r, value) {
 
@@ -46,10 +47,11 @@ window.onload = function () {
         return set;
         };
 
+    window.onload = function(){
         var value = 15.0 // this is place what goal value should be linked
         var canvas = Raphael("arc", 200, 150);
         var arc = canvas.Arc(100,80, 70, value);
-
+        }
 
 
 
@@ -173,7 +175,7 @@ window.onload = function () {
     label[0].toFront();
     label[1].toFront();
     blanket.toFront();
-};
+});
 
 
 

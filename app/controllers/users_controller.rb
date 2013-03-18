@@ -61,6 +61,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.js
       # format.json { render json: @receipts_by_day }
 
       # looking at JSON rendering
