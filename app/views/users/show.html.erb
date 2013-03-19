@@ -16,65 +16,23 @@
         <%= image_tag current_user.pic_url if current_user.pic_url.present? %>
         <div class="name margin-top group"><%= current_user.name %></div>
         <div class="profile content-text"><p><%= current_user.bio %></p></div>
-        <%= link_to "Add an account!", '#accountModal', :data => {:toggle => "modal"} %>
-        <div class="goal group-sub border">Your goal progress</div>
-        <a id="pop" class="btn btn-success small pull-right" rel="popover" data-placement="bottom" data-content="#popover-form" data-original-title="">Set goal</a>
+        <%= link_to "Add an Account!", '#accountModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
 
-
-
-        <div id="popover-form" style="display: none">
-          <%= form_for(@goal) do |f| %>
-  <% if @goal.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
-
-      <ul>
-      <% @goal.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :goal_name %><br />
-    <%= f.text_field :goal_name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :Reduce_Emissions_By %><br />
-    <%= f.select :target_emission, options_for_select(Goal::TARGET_GOAL) %>
-
-  </div>
-  <div class="field">
-    <%= f.hidden_field :user_id, value: current_user.id %>
-  </div>
-
-
-  <div class="field">
-    <%= f.label :start_time %><br />
-    <%= f.date_select :start_time %>
-  </div>
-  <div class="field">
-    <%= f.label :end_time %><br />
-    <%= f.date_select :end_time %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br />
-    <%= f.select :status, options_for_select(["Not Started","In Progress", "Completed", "Screw It"]) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-
+        <div class="goal group-sub border">
+          <%= link_to "Set Goal!", '#addgoalModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
+          <p>Your goal progress:</p>
         </div>
 
-        <div id="arc"></div>
+
+    <!--     <a id="pop" class="btn btn-success small pull-right" rel="popover" data-placement="bottom" data-content="#popover-form" data-original-title="">Set goal</a> -->
+
+
+
+    <div id="goalModal" style="display: none">
+    </div>
+    
+
+    <div id="arc"></div>
 
         <div class="goal group-sub">Goal List </div>
         <div class" goal group">
@@ -210,8 +168,7 @@
 </div> <!--container end-->
 
 
-
-<!-- Modal -->
+<!-- Add Account Modal -->
   <div id="accountModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
@@ -242,6 +199,81 @@
     </div>
   </div>
 
+  <!-- Add Goal Modal -->
+      <div id="addgoalModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+          <h4 id="myModalLabel">Add a goal!</h4>
+      </div>
+      <div class="modal-body">
+        <div class="span6">
+        <%= form_for @goal do |f| %>
+          <% if @goal.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+
+              <ul>
+              <% @goal.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+              <% end %>
+              </ul>
+            </div>
+          <% end %>
+
+          <div class="field">
+            <%= f.label :goal_name %><br />
+            <%= f.text_field :goal_name %>
+          </div>
+          <div class="field">
+            <%= f.label :description %><br />
+            <%= f.text_area :description %>
+          </div>
+          <div class="field">
+            <%= f.label :Reduce_Emissions_By %><br />
+            <%= f.select :target_emission, options_for_select(Goal::TARGET_GOAL) %>
+
+          </div>
+          <div class="field">
+            <%= f.hidden_field :user_id, value: current_user.id %>
+          </div>
+
+
+          <div class="field">
+            <%= f.label :start_time %><br />
+            <%= f.date_select :start_time %>
+          </div>
+          <div class="field">
+            <%= f.label :end_time %><br />
+            <%= f.date_select :end_time %>
+          </div>
+          <div class="field">
+            <%= f.label :status %><br />
+            <%= f.select :status, options_for_select(["Not Started","In Progress", "Completed", "Screw It"]) %>
+          </div>
+          <div class="actions">
+            <%= f.submit %>
+          </div>
+        <% end %>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <a href="#"></a>
+      </div>
+    </div>
+
+
+      
+
+
+
+
+
+
+    <div class="modal-footer">
+      <a href="#"></a>
+    </div>
+  </div>
 
   <script>$(function(){ $("#pop").popover();});</script>
   <script>

@@ -15,7 +15,8 @@
 /log/*.log
 /tmp
 
-
+/config/intuit_ids_aggcat.yml
+/config/path_to_key.key
 /config/twitter.yml
 /config/facebook.yml
 /config/config.yml
