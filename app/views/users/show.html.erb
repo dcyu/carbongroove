@@ -35,8 +35,9 @@
 
         </div>
         <div class="goal group-sub border">
-          <%= link_to "Set Goal!", '#addgoalModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
-          <p>Your goal progress:</p>
+          <div class="col-2-3 group-sub"><p>Your goal progress:</p></div>
+          <%= link_to "Set Goal", '#addgoalModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
+          
         </div>
 
 
@@ -115,8 +116,8 @@
           <% end %>
         </table>
         <div class="group">
-          <div class="facebook log"><%= image_tag("facebook-bw.png") %></div>
-          <div class="twitter log"><%= image_tag("twitter-bw.png") %></div>
+          <div class="facebook log"><%= image_tag("facebook.png") %></div>
+          <div class="twitter log"><%= image_tag("twitter.png") %></div>
         </div>
     </div> <!--col-1-4 end-->
 
@@ -149,7 +150,7 @@
               <div class="controls">
                 <%= text_field_tag :bank_account_order, params[:bank_account_order], :id => "inputEmail", :placeholder => "Desired Bank Account Order in Array (0, 1 , 2, etc...) " %>
               </div>
-              <%= submit_tag "Add Account!", :class => 'btn btn-success' %>
+              <%= submit_tag "Add Account", :class => 'btn btn-success' %>
           <% end %>
       </div>
     </div>
@@ -213,7 +214,7 @@
             <%= f.select :status, options_for_select(["Not Started","In Progress", "Completed", "Screw It"]) %>
           </div>
           <div class="actions">
-            <%= f.submit %>
+            <%= f.submit  %>
           </div>
         <% end %>
         </div>
