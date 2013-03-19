@@ -15,7 +15,7 @@
 
   <div class="wrapper">
     <div class="col-1-4 main box-offset">
-        
+
         <%= image_tag current_user.pic_url if current_user.pic_url.present? %>
 
 
@@ -37,14 +37,14 @@
         <div class="goal group-sub border">
           <div class="col-2-3 group-sub"><p>Your goal progress:</p></div>
           <%= link_to "Set Goal", '#addgoalModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
-          
+
         </div>
 
 
     <!--     <a id="pop" class="btn btn-success small pull-right" rel="popover" data-placement="bottom" data-content="#popover-form" data-original-title="">Set goal</a> -->
 
 
- 
+
     <div id="goalModal" style="display: none">
     </div>
 
@@ -112,7 +112,7 @@
             </tr>
             <tr>
               <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr> -->
+            </tr>
           <% end %>
         </table>
         <div class="group">
@@ -214,7 +214,8 @@
             <%= f.select :status, options_for_select(["Not Started","In Progress", "Completed", "Screw It"]) %>
           </div>
           <div class="actions">
-            <%= f.submit  %>
+            <%= submit_tag "Submit Goal", :class => 'btn btn-success' %>
+
           </div>
         <% end %>
         </div>
