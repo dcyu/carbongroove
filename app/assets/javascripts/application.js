@@ -21,7 +21,6 @@
 //= require bootstrap-popover
 //= require facebook
 //= require goals
-//= require analytics
 //= require users
 
 

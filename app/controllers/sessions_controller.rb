@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     @user = RegularUser.authenticate(params[:email], params[:password])
     if
       session[:user_id] = @user.id
-      # UserMailer.login_confirmation(@user).deliver
+      #UserMailer.login_confirmation(@user).deliver
       redirect_to current_user
     else
       flash.now.alert = "Invalid email or password"
@@ -21,12 +21,13 @@ class SessionsController < ApplicationController
     session[:user_id] = @user.id
     # UserMailer.login_confirmation(@user).deliver
     redirect_to current_user      
+
   end
 
   def create_twitter
     user = TwitterUser.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to current_user      
+    redirect_to current_user
   end
 
   def destroy
