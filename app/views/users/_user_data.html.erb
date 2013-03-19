@@ -36,7 +36,7 @@
         <tbody>
           <tr>
             <th>Date</th>
-            <th>Item</th>
+            <th>Category</th>
             <th>Carbon Emission(kg)</th>
             <th>Cost</th>
           </tr>
@@ -45,7 +45,13 @@
             <tr>
               <td><%= receipt.date.strftime("%B %e, %Y") %></td>
               <td><%= receipt.kind %></td>
-              <td><%= receipt.emission %></td>
+              <td>
+                <% if receipt.emission == "0.0" %>
+                <%= "N/A" %>
+                <% else %>
+                <%= receipt.emission %>
+                <% end %>
+              </td>
               <td>$<%= receipt.cost %></td>
             </tr>
               <% end %>

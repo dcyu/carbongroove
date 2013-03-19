@@ -33,7 +33,7 @@ class User < ActiveRecord::Base
   def get_transactions(account_id, bank_account_order)
     x = IntuitIdsAggcat::Client::Services.get_customer_accounts "#{account_id}"
     start = Time.now - (90 * 24 * 60 * 60)
-    account = IntuitIdsAggcat::Client::Services.get_account_transactions("#{account_id}", x.banking_accounts[bank_account_order].account_id, start)
+    account = IntuitIdsAggcat::Client::Services.get_account_transactions("#{account_id}", x.banking_accounts[bank_account_order.to_i].account_id, start)
     transactions = account.banking_transactions
     logger.info "get_transactions called!!!"
     logger.info "count transactions is #{transactions.count}"

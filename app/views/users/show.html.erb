@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
+
 <!--nav begin -->
 <nav class="navbar group">
    <div class="nav-inner">
@@ -49,7 +51,7 @@
  
     <div id="goalModal" style="display: none">
     </div>
-    
+
 
     <div id="arc"></div>
 
@@ -188,8 +190,9 @@
             <%= f.text_field :goal_name %>
           </div>
           <div class="field">
+
             <%= f.label :description %>
-            <%= f.text_area :description %>
+            <%= f.text_area :description, size: '10' %>
           </div>
           <div class="field">
             <%= f.label :Reduce_Emissions_By %>
@@ -200,15 +203,16 @@
             <%= f.hidden_field :user_id, value: current_user.id %>
           </div>
 
-<!-- 
+
           <div class="field">
-            <%= f.label :start_time %>
-            <%= f.date_select :start_time %>
+
+            <%= f.label :start_time %><br />
+            <%= f.text_field :start_time %>
           </div>
           <div class="field">
-            <%= f.label :end_time %>
-            <%= f.date_select :end_time %>
-          </div> -->
+            <%= f.label :end_time %><br />
+            <%= f.text_field :end_time %>
+          </div>
           <div class="field">
             <%= f.label :status %>
             <%= f.select :status, options_for_select(["Not Started","In Progress", "Completed", "Screw It"]) %>
@@ -238,6 +242,14 @@
 });</script>
 
 
+<script type="text/javascript">
+  $(function() {
+      $('#goal_start_time').datepicker({dateFormat: 'yy-mm-dd'});
+  });
+    $(function() {
+      $('#goal_end_time').datepicker({dateFormat: 'yy-mm-dd'});
+  });
+</script>
 
 
 
