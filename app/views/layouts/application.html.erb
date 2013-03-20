@@ -24,10 +24,13 @@
 
     <%= yield %>
 
-  <!-- </div> -->
+  </div>
 <footer> © 2013 CarbonGroove</footer>
 
-<div id="user_nav">
+
+
+
+<!-- <div id="user_nav">
     <% if logged_in_as_regular_user? %>
       <%= link_to "Edit User Settings", edit_user_url(current_user.id) %>
       <div class="user_info">
@@ -39,11 +42,11 @@
         <%= link_to "Log out", log_out_path, :id => "log_out" %>
       </div>
     <% end %>
-  </div>
+  </div> -->
 
-  <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, :id => "flash_#{name}" %>
-  <% end %>
+  <%# flash.each do |name, msg| %>
+    <%#= content_tag :div, msg, :id => "flash_#{name}" %>
+  <%# end %>
 
 </body>
 </html>
