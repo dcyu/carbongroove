@@ -28,7 +28,7 @@ $(function () {
         var pi = Math.PI;
         var cos = Math.cos;
         var sin = Math.sin;
-        var maxValue = 10;
+        var maxValue = 100;
         var t = (pi/2) * 3;
         var rad = (pi*2 * (value)) / maxValue + t;
         var colors = ["#877e6d","#eb8017", "#766e5f"];
@@ -48,7 +48,7 @@ $(function () {
         };
 
     window.onload = function(){
-        var value = 15.0 // this is place what goal value should be linked
+        var value = 65.0 // this is place what goal value should be linked
         var canvas = Raphael("arc", 200, 150);
         var arc = canvas.Arc(100,80, 70, value);
         }

@@ -15,14 +15,12 @@
 
   <div class="wrapper">
     <div class="col-1-4 main box-offset">
-
-        <%= image_tag current_user.pic_url if current_user.pic_url.present? %>
-
-
-        <div class="name margin-top group"><%= current_user.name %></div>
-        <div class="profile content-text"><p><%= current_user.bio %></p></div>
+      <%= image_tag current_user.pic_url if current_user.pic_url.present? %>
+      <div class="name margin-top group"><%= current_user.name %></div>
+      <div class="profile content-text"><p><%= current_user.bio %></p></div>
         <!-- <%= link_to "Add an Account!", '#accountModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %> -->
-        <div class="account">
+      
+      <div class="account">
           <div class="col-1-3 group-sub">Account</div>
           <div class="log right"><%= link_to image_tag("add.png"), '#accountModal', :data => {:toggle => "modal"} %></div>
           <table class="table table-hover">
@@ -32,99 +30,56 @@
             </tr>
             </tbody>
           </table>
+      </div>
 
-        </div>
-        <div class="goal group-sub border">
-          <div class="col-2-3 group-sub"><p>Your goal progress:</p></div>
-          <%= link_to "Set Goal", '#addgoalModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
-
-        </div>
-
-
-    <!--     <a id="pop" class="btn btn-success small pull-right" rel="popover" data-placement="bottom" data-content="#popover-form" data-original-title="">Set goal</a> -->
-
-
-
-    <div id="goalModal" style="display: none">
-    </div>
-
-
-    <div id="arc"></div>
-
-        <div class="goal group-sub">Goal List </div>
-        <div class" goal group">
-          <div class="accordion" id="accordion2">
+      <div class="goal group-sub border">
+        <div class="col-2-3 group-sub"><p>Your goal progress:</p></div>
+        <%= link_to "Set Goal", '#addgoalModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
+      </div>
+      
+      <div id="goalModal" style="display: none"></div>
+      <div id="arc"></div>
+      
+      <div class="goal group-sub">Target Carbon Goals </div>
+      
+      <div class="goal">
+        <div class="accordion" id="accordion2">
             <div class="accordion-group">
                 <div class="accordion-heading">
                     <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                           <% @user.goals.each do |goal| %>
-                           <%= goal.goal_name %>
-                           <% end %>
+                        <% @user.goals.each do |goal| %>
+                        <%= goal.goal_name %>
+                            
                     </a>
                 </div>
                 <div id="collapseOne" class="accordion-body collapse in">
-                  <div class="accordion-inner">start Date : Mar 15 2013</div>
-                </div>
+                  <div class="accordion-inner">
+                    Start Date : <%= Date.parse(goal.start_time.to_s).strftime("%b %e, %Y") %><br>
+                    End Date : <%= Date.parse(goal.end_time.to_s).strftime("%b %e, %Y") %><br>
+                    <%= link_to 'Edit', edit_goal_path(goal) %> | 
+                    <%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %> 
+                  </div>
+                <% end %>
+                </div> 
             </div>
           </div>
-
-        </div>
-
+      </div> <!-- goal div end -->
 
 
 
 
-        <table class ="goal table table-hover">
-          <tr>
-            <!-- <th>Goal name</th> -->
-            <!-- <th>Description</th> -->
-            <!-- <th>Target Emission (reduce by)</th> -->
-            <!-- <th>Start time</th> -->
-            <!-- <th>End time</th> -->
-            <!-- <th>Status</th> -->
-          </tr>
 
-          <% @user.goals.each do |goal| %>
-           <!--  <tr>
-              <td><%= goal.goal_name %></td>
-            </tr>
-            <tr>
-               <td><%= goal.description %></td>
-            </tr>
-
-            <tr>
-              <td><%= goal.target_emission %>%</td>
-            </tr>
-            <tr>
-              <td><%= Date.parse(goal.start_time.to_s).strftime("%b %e, %Y") %></td>
-            </tr>
-            <tr>
-              <td><%= Date.parse(goal.end_time.to_s).strftime("%b %e, %Y") %></td>
-            </tr>
-            <tr>
-              <td><%= goal.status %></td>
-            </tr>
-            <tr>
-              <td><%= link_to 'Show', goal %></td>
-            </tr>
-            <tr>
-              <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-            </tr>
-            <tr>
-              <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
-          <% end %>
-        </table>
         <div class="group">
           <div class="facebook log"><%= image_tag("facebook.png") %></div>
           <div class="twitter log"><%= image_tag("twitter.png") %></div>
         </div>
-    </div> <!--col-1-4 end-->
+    </div> <!--col-1-4 end -->
 
     <%= render 'user_data' %>
+    
 
 
-      </div> <!---dashboard end col-3-3 -->
+      <!---</div> dashboard end col-3-3 -->
   </div><!--wrapper end-->
 </div> <!--container end-->
 
@@ -214,7 +169,7 @@
             <%= f.select :status, options_for_select(["Not Started","In Progress", "Completed", "Screw It"]) %>
           </div>
           <div class="actions">
-            <%= submit_tag "Submit Goal", :class => 'btn btn-success' %>
+            <%= f.submit "Submit", :class => 'btn btn-success' %>
 
           </div>
         <% end %>
@@ -248,5 +203,59 @@
   });
 </script>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <table class ="goal table table-hover">
+          <tr>
+            <!-- <th>Goal name</th> -->
+            <!-- <th>Description</th> -->
+            <!-- <th>Target Emission (reduce by)</th> -->
+            <!-- <th>Start time</th> -->
+            <!-- <th>End time</th> -->
+            <!-- <th>Status</th> -->
+          </tr>
+
+          <% @user.goals.each do |goal| %>
+             <!-- <tr>
+              <td><%= goal.goal_name %></td>
+            </tr>
+            <tr>
+               <td><%= goal.description %></td>
+            </tr>
+
+            <tr>
+              <td><%= goal.target_emission %>%</td>
+            </tr>
+            <tr>
+              <td><%= Date.parse(goal.start_time.to_s).strftime("%b %e, %Y") %></td>
+            </tr>
+            <tr>
+              <td><%= Date.parse(goal.end_time.to_s).strftime("%b %e, %Y") %></td>
+            </tr>
+            <tr>
+              <td><%= goal.status %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'Show', goal %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'Delete', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            </tr>  -->
+          <% end %>
+        </table>
 
 
