@@ -68,19 +68,13 @@
               <tr>
                <td class="content-text">Chase Bank</td>
               </tr>
-              <tr>
-                <td class="content-text">Bank of America</td>
-              </tr>
-              <tr>
-                <td class="content-text">Citi Bank</td>
-              </tr>
             </tbody>
           </table>
       </div>
 
       <div class="goal group-sub border">
         <div class="col-2-3 group-sub"><p>Your goal progress:</p></div>
-       <div class="goal log"><%= link_to image_tag("add.png"), '#goalModal', :data => {:toggle => "modal"} %></div> 
+       <div class="goal log"><%= link_to image_tag("add.png"), '#add_goalModal', :data => {:toggle => "modal"} %></div> 
         <%#= link_to "Set Goal", '#goalModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
       </div>
       
@@ -189,7 +183,7 @@
 
 
   <!-- Add Goal Modal -->
-      <div id="goalModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div id="add_goalModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
             <h4 id="myModalLabel">Set a Goal</h4>

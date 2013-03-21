@@ -1,0 +1,19 @@
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+    <h4 id="myModalLabel">CarbonGroove Beta!</h4>
+</div>
+
+<div class="modal-body">
+  <div class="span6">
+
+    <p>CarbonGroove is currently in private beta. If you would like be notified when we begin our open beta testing please enter in your email:</p>
+
+    <%= form_tag beta_testers_path, :class => "horizontal" do %>
+      <div class="controls">
+        <%= text_field_tag :email, params[:email], :id => "inputEmail", :placeholder => "Email" %>
+      </div>
+      <%= submit_tag "Submit", :class => 'btn btn-success' %>
+    <% end %>
+
+  </div>
+</div>
