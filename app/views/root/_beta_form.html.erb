@@ -1,0 +1,9 @@
+<%= form_tag beta_testers_path, :class => "horizontal" do %>
+  <div class="controls">
+    <%= text_field_tag :email, params[:email], :id => "inputEmail", :placeholder => "Email" %>
+  </div>
+  <div class="controls">
+    <%= text_field_tag :password, params[:password], :id => "inputPassword", :placeholder => "Password", type: "password" %>
+  </div>
+  <%= submit_tag "Login", :class => 'btn btn-success' %>
+<% end %>

@@ -6,6 +6,8 @@ Carbongroove::Application.routes.draw do
   get "users/:id/:full_date" => "Users#show"
   post '/users/:id' => "Users#add_account"
 
+  post 'beta_tester_signup' => "BetaTesters#create"
+
   resources :goals
 
   match 'auth/facebook/callback', to: 'sessions#create_facebook'
