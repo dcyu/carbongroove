@@ -10,8 +10,8 @@
             <li class="setting right">
               Hello, <%= current_user.name %> !
               <% if logged_in_as_regular_user? %>
-              <%= link_to image_tag("setting.png"), :class=>"tooltip" %>
-              <!-- <%= link_to image_tag("setting.png"), edit_user_url(current_user.id) %> -->
+            
+              <%= link_to image_tag("setting.png"), edit_user_url(current_user.id) %>
               <%#= link_to "Log out", log_out_path, :id => "log_out" %>
               <%# elsif logged_in? %>
               <%#= link_to "Log out", log_out_path, :id => "log_out" %>
