@@ -25,6 +25,7 @@ class Receipt < ActiveRecord::Base
     "hotel" => { cost: 1.00 , emission: 0.27 },
     "rental car & taxi" => { cost: 2.00 , emission: 0.85 },
     "shopping" => { cost: 1.00 , emission: 0.2 },
+    "printing" => { cost: 1.00, emission: 0.1}
   }
 
   after_create :upsert_interval_status

@@ -6,13 +6,21 @@ Carbongroove::Application.routes.draw do
   get "users/:id/:full_date" => "Users#show"
   post '/users/:id' => "Users#add_account"
 
-  post 'beta_tester_signup' => "BetaTesters#create"
+
 
   resources :goals
+  resources :beta_testers
+
+  post 'beta_tester_signup' => "BetaTesters#create"
+
 
   match 'auth/facebook/callback', to: 'sessions#create_facebook'
   match 'auth/twitter/callback', to: 'sessions#create_twitter'
   match 'auth/failure', to: redirect('/')
+
+  match 'about' => 'root#about'
+  match 'contact' => 'root#contact'
+
 
   root to: 'root#index'
 

@@ -1,28 +1,3 @@
-  <!--brand begin -->
-     <!-- <div class="brand book2"></div> -->
-    <div class="brand">
-      <div class="ribbon-wrapper-green">
-        <div class="ribbon-green"><%= link_to 'Sign Up!', '#signupModal', :data => {:toggle => "modal"} %></div>
-        </div>
-
-        <div class="col-3-3 brand-title">
-            <div class="header"><h1>CarbonGroove</h1></div>
-            <div class="brand-message">Get Yo' Groove On</div>
-            <div class="facebook log"><%= link_to image_tag('facebook.png'), "auth/facebook", :class => "login" %></div>
-            <div class="twitter log"><%= link_to image_tag('twitter.png'), "auth/twitter", :class => "login" %></div>
-            <div class="button"><%= link_to 'Login', '#loginModal', :class => "btn btn-success", :data => {:toggle => "modal"} %></div>
-            <!-- <div class="button"><%= link_to 'Sign Up!', '#signupModal', :class => "btn btn-success", :data => {:toggle => "modal"} %></div> -->
-            <div class="foot-nav">
-              <ul>
-                <li>About</li>
-                <li>Blog</li>
-                <li>Contact</li>
-            </div>
-      </div>
-     
-      <div class="brand-img"></div>
-
-    </div>
   <!--feature begin-->
   <div class="feature group">
     <div class="feature-title">
@@ -31,7 +6,7 @@
     <div class="feature-unit">
       <div class="feature-img"></div>
       <div class="feature-content">
-        <div class="header">Securely Import Data</div>
+        <div class="header">Connect</div>
         <div class="section">We are highly concerned about the security of your financial data. <!-- We only access this data to calculate and visualize your carbon footprint. --> In order to do this, we utilize the services of Intuit, which provides financial data to hundreds of companies including Mint.com and Quickbooks.</div>
       </div>
     </div>
@@ -39,7 +14,7 @@
     <div class="feature-unit">
       <div class="feature-img"></div>
       <div class="feature-content">
-        <div class="header">Environmental Impact</div>
+        <div class="header">Calculate</div>
         <div class="section">We automatically calculate your carbon footprint based on your spending information. We further break down this information by category to show you how different types of consumption contribute to your carbon footprint.</div>
       </div>
     </div>
@@ -47,52 +22,8 @@
     <div class="feature-unit">
       <div class="feature-img"></div>
       <div class="feature-content">
-        <div class="header">Take Action!</div>
+        <div class="header">Take Action</div>
         <div class="section">Once you have this information, CarbonGroove then suggests ways for you to take action to cut down on your carbon footprint.</div>
       </div>
-    </div>
-  </div>
-
-
-
-<!-- Modal -->
-  <div id="loginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-        <h4 id="myModalLabel">Login to CarbonGroove!</h4>
-    </div>
-    <div class="modal-body">
-      <div class="span6">
-          <%= form_tag sessions_path, :class => "horizontal" do %>
-              <div class="controls">
-                <%= text_field_tag :email, params[:email], :id => "inputEmail", :placeholder => "Email" %>
-              </div>
-              <div class="controls">
-                <%= text_field_tag :password, params[:password], :id => "inputPassword", :placeholder => "Password", type: "password" %>
-              </div>
-              <%= submit_tag "Login", :class => 'btn btn-success' %>
-          <% end %>
-      </div>
-    </div>w
-
-    <div class="modal-footer">
-      <a href="#"></a>
-    </div>
-  </div>
-
-
-<!-- Modal -->
-  <div id="signupModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-      <h4 id="myModalLabel">Sign up for CarbonGroove!</h4>
-  </div>
-  <div class="modal-body">
-    <div class="span6">
-      <% if CONFIG['signup_enabled'] %>
-        <%= render 'signup_form' %>
-      <% else %>
-        <%= render 'beta_form' %>
-      <% end %>
     </div>
   </div>
