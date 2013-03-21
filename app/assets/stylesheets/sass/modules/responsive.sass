@@ -1,21 +1,21 @@
-
+body
+  background: image-url("green.png") center 0 no-repeat, image-url("green_side.png") left 0 repeat-x,image-url("grain_brand.png")center 0 repeat-x,image-url("grain_brand.png") center 700px repeat
+  &.users-show
+    background: image-url("grain_gradient.png")center 0 repeat-x,image-url("grain.png") center 700px repeat
 
 /************* Media Query  *****************/
 @media all and (max-width:500px)
   .container
     width: 400px
-  body
-    background: image-url("green.png") center 350px no-repeat, image-url("green_side.png") left 350px repeat-x,image-url("grain_brand.png")center 0 repeat-x,image-url("grain_brand.png") center 700px repeat
-    &.users-show
-      background: image-url("grain_gradient.png")center 0 repeat-x,image-url("grain.png") center 700px repeat
+
   .brand
     width: 74.5%
     height: 350px
     margin: 0 20px 20px 20px
 
   .brand-title
-    margin: 200px 0 0 30px
-  
+    margin: 193px 0 0 30px
+    
 
   .feature-unit
     width: 237px
@@ -37,10 +37,6 @@
   .container
     width: 500px
 
-  body
-    background: image-url("green.png") center 330px no-repeat, image-url("green_side.png") left 330px repeat-x,image-url("grain_brand.png")center 0 repeat-x,image-url("grain_brand.png") center 700px repeat
-    &.users-show
-      background: image-url("grain_gradient.png")center 0 repeat-x,image-url("grain.png") center 700px repeat
   .brand
     width: 400px
     height: 350px
@@ -72,10 +68,7 @@
 @media (min-width:751px) and (max-width:1003px)
   .container
     width: 750px
-  body
-    background: image-url("green.png") center 380px no-repeat, image-url("green_side.png") left 380px repeat-x,image-url("grain_brand.png")center 0 repeat-x,image-url("grain_brand.png") center 700px repeat
-    &.users-show
-      background: image-url("grain_gradient.png")center 0 repeat-x,image-url("grain.png") center 700px repeat
+
   .brand
     width: 600px
     height: 350px
@@ -122,11 +115,6 @@
   .container
     width: 960px
 
-  body
-    background: image-url("green.png") center 380px no-repeat, image-url("green_side.png") left 380px repeat-x,image-url("grain_brand.png")center 0 repeat-x,image-url("grain_brand.png") center 700px repeat
-    &.users-show
-      background: image-url("grain_gradient.png")center 0 repeat-x,image-url("grain.png") center 700px repeat
-
   .brand
     width: 760px
     height: 350px
@@ -136,7 +124,7 @@
     width: 100%
 
   .brand-title
-    margin: 170px 0 0 73px
+    margin: 111px 0 0 73px
   .button
     margin: 0 300px 0  30px
   .quotes
@@ -168,18 +156,14 @@
   .container
     width: 960px
 
-  body
-    background: image-url("green.png") center 380px no-repeat, image-url("green_side.png") left 380px repeat-x,image-url("whitey.png")center 0 repeat-x,image-url("whitey.png") center 700px repeat
-    &.users-show
-      background: image-url("grain_gradient.png")center 0 repeat-x,image-url("grain.png") center 700px repeat
-
   .brand 
-    background-image: image-url("grain_brand.png")
+    // background-image: image-url("grain_brand.png")
+
   .brand-img
     width: 100%
 
   .brand-title
-    margin: 230px 0 0 50px
+    margin: 117px 0 0 50px
   .button
     margin: 0 411px 0  30px
   .quotes
@@ -205,7 +189,9 @@
   .feature-content
     .header
       margin-left: 15px
-
+  .foot-nav li
+    margin-right: 15px
+    
 .users-show
   .container
     width: 960px !important

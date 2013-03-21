@@ -7,3 +7,9 @@
   <div><%= f.text_field :bio, placeholder: "Edit About Me" %></div>
   <div><%= f.submit "Update Settings", :id => "update" %></div>
 <% end %>
+
+<% if logged_in_as_regular_user? %>
+<%= link_to "Log out", log_out_path, :id => "log_out" %>
+<% elsif logged_in? %>
+<%= link_to "Log out", log_out_path, :id => "log_out" %>
+<% end %>

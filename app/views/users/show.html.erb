@@ -7,13 +7,14 @@
         <div class="col-1-3 login right">
           <ul id="nav">
             <!-- <li class="name">Hello, <%= current_user.name %> !</li> -->
-            <li class="setting right"> 
+            <li class="setting right">
               Hello, <%= current_user.name %> !
               <% if logged_in_as_regular_user? %>
-              <%= link_to image_tag("setting.png"), edit_user_url(current_user.id) %>
-              <%= link_to "Log out", log_out_path, :id => "log_out" %>
-              <% elsif logged_in? %>
-              <%= link_to "Log out", log_out_path, :id => "log_out" %>
+              <%= link_to image_tag("setting.png"), :class=>"tooltip" %>
+              <!-- <%= link_to image_tag("setting.png"), edit_user_url(current_user.id) %> -->
+              <%#= link_to "Log out", log_out_path, :id => "log_out" %>
+              <%# elsif logged_in? %>
+              <%#= link_to "Log out", log_out_path, :id => "log_out" %>
               <% end %>
           </li>
           </ul>
@@ -21,8 +22,32 @@
     </div>
 </nav>
 
+  <div id="hi" style="width: 100px; height: 100px; margin: 0 0 0 500px; background: #f00;" class="tooltip" title="
+  <% if logged_in_as_regular_user? %>
+  <%= link_to "Log out", log_out_path, :id => "log_out" %>
+  <% elsif logged_in? %>
+  <%= link_to "Log out", log_out_path, :id => "log_out" %>
+   <% end %>
+              "></div>
+  
 
+<!-- <div class="css-modal">
+  <%= form_for @user do |f|  %>
+  <div><%= f.text_field :email, placeholder: "Edit Email" %></div>
+  <div><%= f.text_field :name, placeholder: "Edit Name" %></div>
+  <div><%= f.password_field :password, placeholder: "Edit Password" %></div>
+  <div><%= f.password_field :password_confirmation, placeholder: "Re-enter Password" %></div>
+  <div><%= f.text_field :pic_url, placeholder: "Edit Pic_URL" %></div>
+  <div><%= f.text_field :bio, placeholder: "Edit About Me" %></div>
+  <div><%= f.submit "Update Settings", :id => "update" %></div>
+<% end %>
 
+<% if logged_in_as_regular_user? %>
+<%= link_to "Log out", log_out_path, :id => "log_out" %>
+<% elsif logged_in? %>
+<%= link_to "Log out", log_out_path, :id => "log_out" %>
+<% end %>
+</div> -->
 
    
 
@@ -33,7 +58,7 @@
       <%= image_tag current_user.pic_url if current_user.pic_url.present? %>
       <div class="name margin-top group"><%= current_user.name %></div>
       <div class="profile content-text"><p><%= current_user.bio %></p></div>
-        <!-- <%= link_to "Add an Account!", '#accountModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %> -->
+       
       
       <div class="account">
           <div class="account col-1-3 group-sub">Account</div>
@@ -41,15 +66,22 @@
           <table class="table table-hover">
             <tbody>
               <tr>
-              <td>Chase Bank</td>
-            </tr>
+               <td class="content-text">Chase Bank</td>
+              </tr>
+              <tr>
+                <td class="content-text">Bank of America</td>
+              </tr>
+              <tr>
+                <td class="content-text">Citi Bank</td>
+              </tr>
             </tbody>
           </table>
       </div>
 
       <div class="goal group-sub border">
         <div class="col-2-3 group-sub"><p>Your goal progress:</p></div>
-        <%= link_to "Set Goal", '#addgoalModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
+       <div class="goal log"><%= link_to image_tag("add.png"), '#goalModal', :data => {:toggle => "modal"} %></div> 
+        <%#= link_to "Set Goal", '#goalModal', :class => "btn btn-success small pull-right", :data => {:toggle => "modal"} %>
       </div>
       
       <div id="goalModal" style="display: none"></div>
@@ -83,11 +115,11 @@
 
 
 
-
+<!-- 
         <div class="group">
           <div class="facebook log"><%= image_tag("facebook.png") %></div>
           <div class="twitter log"><%= image_tag("twitter.png") %></div>
-        </div>
+        </div> -->
     </div> <!--col-1-4 end -->
 
     <%= render 'user_data' %>
@@ -157,25 +189,25 @@
 
 
   <!-- Add Goal Modal -->
-      <div id="addgoalModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
-          <h4 id="myModalLabel">Set a Goal</h4>
-      </div>
-      <div class="modal-body">
-        <div class="span6">
-        <%= form_for @goal do |f| %>
-          <% if @goal.errors.any? %>
-            <div id="error_explanation">
-              <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+      <div id="goalModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+            <h4 id="myModalLabel">Set a Goal</h4>
+        </div>
+        <div class="modal-body">
+         <div class="span6">
+            <%= form_for @goal do |f| %>
+              <% if @goal.errors.any? %>
+                <div id="error_explanation">
+                  <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
 
-              <ul>
-              <% @goal.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
+                  <ul>
+                  <% @goal.errors.full_messages.each do |msg| %>
+                    <li><%= msg %></li>
+                  <% end %>
+                  </ul>
+                </div>
               <% end %>
-              </ul>
-            </div>
-          <% end %>
 
           <div class="field">
             <%= f.label :goal_name %>
@@ -211,17 +243,17 @@
           </div>
           <div class="actions">
             <%= f.submit "Submit", :class => 'btn btn-success' %>
-
+            <% end %>
           </div>
-        <% end %>
+        
         </div>
-      </div>
+      </div><!--modal body end -->
 
-      <div class="modal-footer">
-        <a href="#"></a>
-      </div>
+        <div class="modal-footer">
+          <a href="#"></a>
+        </div>
     </div>
-  </div>
+
 
   <script>$(function(){ $("#pop").popover();});</script>
   <script>
@@ -251,6 +283,14 @@
 </script>
 
 
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('.tooltip').tooltipster({
+        animation: 'fade',
+        position: 'bottom'
+      });
+    });
+  </script>
 
 
 

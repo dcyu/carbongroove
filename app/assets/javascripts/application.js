@@ -22,5 +22,6 @@
 //= require facebook
 //= require goals
 //= require users
+//= require jquery.tooltipster
 
 
